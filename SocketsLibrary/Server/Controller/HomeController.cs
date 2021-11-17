@@ -17,6 +17,7 @@ namespace SocketsLibrary.Server.Controller
         public Socket MySocket { get; set; }
         public User MyUser { get; set; }
         public List<UserAndSocket> Users { get; set; }
+
         #endregion
 
         #region Contructor 
