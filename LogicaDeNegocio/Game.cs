@@ -164,7 +164,7 @@ namespace LogicaDeNegocio
                 IsCreated = true;
 
                 // Se notifica a los interesados del evento.
-                GameStatus.NotifyObservers(new GameCreatedEvent(GamePath.GamePathState));
+                GameStatus.NotifyObservers(new GameCreatedEvent(GamePath.SerializableGamePath));
             }
         }
 
@@ -355,9 +355,9 @@ namespace LogicaDeNegocio
 
         //------------TEST-------------
 
-        public Square[] TESTGetGamePath()
+        public SerializableSquare[] TESTGetGamePath()
         {
-            return GamePath.GamePathState;
+            return GamePath.SerializableGamePath;
         }
 
         public Player[] TESTGetPlayerTurns()

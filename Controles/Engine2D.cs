@@ -132,7 +132,7 @@ namespace Controles
             layers.Add(newLayer);
         }
 
-        public void SetActiveToLayer(string name, bool active)
+        public void LayerIsActive(string name, bool active)
         {
             for (int i = 0; i < layers.Count; i++)
             {

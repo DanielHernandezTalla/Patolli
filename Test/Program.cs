@@ -38,13 +38,14 @@ namespace Test
             if (Session.ServerClient == null)
                 return;
 
+            Main.PlayerGame game = new Main.PlayerGame();
+            Session.Controller.GameForm = game;
+
             Application.Run(frmRoom);
 
             if (!Session.GameStarted)
                 return;
-
-            Main.PlayerGame game = new Main.PlayerGame();
-            Session.Controller.GameForm = game;
+            
             Application.Run(game);
         }
     }

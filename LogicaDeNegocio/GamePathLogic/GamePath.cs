@@ -30,6 +30,22 @@ namespace LogicaDeNegocio.GamePathLogic
                     throw new Exception("Para obtener el estado de Recorrido es necesario primero Cerrarlo. El Recorrido probablemente aún esta en construcción.");       
             }
         }
+        public SerializableSquare[] SerializableGamePath
+        {
+            get
+            {
+                Square[] gamePath = GamePathState;
+                SerializableSquare[] serializableGamePath = new SerializableSquare[gamePath.Length];
+
+                for (int i = 0; i < serializableGamePath.Length; i++)
+                {
+                    serializableGamePath[i] = new SerializableSquare();
+                    serializableGamePath[i].Fill(gamePath[i]);
+                }
+
+                return serializableGamePath;
+            }
+        }
         public List<Elements.PieceMovement> Steps { get; private set; } = new List<Elements.PieceMovement>();
         public int Count { get; private set; } = 0;
         internal bool IsClosed { get; private set; } = false;

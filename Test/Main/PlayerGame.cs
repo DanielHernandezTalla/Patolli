@@ -22,7 +22,6 @@ namespace Test.Main
             Board = new Board();
 
             InitializeComponent();
-            
 
             CenterControl(panBoard, Board);
             
@@ -42,9 +41,11 @@ namespace Test.Main
 
         public void GameCreated(GameCreatedEvent e)
         {
-            LogicaDeNegocio.GamePathLogic.Squares.Square[] gamePath = (LogicaDeNegocio.GamePathLogic.Squares.Square[])e.Data;
+            LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[] gamePath = (LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[])e.Data;
 
             Board.SetGamePath(gamePath);
+
+            Text += Board.Size.ToString();
         }
 
         public void TurnChanged(TurnChangedEvent e)

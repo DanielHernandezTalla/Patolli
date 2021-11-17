@@ -8,11 +8,11 @@ namespace LogicaDeNegocio.GameEvents
 {
     public class GameCreatedEvent : Eventos.Event
     {
-        private GamePathLogic.Squares.Square[] gamePath;
+        private GamePathLogic.Squares.SerializableSquare[] gamePath;
 
         public override object Data { get => gamePath; }
 
-        public GameCreatedEvent(GamePathLogic.Squares.Square[] gamePath) : base("GameCreated", "La partida ha sido creada.")
+        public GameCreatedEvent(GamePathLogic.Squares.SerializableSquare[] gamePath) : base("GameCreated", "La partida ha sido creada.")
         {
             this.gamePath = gamePath;
         }

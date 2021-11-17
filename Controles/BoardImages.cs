@@ -19,7 +19,7 @@ namespace Controles
             }
         }
 
-        public static Bitmap GetImageSquare(Square square)
+        public static Bitmap GetImageSquare(SerializableSquare square)
         {
             Square.SquareType type = square.Type;
             CardinalDirection direction = square.SquareDirection;
@@ -33,7 +33,7 @@ namespace Controles
                     return CenterSquare;
 
                 case Square.SquareType.Triangle:
-                    return GetTriangleSquare(direction, ((TriangleSquare)square).FlipX, ((TriangleSquare)square).FlipY);
+                    return GetTriangleSquare(direction, square.FlipX, square.FlipY);
 
                 case Square.SquareType.Goal:
                     return GetGoalSquare(direction);

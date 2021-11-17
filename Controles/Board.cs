@@ -42,7 +42,7 @@ namespace Controles
         }
 
 
-        public void SetGamePath(Square[] gamePath)
+        public void SetGamePath(SerializableSquare[] gamePath)
         {
             // Se crea una capa para dibujar el recorrido del juego.
             engine.CreateLayer("board");
@@ -67,23 +67,7 @@ namespace Controles
             UpdateBoard();
 
             // Se pone no activa la capa "board" para que solo sea dibujada una vez.
-            engine.SetActiveToLayer("board", false);
-
-            /*Square square = new TriangleSquare(null);
-
-            square.Location.X = 100;
-            square.Location.Y = 100;
-            Bitmap image = BoardImages.GetImageSquare(square);
-
-
-            Sprite sprite = new Sprite(
-                    square.Location.X,
-                    square.Location.Y,
-                    square.RelativeWidth,
-                    square.RelativeHeight,
-                    image, 0, 0, true, true);
-
-            sprite.SetDelta(2,4);*/
+            engine.LayerIsActive("board", false);
 
             //-------------------
         }

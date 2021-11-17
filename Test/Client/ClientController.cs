@@ -50,7 +50,7 @@ namespace Test.Client
         {
             // Se esta mandando el evento de la creacion del juego manualmente. Debe cambiar.
 
-            LogicaDeNegocio.GamePathLogic.Squares.Square[] GamePath = JsonConvert.DeserializeObject<LogicaDeNegocio.GamePathLogic.Squares.Square[]>(socketRequest.Body.ToString());
+            LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[] GamePath = JsonConvert.DeserializeObject<LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[]>(socketRequest.Body.ToString());
 
             LogicaDeNegocio.GameEvents.GameCreatedEvent e = new LogicaDeNegocio.GameEvents.GameCreatedEvent(GamePath);
 

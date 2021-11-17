@@ -74,6 +74,7 @@
     <Compile Include="GamePathLogic\Squares\ISquareState.cs" />
     <Compile Include="GamePathLogic\Squares\LocationGenerator.cs" />
     <Compile Include="GamePathLogic\Squares\ResizableBladeFactory.cs" />
+    <Compile Include="GamePathLogic\Squares\SerializableSquare.cs" />
     <Compile Include="GamePathLogic\Squares\Square.cs" />
     <Compile Include="GamePathLogic\Squares\SquaresFactory.cs" />
     <Compile Include="GamePathLogic\Squares\TriangleSquare.cs" />
