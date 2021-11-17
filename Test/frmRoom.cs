@@ -1,4 +1,4 @@
-﻿using SocketsForms.Client;
+﻿using Test.Client;
 using SocketsLibrary.Models;
 using SocketsLibrary.Server;
 using System;
@@ -17,6 +17,8 @@ namespace Test
         public frmRoom()
         {
             InitializeComponent();
+
+            btnJugar.Location = new Point(btnJugar.Location.X, 5);
         }
 
         private void frmRoom_Load(object sender, EventArgs e)
@@ -27,7 +29,6 @@ namespace Test
             txtIp.Text = Session.IP;
             txtPuerto.Text = Session.Port.ToString();
             txtNombre.Text = Session.User.Name;
-
             
             loadPanel();
         }
@@ -117,7 +118,10 @@ namespace Test
 
         private Font fontBold()
         {
-            FontFamily fontFamily = new FontFamily("Dubai");
+            // Dubai
+            FontFamily fontFamily = new FontFamily("Arial");
+            
+
             Font fontBold = new Font(
                fontFamily,
                20,
@@ -145,6 +149,12 @@ namespace Test
         private void btnJugar_Click(object sender, EventArgs e)
         {
             Session.Controller.GetGame();
+
+            Session.GameStarted = true; // ?
+
+            //Thread.Sleep(2000);
+
+            this.Dispose();
         }
     }
 }

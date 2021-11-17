@@ -20,6 +20,9 @@ namespace SocketsLibrary.Server.Controller
 
         #endregion
 
+        // Objetos del Juego
+        private LogicaDeNegocio.Game Game;
+
         #region Contructor 
         // Creando las instancias de los objetos principales
         public SocketController(Socket _MySocket, User _MyUser, List<UserAndSocket> _users)

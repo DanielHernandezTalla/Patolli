@@ -66,7 +66,29 @@ namespace SocketsLibrary.Server.Controller
 
         public void GetGame()
         {
+            // El objeto game se supone que esta creado antes y ya configurado
+            if (Game == null)
+                Game = new LogicaDeNegocio.Game();
 
+            //----------
+            if(!Game.IsCreated && !Game.IsStarted)
+            {
+                // Esto va en la config
+
+                // añadir observadores
+
+                // --------------------
+
+
+                Game.Create();
+                Game.Start();
+
+                // Esta respuesta es temporal. Lo correcto seria que el propio Game se comunique con el controlador
+                // para que él avise de los eventos de juego.
+                byte[] response = new byte[16384];
+                response = Serialize.ObjectToByte("GameCreated", 200, Game.TESTGetGamePath());
+                MySocket.Send(response);
+            }
         }
     }
 }

@@ -355,9 +355,9 @@ namespace LogicaDeNegocio
 
         //------------TEST-------------
 
-        public GamePath TESTGetGamePath()
+        public Square[] TESTGetGamePath()
         {
-            return GamePath;
+            return GamePath.GamePathState;
         }
 
         public Player[] TESTGetPlayerTurns()

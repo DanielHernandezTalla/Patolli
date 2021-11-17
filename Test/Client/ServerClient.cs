@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using Test;
 
-namespace SocketsForms.Client
+namespace Test.Client
 {
     public class ServerClient
     {
@@ -54,7 +54,7 @@ namespace SocketsForms.Client
                 try
                 {
                     // Cada ves que llega algo del cliente, el servidor lo escucha y lo procesa, dependiendo de la ruta
-                    byte[] buffer = new byte[1024];
+                    byte[] buffer = new byte[16384];
 
                     socketClient.Receive(buffer);
 
@@ -63,7 +63,7 @@ namespace SocketsForms.Client
                     ClientRouter.Routes(socketRequest, Session.Controller);
 
                 }
-                catch (Exception )
+                catch (Exception e)
                 {
                     socketClient.Close();
                     endPoint = null;

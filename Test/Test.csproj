@@ -7,6 +7,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\background.png" />
+    <None Remove="resources\center_square.png" />
+    <None Remove="resources\con textura\default_square.png" />
+    <None Remove="resources\con textura\goal_square.png" />
+    <None Remove="resources\con textura\goal_square_rotated.png" />
+    <None Remove="resources\con textura\triangle V2.png" />
+    <None Remove="resources\con textura\triangle.png" />
+    <None Remove="resources\corner_square.png" />
+    <None Remove="resources\default_square.png" />
+    <None Remove="resources\default_square_rotated.png" />
+    <None Remove="resources\goal_square.png" />
+    <None Remove="resources\triangle.png" />
+    <None Remove="resources\viejas\center_square.png" />
+    <None Remove="resources\viejas\default_square.png" />
+    <None Remove="resources\viejas\default_square_rotated.png" />
+    <None Remove="resources\viejas\triangle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\background.png" />
+    <Content Include="resources\center_square.png" />
+    <Content Include="resources\con textura\default_square.png" />
+    <Content Include="resources\con textura\goal_square.png" />
+    <Content Include="resources\con textura\goal_square_rotated.png" />
+    <Content Include="resources\con textura\triangle V2.png" />
+    <Content Include="resources\con textura\triangle.png" />
+    <Content Include="resources\corner_square.png" />
+    <Content Include="resources\default_square.png" />
+    <Content Include="resources\default_square_rotated.png" />
+    <Content Include="resources\goal_square.png" />
+    <Content Include="resources\triangle.png" />
+    <Content Include="resources\viejas\center_square.png" />
+    <Content Include="resources\viejas\default_square.png" />
+    <Content Include="resources\viejas\default_square_rotated.png" />
+    <Content Include="resources\viejas\triangle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Controles\Controles.csproj" />
+    <ProjectReference Include="..\LogicaDeNegocio\LogicaDeNegocio.csproj" />
     <ProjectReference Include="..\SocketsLibrary\SocketsLibrary.csproj" />
   </ItemGroup>
 
@@ -29,6 +69,22 @@
     <Compile Update="frmRoom.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Main\PlayerGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Main\PlayerGame.Designer.cs">
+      <DependentUpon>PlayerGame.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Main\PlayerGame.resx">
+      <DependentUpon>PlayerGame.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="resources\planas\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using SocketsForms.Client;
+﻿using Test.Client;
 using SocketsLibrary.Models;
 using SocketsLibrary.Server;
 using System;
@@ -30,6 +30,9 @@ namespace Test
 
         public static Thread ThreadClient { get; set; }
 
+        public static bool GameStarted { get; set; }
+
+        
 
         public enum SessionRole
         {

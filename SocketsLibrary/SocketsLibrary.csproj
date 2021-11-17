@@ -56,7 +56,16 @@
     <Compile Include="Server\Routers\Router.cs" />
     <Compile Include="Server\Server.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Eventos\Eventos.csproj">
+      <Project>{368dcfa6-bcfc-4b30-83ad-21b1fa4795fb}</Project>
+      <Name>Eventos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicaDeNegocio\LogicaDeNegocio.csproj">
+      <Project>{9a8c799f-e0a5-49b1-9db0-a3f83e24d647}</Project>
+      <Name>LogicaDeNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

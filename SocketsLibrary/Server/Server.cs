@@ -113,7 +113,7 @@ namespace SocketsLibrary.Server
                 while (true)
                 {
                     // Cada ves que llega algo del cliente, el servidor lo escucha y lo procesa, dependiendo de la ruta
-                    buffer = new byte[1024];
+                    buffer = new byte[16384];
                     mySocket.Receive(buffer);
 
                     socketRequest = Serialize.ByteToObject(buffer);

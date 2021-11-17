@@ -1,4 +1,5 @@
-﻿using SocketsLibrary.Models;
+﻿using Eventos;
+using SocketsLibrary.Models;
 using SocketsLibrary.Server.Controller;
 using System;
 using System.Collections.Generic;
@@ -28,5 +29,6 @@ namespace SocketsLibrary.Server.Routers
                 //controller
                 controller.NotFound();
         }
+
     }
 }

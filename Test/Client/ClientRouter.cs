@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SocketsForms.Client
+namespace Test.Client
 {
     public class ClientRouter
     {
@@ -14,6 +14,9 @@ namespace SocketsForms.Client
 
             else if (socketRequest.Url.Equals("AddNewUser"))
                 controller.AddNewUser(socketRequest);
+
+            else if (socketRequest.Url.Equals("GameCreated"))
+                controller.GameCreated(socketRequest);
 
             else
                 controller.NotFound();

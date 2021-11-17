@@ -39,6 +39,13 @@ namespace Test
                 return;
 
             Application.Run(frmRoom);
+
+            if (!Session.GameStarted)
+                return;
+
+            Main.PlayerGame game = new Main.PlayerGame();
+            Session.Controller.GameForm = game;
+            Application.Run(game);
         }
     }
 }
