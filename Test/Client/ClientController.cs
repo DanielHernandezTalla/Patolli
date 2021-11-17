@@ -28,14 +28,8 @@ namespace SocketsForms.Client
 
         public void InitRes(SocketRequest socketRequest)
         {
-            //cMessageBox.Show(socketRequest.Body.ToString());
             MySocket.frmIpPort.newUpdate();
         }
-
-        //public void TestRoutesClient(SocketRequest socketRequest)
-        //{
-        //    MessageBox.Show(socketRequest.Body.ToString() + " TEST ROUTES CLIENT");
-        //}
 
         public void AddNewUser(SocketRequest socketRequest)
         {
@@ -45,6 +39,11 @@ namespace SocketsForms.Client
             {
                 MySocket.frmRoom.newUpdate(user);
             }
+        }
+        
+        public void GetGame()
+        {
+            MySocket.Send(MyUser, "GetGame", false);
         }
 
         public void NotFound()

@@ -63,5 +63,10 @@ namespace SocketsLibrary.Server.Controller
                 MySocket.Send(response);
             }
         }
+
+        public void GetGame()
+        {
+
+        }
     }
 }

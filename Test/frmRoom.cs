@@ -30,17 +30,6 @@ namespace Test
 
             
             loadPanel();
-
-            //var test = Session.Controller.TestRoutes();
-
-            //MessageBox.Show(test.ToString());
-
-            //if (!frmIpPort.IsServer)
-            //{
-            //    User user = (User)frmRoom.controller.AddNewUser();
-
-            //    addUser(user);
-            //}
         }
 
         public delegate void UpdateDelegate(User user);
@@ -151,6 +140,11 @@ namespace Test
             Session.ThreadClient = null;
 
             Environment.Exit(Environment.ExitCode);
+        }
+
+        private void btnJugar_Click(object sender, EventArgs e)
+        {
+            Session.Controller.GetGame();
         }
     }
 }
