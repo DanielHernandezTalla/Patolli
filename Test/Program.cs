@@ -47,6 +47,21 @@ namespace Test
                 return;
             
             Application.Run(game);
+
+            closeThreads();
+        }
+
+        static void closeThreads()
+        {
+            if (Session.Server != null)
+                Session.Server.Close();
+
+            if (Session.ServerClient != null)
+                Session.ServerClient.Close();
+
+            Session.ThreadServer = null;
+            Session.ThreadClient = null;
+            Session.Controller = null;
         }
     }
 }

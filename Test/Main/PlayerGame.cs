@@ -61,7 +61,7 @@ namespace Test.Main
         }
 
         #endregion
-
+            
         #region Eventos del form
 
         private void PlayerGame_SizeChanged(object sender, EventArgs e)
@@ -69,6 +69,12 @@ namespace Test.Main
             CenterControl(panBoard, Board);
         }
 
+
         #endregion
+
+        private void PlayerGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }

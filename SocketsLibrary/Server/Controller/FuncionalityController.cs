@@ -25,7 +25,7 @@ namespace SocketsLibrary.Server.Controller
 
         public void AddNewUser()
         {
-            byte[] response = new byte[1024];
+            byte[] response = new byte[16384];
             List<User> usuarios = new List<User>();
             foreach (var user in Users)
             {

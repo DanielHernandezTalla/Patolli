@@ -136,7 +136,7 @@ namespace SocketsLibrary.Server
 
         void notificar(User myUser)
         {
-            byte[] response = new byte[1024];
+            byte[] response = new byte[16384];
             List<User> usuarios = new List<User>();
 
             usuarios.Add(myUser);
@@ -152,8 +152,8 @@ namespace SocketsLibrary.Server
 
         public void Close()
         {
-            //if(socket != null)
-                socket.Close();
+            socket.Close();
+            Users = null;
         }
     }
 }

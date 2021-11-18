@@ -44,10 +44,11 @@
             this.panBackground.Controls.Add(this.panBoard);
             this.panBackground.Controls.Add(this.panControls);
             this.panBackground.Controls.Add(this.panTurnsInfo);
-            this.panBackground.Location = new System.Drawing.Point(12, 0);
-            this.panBackground.MaximumSize = new System.Drawing.Size(2000, 1600);
+            this.panBackground.Location = new System.Drawing.Point(14, 0);
+            this.panBackground.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panBackground.MaximumSize = new System.Drawing.Size(2333, 1846);
             this.panBackground.Name = "panBackground";
-            this.panBackground.Size = new System.Drawing.Size(1100, 700);
+            this.panBackground.Size = new System.Drawing.Size(1283, 808);
             this.panBackground.TabIndex = 0;
             // 
             // panBoard
@@ -56,11 +57,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panBoard.BackColor = System.Drawing.SystemColors.Control;
-            this.panBoard.Location = new System.Drawing.Point(200, 0);
-            this.panBoard.MaximumSize = new System.Drawing.Size(1600, 1600);
-            this.panBoard.MinimumSize = new System.Drawing.Size(680, 700);
+            this.panBoard.Location = new System.Drawing.Point(233, 0);
+            this.panBoard.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panBoard.MaximumSize = new System.Drawing.Size(1867, 1846);
+            this.panBoard.MinimumSize = new System.Drawing.Size(793, 808);
             this.panBoard.Name = "panBoard";
-            this.panBoard.Size = new System.Drawing.Size(700, 700);
+            this.panBoard.Size = new System.Drawing.Size(817, 808);
             this.panBoard.TabIndex = 3;
             // 
             // panControls
@@ -68,10 +70,11 @@
             this.panControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panControls.Location = new System.Drawing.Point(900, 0);
-            this.panControls.MaximumSize = new System.Drawing.Size(200, 1600);
+            this.panControls.Location = new System.Drawing.Point(1050, 0);
+            this.panControls.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panControls.MaximumSize = new System.Drawing.Size(233, 1846);
             this.panControls.Name = "panControls";
-            this.panControls.Size = new System.Drawing.Size(200, 700);
+            this.panControls.Size = new System.Drawing.Size(233, 808);
             this.panControls.TabIndex = 2;
             // 
             // panTurnsInfo
@@ -80,21 +83,24 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panTurnsInfo.BackColor = System.Drawing.Color.Gold;
             this.panTurnsInfo.Location = new System.Drawing.Point(0, 0);
-            this.panTurnsInfo.MaximumSize = new System.Drawing.Size(200, 1600);
+            this.panTurnsInfo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panTurnsInfo.MaximumSize = new System.Drawing.Size(233, 1846);
             this.panTurnsInfo.Name = "panTurnsInfo";
-            this.panTurnsInfo.Size = new System.Drawing.Size(200, 700);
+            this.panTurnsInfo.Size = new System.Drawing.Size(233, 808);
             this.panTurnsInfo.TabIndex = 0;
             // 
             // PlayerGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 701);
+            this.ClientSize = new System.Drawing.Size(1311, 809);
             this.Controls.Add(this.panBackground);
-            this.MinimumSize = new System.Drawing.Size(1140, 726);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(1327, 832);
             this.Name = "PlayerGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlayerGame";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayerGame_FormClosing);
             this.SizeChanged += new System.EventHandler(this.PlayerGame_SizeChanged);
             this.panBackground.ResumeLayout(false);
             this.ResumeLayout(false);

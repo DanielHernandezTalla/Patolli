@@ -19,6 +19,8 @@ namespace Test
             InitializeComponent();
 
             btnJugar.Location = new Point(btnJugar.Location.X, 5);
+
+            loadPanel();
         }
 
         private void frmRoom_Load(object sender, EventArgs e)
@@ -29,8 +31,6 @@ namespace Test
             txtIp.Text = Session.IP;
             txtPuerto.Text = Session.Port.ToString();
             txtNombre.Text = Session.User.Name;
-            
-            loadPanel();
         }
 
         public delegate void UpdateDelegate(User user);
@@ -43,7 +43,7 @@ namespace Test
                 this.Invoke(delegado, user);
             }
             else
-                addUser(null);
+                addUser(user);
         }
 
 
@@ -133,28 +133,18 @@ namespace Test
 
         #endregion
 
-        private void frmRoom_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Cerramos el server, el thread y la applicacion 
-            // Form Room
-
-            Session.ServerClient.Close();
-            Session.User = null;
-            Session.Controller = null;
-            Session.ThreadClient = null;
-
-            Environment.Exit(Environment.ExitCode);
-        }
-
         private void btnJugar_Click(object sender, EventArgs e)
         {
             Session.Controller.GetGame();
 
-            Session.GameStarted = true; // ?
-
-            //Thread.Sleep(2000);
+            Session.GameStarted = true; 
 
             this.Dispose();
+        }
+
+        private void frmRoom_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
         }
     }
 }

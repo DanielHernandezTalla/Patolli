@@ -83,9 +83,8 @@ namespace Test.Client
         {
             socketClient.Close();
             endPoint = null;
-
-            //frmIpPort = null;
-            //frmRoom = null;
+            frmIpPort = null;
+            frmRoom = null;
         }
     }
 }
