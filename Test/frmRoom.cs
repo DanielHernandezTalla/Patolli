@@ -34,6 +34,8 @@ namespace Test
         }
 
         public delegate void UpdateDelegate(User user);
+        public delegate void CloseFormDelegate();
+        public delegate void DeleteUsersDelegate();
 
         public void newUpdate(User user)
         {
@@ -46,6 +48,23 @@ namespace Test
                 addUser(user);
         }
 
+        public void closeFrmRoom()
+        {
+            if (this.InvokeRequired)
+            {
+                CloseFormDelegate closeF = new CloseFormDelegate(closeForm);
+                this.Invoke(closeF);
+            }
+        }
+
+        public void newDelete()
+        {
+            if (this.InvokeRequired)
+            {
+                DeleteUsersDelegate delete = new DeleteUsersDelegate(deleteUsers);
+                this.Invoke(delete);
+            }
+        }
 
         #region Cargar Panel y Agregar Users
 
@@ -84,7 +103,7 @@ namespace Test
 
             Label NewlblImg = new Label();
             NewlblImg.Location = new Point(10, Y);
-            NewlblImg.Name = "lblImg" + Y;
+            NewlblImg.Name = user.Name + "Img";
             NewlblImg.Size = new Size(32, 40);
             NewlblImg.TextAlign = ContentAlignment.MiddleLeft;
             NewlblImg.BackColor = Color.Transparent;
@@ -92,7 +111,7 @@ namespace Test
 
             Label Newlbl = new Label();
             Newlbl.Location = new Point(50, Y);
-            Newlbl.Name = "lblUser" + Y;
+            Newlbl.Name = user.Name;
             Newlbl.Size = new Size(160, 40);
             Newlbl.Text = user.Name;
             Newlbl.Font = fontRegular();
@@ -102,6 +121,25 @@ namespace Test
 
             pnl.Controls.Add(NewlblImg);
             pnl.Controls.Add(Newlbl);
+        }
+
+        private void deleteUsers()
+        {
+            pnl.Controls.Clear();
+
+            Label lbl = new Label();
+            lbl.Location = new Point(0, 0);
+            lbl.Name = "lblTitleUser";
+            lbl.Size = new Size(220, 40);
+            lbl.Text = "Usuarios";
+            lbl.Font = fontBold();
+            lbl.TextAlign = ContentAlignment.MiddleCenter;
+            lbl.ForeColor = Color.White;
+            lbl.BackColor = Color.FromArgb(252, 75, 8);
+
+            pnl.Controls.Add(lbl);
+
+            Y = 10;
         }
 
         private Font fontRegular()
@@ -139,12 +177,23 @@ namespace Test
 
             Session.GameStarted = true; 
 
-            this.Dispose();
+            this.Close();
+        }
+
+        private void closeForm()
+        {
+            Session.GameStarted = true;
+
+            this.Close();
         }
 
         private void frmRoom_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(Environment.ExitCode);
+            if (!Session.GameStarted)
+            {
+                Session.Controller.GetOut();
+                Environment.Exit(Environment.ExitCode);
+            }
         }
     }
 }

@@ -15,6 +15,9 @@ namespace Test.Client
             else if (socketRequest.Url.Equals("AddNewUser"))
                 controller.AddNewUser(socketRequest);
 
+            else if (socketRequest.Url.Equals("GetOutUser"))
+                controller.GetOutUser(socketRequest);
+
             else if (socketRequest.Url.Equals("GameCreated"))
                 controller.GameCreated(socketRequest);
 

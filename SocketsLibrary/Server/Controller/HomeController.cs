@@ -13,6 +13,7 @@ namespace SocketsLibrary.Server.Controller
     public partial class SocketController
     {
         #region Objetos principales que guardan la conexion y tu usuario
+
         // Objetos principales que guardan la conexion y tu usuario
         public Socket MySocket { get; set; }
         public User MyUser { get; set; }
@@ -49,5 +50,27 @@ namespace SocketsLibrary.Server.Controller
         }
 
         #endregion
+
+
+        private void Notify(User myUser, string url, Object body)
+        {
+            byte[] response = new byte[16384];
+
+            response = Serialize.ObjectToByte(url, 200, body);
+
+            foreach (var user in Users)
+                if (user.User != myUser)
+                    user.Socket.Send(response);
+        }
+
+        private void NotifyAll(string url, Object body)
+        {
+            byte[] response = new byte[16384];
+
+            response = Serialize.ObjectToByte(url, 200, body);
+
+            foreach (var user in Users)
+                user.Socket.Send(response);
+        }
     }
 }
