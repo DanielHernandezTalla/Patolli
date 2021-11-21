@@ -135,7 +135,7 @@ namespace Test
 
         private void btnJugar_Click(object sender, EventArgs e)
         {
-            Session.Controller.GetGame();
+            Session.Controller.StartGame();
 
             Session.GameStarted = true; 
 

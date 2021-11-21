@@ -22,8 +22,8 @@ namespace SocketsLibrary.Server.Routers
             else if (socketRequest.Url.Equals("TestRoutes"))
                 controller.TestRoutes();
 
-            else if (socketRequest.Url.Equals("GetGame"))
-                controller.GetGame();
+            else if (socketRequest.Url.Equals("StartGame"))
+                controller.StartGame();
             
             else
                 //controller

@@ -21,11 +21,18 @@ namespace Test.Client
             Init();
         }
 
+        // Solicitudes del Cliente al Servidor
         public void Init()
         {
             MySocket.Send(MyUser, "Init", false);
         }
 
+        public void StartGame()
+        {
+            MySocket.Send(MyUser, "StartGame", false);
+        }
+
+        // Respuestas del Servidor al Cliente
         public void InitRes(SocketRequest socketRequest)
         {
             MySocket.frmIpPort.newUpdate();
@@ -39,11 +46,6 @@ namespace Test.Client
             {
                 MySocket.frmRoom.newUpdate(user);
             }
-        }
-        
-        public void GetGame()
-        {
-            MySocket.Send(MyUser, "GetGame", false);
         }
 
         public void GameCreated(SocketRequest socketRequest)

@@ -14,19 +14,25 @@ namespace Test.Main
 {
     public partial class PlayerGame : Form, IGameEvents
     {
-        private readonly Board Board;
+        private Board Board;
 
         public PlayerGame()
         {
             // Creación del tablero
             Board = new Board();
+            Board.MinimumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
+            Board.MaximumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
+            Board.Size = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
 
             InitializeComponent();
 
-            CenterControl(panBoard, Board);
-            
-            panBoard.Controls.Add(Board);
+            this.MinimumSize = new Size(1305, 740);
+            this.Size = new Size(1305, 740);
 
+            this.panBackground.Size = new Size(panBackground.Size.Width , this.MinimumSize.Height);
+            this.panBoard.Size = new Size(panBoard.Size.Width, this.MinimumSize.Height);
+
+            panBoard.Controls.Add(Board);
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -61,20 +67,32 @@ namespace Test.Main
         }
 
         #endregion
-            
+
         #region Eventos del form
+
+        private void PlayerGame_Load(object sender, EventArgs e)
+        {
+            
+
+            
+        }
 
         private void PlayerGame_SizeChanged(object sender, EventArgs e)
         {
-            CenterControl(panBoard, Board);
+            if(Board != null)
+                CenterControl(panBoard, Board);
+
+            Text = $"Form: {Size}, panBkgrd: {panBackground.Size}, panBoard: {panBoard.Size}";
+                
         }
-
-
-        #endregion
 
         private void PlayerGame_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
         }
+
+        #endregion
+
+
     }
 }

@@ -69,18 +69,6 @@
     <Compile Update="frmRoom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Main\PlayerGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Main\PlayerGame.Designer.cs">
-      <DependentUpon>PlayerGame.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Main\PlayerGame.resx">
-      <DependentUpon>PlayerGame.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

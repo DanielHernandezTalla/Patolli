@@ -25,7 +25,7 @@ namespace Controles
         private Bitmap dbBitmap;
         private Graphics dbGraphics;
 
-        public int BoardSize { get; private set; } = 690;
+        public static int BOARD_SIZE { get; private set; } = 690;
 
 
         public Board()
@@ -36,9 +36,9 @@ namespace Controles
             dbBitmap = new Bitmap(this.Width, this.Height);
             dbGraphics = Graphics.FromImage(dbBitmap);
 
-            result = new Bitmap(BoardSize, BoardSize);
+            result = new Bitmap(BOARD_SIZE, BOARD_SIZE);
 
-            engine = new Engine2D(BoardSize, BoardSize);
+            engine = new Engine2D(BOARD_SIZE, BOARD_SIZE);
         }
 
 
@@ -122,7 +122,7 @@ namespace Controles
                 Graphics g = e.Graphics;
 
                 // Copiamos la imagen resultado al board.
-                g.DrawImage(result, new Rectangle(0, 0, BoardSize, BoardSize));
+                g.DrawImage(result, new Rectangle(0, 0, BOARD_SIZE, BOARD_SIZE));
 
                 // Liberamos el recurso.
                 g.Dispose();
@@ -141,6 +141,12 @@ namespace Controles
             }
             else Timer.Stop();
             
+        }
+
+        private void Board_SizeChanged(object sender, EventArgs e)
+        {
+            Size a = Size;
+
         }
     }
 }

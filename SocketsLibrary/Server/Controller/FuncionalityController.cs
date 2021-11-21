@@ -64,7 +64,7 @@ namespace SocketsLibrary.Server.Controller
             }
         }
 
-        public void GetGame()
+        public void StartGame()
         {
             // El objeto game se supone que esta creado antes y ya configurado
             if (Game == null)
@@ -74,6 +74,8 @@ namespace SocketsLibrary.Server.Controller
             if(!Game.IsCreated && !Game.IsStarted)
             {
                 // Esto va en la config
+
+                Game.BladeSize = 7;
 
                 // añadir observadores
 

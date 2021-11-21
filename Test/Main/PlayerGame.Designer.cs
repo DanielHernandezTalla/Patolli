@@ -102,6 +102,7 @@
             this.Text = "PlayerGame";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayerGame_FormClosing);
             this.SizeChanged += new System.EventHandler(this.PlayerGame_SizeChanged);
+            this.Load += new System.EventHandler(this.PlayerGame_Load);
             this.panBackground.ResumeLayout(false);
             this.ResumeLayout(false);
 
