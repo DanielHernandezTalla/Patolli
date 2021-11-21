@@ -89,24 +89,18 @@ namespace SocketsLibrary.Server
             myUser = socketRequest.User;
 
             // Agregamos nuestro usuario al la lista de usuarios
-            UserAndSocket US = new UserAndSocket()
+            Users.Add(new UserAndSocket()
             {
                 User = myUser,
                 Socket = mySocket
-            };
-
-            Users.Add(US);
-
-            // Respondemos que se tiene conexion con el servidor 
-            byte[] response = Serialize.ObjectToByte("InitRes", true);
-            mySocket.Send(response);
+            });
 
             // Creamos nuestro controller y le pasamos nuestro socket
             SocketController controller = new SocketController(mySocket, myUser, Users);
 
-            controller.AddNewUser();
+            controller.Connected();            
 
-            notificar(myUser);
+            controller.GetUsers();
 
             try
             {
@@ -131,22 +125,6 @@ namespace SocketsLibrary.Server
             catch (Exception e)
             {
                 Console.WriteLine("Se ha desconectado un cliente" + e.Message);
-            }
-        }
-
-        void notificar(User myUser)
-        {
-            byte[] response = new byte[16384];
-            List<User> usuarios = new List<User>();
-
-            usuarios.Add(myUser);
-            
-            response = Serialize.ObjectToByte("AddNewUser", 200, usuarios);
-            
-            foreach (var user in Users)
-            {
-                if(user.User != myUser)
-                    user.Socket.Send(response);
             }
         }
 

@@ -59,12 +59,13 @@ namespace Test.Client
                     socketClient.Receive(buffer);
 
                     SocketRequest socketRequest = Serialize.ByteToObject(buffer);
-
+                    
                     ClientRouter.Routes(socketRequest, Session.Controller);
 
                 }
                 catch (Exception e)
                 {
+                    Console.WriteLine(e);
                     socketClient.Close();
                     endPoint = null;
                 }
