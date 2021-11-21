@@ -26,13 +26,18 @@ namespace Test.Main
 
             InitializeComponent();
 
+            // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
             this.MinimumSize = new Size(1305, 740);
             this.Size = new Size(1305, 740);
 
-            this.panBackground.Size = new Size(panBackground.Size.Width , this.MinimumSize.Height);
-            this.panBoard.Size = new Size(panBoard.Size.Width, this.MinimumSize.Height);
+            panBackground.Size = new Size(panBackground.Size.Width , 700);
 
+            panBoard.MinimumSize = new Size(panBoard.Size.Width, 700);
+            panBoard.Size = new Size(panBoard.Size.Width, 700);
+
+            // Agregar el Board y centrarlo.
             panBoard.Controls.Add(Board);
+            CenterControl(panBoard, Board);
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -51,7 +56,7 @@ namespace Test.Main
 
             Board.SetGamePath(gamePath);
 
-            Text += Board.Size.ToString();
+            Text += ", " + Board.Size.ToString();
         }
 
         public void TurnChanged(TurnChangedEvent e)
@@ -81,9 +86,6 @@ namespace Test.Main
         {
             if(Board != null)
                 CenterControl(panBoard, Board);
-
-            Text = $"Form: {Size}, panBkgrd: {panBackground.Size}, panBoard: {panBoard.Size}";
-                
         }
 
         private void PlayerGame_FormClosing(object sender, FormClosingEventArgs e)

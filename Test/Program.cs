@@ -25,7 +25,7 @@ namespace Test
 
             if (Session.User.Name == null)
                 return;
-
+            
             Application.Run(new frmClientServer());
 
             if (Session.Role == Session.SessionRole.NoInitialized)
