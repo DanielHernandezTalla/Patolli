@@ -9,9 +9,8 @@ namespace Eventos
     public class Event
     {
         public virtual string EventType { get; private set; }
-        public virtual object Data { get; set; }
         public virtual string Description { get; set; }
-
+        public virtual object Data { get; set; }
 
         public Event(string eventType)
         {

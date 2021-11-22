@@ -102,5 +102,17 @@ namespace SocketsLibrary.Server.Controller
                 //MySocket.Send(response);
             }
         }
+
+        // Eventos que envia el juego
+
+        public void GameCreated()
+        {
+
+        }
+
+        public void TurnChanged()
+        {
+
+        }
     }
 }

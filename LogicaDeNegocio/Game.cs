@@ -210,6 +210,8 @@ namespace LogicaDeNegocio
         private void NextPlayerTurn()
         {
             Turns.UpdatePlayerTurn();
+
+            GameStatus.NotifyObservers(new TurnChangedEvent(Turns.GetCurrentPlayerTurn()));
         }
 
         public bool ExecuteTurn(int steps)

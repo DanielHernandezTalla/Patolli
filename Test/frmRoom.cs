@@ -144,7 +144,7 @@ namespace Test
 
         private Font fontRegular()
         {
-            FontFamily fontFamily = new FontFamily("Dubai");
+            FontFamily fontFamily = new FontFamily("Arial");
             Font fontRegular = new Font(
                fontFamily,
                16,
