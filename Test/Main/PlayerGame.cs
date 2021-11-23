@@ -52,7 +52,7 @@ namespace Test.Main
 
         public void GameCreated(GameCreatedEvent e)
         {
-            LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[] gamePath = (LogicaDeNegocio.GamePathLogic.Squares.SerializableSquare[])e.Data;
+            GameRun.GamePathLogic.Squares.SerializableSquare[] gamePath = (GameRun.GamePathLogic.Squares.SerializableSquare[])e.Data;
 
             Board.SetGamePath(gamePath);
 

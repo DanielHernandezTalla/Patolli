@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LogicaDeNegocio.Elements;
-using LogicaDeNegocio.GameEvents;
-using LogicaDeNegocio.GamePathLogic;
-using LogicaDeNegocio.GamePathLogic.Squares;
+using GameRun.Elements;
+using GameRun.GameEvents;
+using GameRun.GamePathLogic;
+using GameRun.GamePathLogic.Squares;
 using System.Threading;
 
 namespace Controles

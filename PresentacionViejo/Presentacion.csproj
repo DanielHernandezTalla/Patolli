@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{148B4C4C-541E-4AF6-AE63-7A7633EBB599}</ProjectGuid>
+    <ProjectGuid>{CB587271-6280-470C-9174-FD021746C4D9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Presentacion</RootNamespace>
     <AssemblyName>Presentacion</AssemblyName>
@@ -33,8 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="GameStatus\GameStatusObserver.cs" />
+    <Compile Include="Main\Server.cs" />
+    <Compile Include="Main\PlayerGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Main\PlayerGame.Designer.cs">
+      <DependentUpon>PlayerGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pruebas\GameStatusObserver.cs" />
+    <Compile Include="Pruebas\Test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pruebas\Test.Designer.cs">
+      <DependentUpon>Test.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Main\PlayerGame.resx">
+      <DependentUpon>PlayerGame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +77,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Pruebas\Test.resx">
+      <DependentUpon>Test.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -77,22 +94,39 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cliente\Cliente.csproj">
-      <Project>{dbf5c8cf-a3ac-4347-9fa2-7117625819c1}</Project>
-      <Name>Cliente</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Controles\Controles.csproj">
-      <Project>{afe51ddb-5fdf-45d2-bc1d-002f7a6e5ea4}</Project>
+      <Project>{AFE51DDB-5FDF-45D2-BC1D-002F7A6E5EA4}</Project>
       <Name>Controles</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entidades\Entidades.csproj">
-      <Project>{96221919-d26b-4418-b29f-8a078bdbba01}</Project>
-      <Name>Entidades</Name>
     </ProjectReference>
     <ProjectReference Include="..\Eventos\Eventos.csproj">
       <Project>{368dcfa6-bcfc-4b30-83ad-21b1fa4795fb}</Project>
       <Name>Eventos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogicaDeNegocio\LogicaDeNegocio.csproj">
+      <Project>{9a8c799f-e0a5-49b1-9db0-a3f83e24d647}</Project>
+      <Name>LogicaDeNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\background.png" />
+    <Content Include="resources\center_square.png" />
+    <Content Include="resources\con textura\default_square.png" />
+    <Content Include="resources\con textura\goal_square.png" />
+    <Content Include="resources\con textura\goal_square_rotated.png" />
+    <Content Include="resources\con textura\triangle V2.png" />
+    <Content Include="resources\con textura\triangle.png" />
+    <Content Include="resources\corner_square.png" />
+    <Content Include="resources\default_square.png" />
+    <Content Include="resources\default_square_rotated.png" />
+    <Content Include="resources\goal_square.png" />
+    <Content Include="resources\triangle.png" />
+    <Content Include="resources\viejas\center_square.png" />
+    <Content Include="resources\viejas\default_square.png" />
+    <Content Include="resources\viejas\default_square_rotated.png" />
+    <Content Include="resources\viejas\triangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\planas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,8 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicaDeNegocio.Elements;
-using LogicaDeNegocio.GamePathLogic.Squares;
+using GameRun.Elements;
+using GameRun.GamePathLogic.Squares;
 
 namespace Controles
 {
