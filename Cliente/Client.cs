@@ -19,6 +19,8 @@ namespace Cliente
 
         public void Start()
         {
+            ClientController controller = new ClientController();
+
             try
             {
                 connection.Create();
@@ -29,7 +31,9 @@ namespace Cliente
                     // Send
 
                     // Receive
-                    SocketRequest request = connection.Receive();
+                    Entidades.Events.Event response = connection.Receive();
+
+                    controller.ProcessResponse(response);
                 }
 
             }

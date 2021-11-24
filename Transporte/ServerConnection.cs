@@ -12,7 +12,10 @@ namespace Transporte
     {
         private Queue<Socket> clientSockets;
 
-        public ServerConnection(string ip, int port) : base(ip, port) { }
+        public ServerConnection(string ip, int port) : base(ip, port) 
+        {
+            clientSockets = new Queue<Socket>();
+        }
 
         public void Bind()
         {
@@ -35,7 +38,7 @@ namespace Transporte
             return true;
         }
 
-        public bool PendingConnectionExists()
+        public bool PendingClientSocketExists()
         {
             if (clientSockets.Count > 0)
                 return true;
@@ -43,9 +46,9 @@ namespace Transporte
                 return false;
         }
 
-        public Socket GetPendingClientSocket()
+        public Socket DequeueClientSocket()
         {
-            if (PendingConnectionExists())
+            if (PendingClientSocketExists())
                 return clientSockets.Dequeue();
             else
                 throw new Exception("No hay conexiones de clientes pendientes.");

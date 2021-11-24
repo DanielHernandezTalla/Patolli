@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    class Player
+    public class Player
     {
+        public int Number { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -12,12 +12,14 @@ namespace Servidor
     class Server
     {
         private ServerConnection connection;
+        private List<ClientConnection> clientConnections;
 
         public bool Listening { get; set; }
 
         public Server(string ip, int port)
         {
             connection = new ServerConnection(ip, port);
+            clientConnections = new List<ClientConnection>();
         }
 
         public void Start()
@@ -55,21 +57,24 @@ namespace Servidor
         private void StartClientConnection()
         {
             // Si existen conexiones de clientes pendientes...
-            if(connection.PendingConnectionExists())
+            if(connection.PendingClientSocketExists())
             {
-                ClientConnection connection_clientReference = new ClientConnection(connection.GetPendingClientSocket());
+                ClientConnection connection_clientReference = new ClientConnection(connection.DequeueClientSocket());
+
+                clientConnections.Add(connection_clientReference);
+
+                ServerController controller = new ServerController(this);
 
                 try
                 {
                     while (true)
                     {
                         // Receive
-                        SocketRequest request = connection_clientReference.Receive();
+                        Entidades.Events.Event request = connection_clientReference.Receive();
 
-                        
+                        controller.ProcessRequest(request);
 
                         // Send
-
                     }
                 }
                 catch(Exception e)
@@ -77,6 +82,14 @@ namespace Servidor
                     connection_clientReference.Close();
                     throw new Exception("Algo falló en el thread de la conexión de la referencia del cliente.\n" + e.Message);
                 }
+            }
+        }
+
+        public void Send(Entidades.Events.Event response)
+        {
+            foreach (ClientConnection connection in clientConnections)
+            {
+                connection.Send(response);
             }
         }
     }

@@ -8,7 +8,7 @@ using LogicaDeNegocio.GameEvents;
 
 namespace Presentacion.GameStatus
 {
-    class GameStatusObserver : IObserver
+    class GameStatusObserver : ISubject
     {
         private readonly IGameEvents affected;
 

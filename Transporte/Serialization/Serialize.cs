@@ -10,7 +10,35 @@ namespace Transporte.Serialization
 {
     public static class Serialize
     {
-        public static SocketRequest ByteToObject(byte[] buffer)
+        public static Entidades.Events.Event ByteToObject(byte[] buffer, bool pruebaQUITAR)
+        {
+            string mensaje;
+            int endIndex;
+
+            mensaje = Encoding.ASCII.GetString(buffer);
+            endIndex = mensaje.IndexOf("\0");
+            if (endIndex > 0)
+                mensaje = mensaje.Substring(0, endIndex);
+
+            Entidades.Events.Event obj = JsonConvert.DeserializeObject<Entidades.Events.Event>(mensaje);
+
+            return obj;
+        }
+
+        public static byte[] ObjectToByte(Entidades.Events.Event obj)
+        {
+            string output = JsonConvert.SerializeObject(obj);
+
+            byte[] response = Encoding.ASCII.GetBytes(output);
+
+            return response;
+        }
+
+        
+
+        // --------------------------------------
+
+        public static SocketMessage ByteToObject(byte[] buffer)
         {
             string mensaje;
             int endIndex;
@@ -21,14 +49,14 @@ namespace Transporte.Serialization
                 mensaje = mensaje.Substring(0, endIndex);
 
 
-            SocketRequest obj = JsonConvert.DeserializeObject<SocketRequest>(mensaje);
+            SocketMessage obj = JsonConvert.DeserializeObject<SocketMessage>(mensaje);
 
             return obj;
         }
 
         public static byte[] ObjectToByte(User _user, string _url, int _status, Object _body)
         {
-            SocketRequest socketRequest = new SocketRequest()
+            SocketMessage socketRequest = new SocketMessage()
             {
                 User = _user,
                 Url = _url,
@@ -45,7 +73,7 @@ namespace Transporte.Serialization
 
         public static byte[] ObjectToByte(User _user, string _url)
         {
-            SocketRequest socketRequest = new SocketRequest()
+            SocketMessage socketRequest = new SocketMessage()
             {
                 User = _user,
                 Url = _url,
@@ -62,7 +90,7 @@ namespace Transporte.Serialization
 
         public static byte[] ObjectToByte(User _user, string _url, Object _body)
         {
-            SocketRequest socketRequest = new SocketRequest()
+            SocketMessage socketRequest = new SocketMessage()
             {
                 User = _user,
                 Url = _url,
@@ -79,7 +107,7 @@ namespace Transporte.Serialization
 
         public static byte[] ObjectToByte(string _url, int _status, Object _body)
         {
-            SocketRequest socketRequest = new SocketRequest()
+            SocketMessage socketRequest = new SocketMessage()
             {
                 User = null,
                 Url = _url,
@@ -96,7 +124,7 @@ namespace Transporte.Serialization
 
         public static byte[] ObjectToByte(string _url, Object _body)
         {
-            SocketRequest socketRequest = new SocketRequest()
+            SocketMessage socketRequest = new SocketMessage()
             {
                 User = null,
                 Url = _url,

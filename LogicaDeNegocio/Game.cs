@@ -93,7 +93,7 @@ namespace LogicaDeNegocio
             "Jugador 3",
             "Jugador 4"
         };
-        public List<Eventos.IObserver> GameObservers { get; set; } = new List<Eventos.IObserver>();
+        public List<Eventos.ISubject> GameObservers { get; set; } = new List<Eventos.ISubject>();
 
         // Propiedades de estado de partida
         public bool IsCreated { get; private set; }
@@ -342,7 +342,7 @@ namespace LogicaDeNegocio
         }
 
 
-        public void AddGameObserver(Eventos.IObserver observer)
+        public void AddGameObserver(Eventos.ISubject observer)
         {
             if(!IsCreated)
             {

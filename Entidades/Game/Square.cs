@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    struct Square
+    public struct Square
     {
         public int X { get; set; }
         public int Y { get; set; }

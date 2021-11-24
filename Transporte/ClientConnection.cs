@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using Entidades.Connection;
 using Transporte.Serialization;
+using Entidades.Events;
 
 namespace Transporte
 {
@@ -36,18 +37,23 @@ namespace Transporte
                 socket.Connect(endPoint);
         }
 
-        public void Send()
+        public void Send(Entidades.Events.Event eventMessage)
         {
+            byte[] message = Serialize.ObjectToByte(eventMessage);
 
+            socket.Send(message);
         }
 
-        public SocketRequest Receive()
+        public Entidades.Events.Event Receive()
         {
             byte[] buffer = new byte[BUFFER_SIZE];
 
-            SocketRequest request = Serialize.ByteToObject(buffer);
+            // Se queda esperando a que reciva algo...
+            socket.Receive(buffer);
 
-            return null;
+            Event eventMessage = Serialize.ByteToObject(buffer, true);
+
+            return eventMessage;
         }
     }
 }

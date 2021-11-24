@@ -9,27 +9,27 @@ namespace LogicaDeNegocio.GameEvents
 {
     public class GameStatus : ISubject
     {
-        private readonly List<IObserver> observers;
+        private readonly List<ISubject> observers;
 
         public GameStatus()
         {
-            observers = new List<IObserver>();
+            observers = new List<ISubject>();
         }
 
         public void NotifyObservers(Event gameEvent)
         {
-            foreach (IObserver observer in observers)
+            foreach (ISubject observer in observers)
             {
                 observer.Update(gameEvent);
             }
         }
 
-        public void Subscribe(IObserver observer)
+        public void Subscribe(ISubject observer)
         {
             observers.Add(observer);
         }
 
-        public void Unsubscribe(IObserver observer)
+        public void Unsubscribe(ISubject observer)
         {
             observers.Remove(observer);
         }

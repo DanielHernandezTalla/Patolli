@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Connection
 {
-    public class SocketRequest
+    public class SocketMessage
     {
         public User User { get; set; }
 
