@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servidor
 {
-    partial class ServerController : Eventos.ISubject
+    partial class ServerController : Eventos.IObserver
     {
         public void Update(Eventos.Event gameEvent)
         {

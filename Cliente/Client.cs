@@ -8,7 +8,7 @@ using Transporte;
 
 namespace Cliente
 {
-    class Client
+    public class Client
     {
         private ClientConnection connection;
 
@@ -19,7 +19,7 @@ namespace Cliente
 
         public void Start()
         {
-            ClientController controller = new ClientController();
+            ClientController controller = new ClientController(this);
 
             try
             {
@@ -42,8 +42,12 @@ namespace Cliente
                 connection.Close();
                 throw new Exception("Algo falló en el thread de la conexión del cliente.\n" + e.Message);
             }
-        }
+        } 
 
+        public void Send(Entidades.Events.Event request)
+        {
+            connection.Send(request);
+        }
         
     }
 }

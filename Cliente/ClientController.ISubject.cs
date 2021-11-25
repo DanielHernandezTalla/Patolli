@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cliente
 {
-    partial class ClientController : Eventos.ISubject
+    public partial class ClientController : Eventos.ISubject
     {
         private List<Eventos.IObserver> observers;
 

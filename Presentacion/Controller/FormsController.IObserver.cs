@@ -1,18 +1,17 @@
-﻿using System;
+﻿using Eventos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Eventos;
-using LogicaDeNegocio.GameEvents;
 
-namespace Presentacion.GameStatus
+namespace Presentacion.Controller
 {
-    class GameStatusObserver : IObserver
+    partial class FormsController : Eventos.IObserver
     {
-        private readonly IGameEvents affected;
+        private readonly Eventos.Game.IGameable affected;
 
-        public GameStatusObserver(IGameEvents affected)
+        public FormsController(Eventos.Game.IGameable affected)
         {
             this.affected = affected;
         }
@@ -22,20 +21,15 @@ namespace Presentacion.GameStatus
             string eventType = subjectEvent.EventType;
 
             if (eventType.Equals("GameCreated"))
-                affected.GameCreated((GameCreatedEvent)subjectEvent);
+                affected.GameCreated(subjectEvent);
 
             else if (eventType.Equals("TurnChanged"))
-                affected.TurnChanged((TurnChangedEvent)subjectEvent);
+                affected.TurnChanged(subjectEvent);
 
             else if (eventType.Equals("PieceMoved"))
-                affected.PieceMoved((PieceMovedEvent)subjectEvent);
+                affected.PieceMoved(subjectEvent);
 
             return;
-
-
-
         }
-
-
     }
 }

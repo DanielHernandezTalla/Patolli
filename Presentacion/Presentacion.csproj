@@ -46,14 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\FormsController.cs" />
+    <Compile Include="Controller\FormsController.IObserver.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\PlayerGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\PlayerGame.Designer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Main\PlayerGame.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +100,27 @@
       <Project>{368dcfa6-bcfc-4b30-83ad-21b1fa4795fb}</Project>
       <Name>Eventos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\background.png" />
+    <Content Include="resources\center_square.png" />
+    <Content Include="resources\con textura\default_square.png" />
+    <Content Include="resources\con textura\goal_square.png" />
+    <Content Include="resources\con textura\goal_square_rotated.png" />
+    <Content Include="resources\con textura\triangle V2.png" />
+    <Content Include="resources\con textura\triangle.png" />
+    <Content Include="resources\corner_square.png" />
+    <Content Include="resources\default_square.png" />
+    <Content Include="resources\default_square_rotated.png" />
+    <Content Include="resources\goal_square.png" />
+    <Content Include="resources\triangle.png" />
+    <Content Include="resources\viejas\center_square.png" />
+    <Content Include="resources\viejas\default_square.png" />
+    <Content Include="resources\viejas\default_square_rotated.png" />
+    <Content Include="resources\viejas\triangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="resources\planas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

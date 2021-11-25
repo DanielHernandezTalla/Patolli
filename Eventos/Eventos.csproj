@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Event.cs" />
+    <Compile Include="Game\IGameable.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="ISubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

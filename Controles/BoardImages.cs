@@ -15,7 +15,7 @@ namespace Controles
         {
             get
             {
-                return "..\\..\\..\\resources\\";
+                return "..\\..\\resources\\";
             }
         }
 
