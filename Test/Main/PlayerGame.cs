@@ -54,7 +54,7 @@ namespace Test.Main
         {
             GameRun.GamePathLogic.Squares.SerializableSquare[] gamePath = (GameRun.GamePathLogic.Squares.SerializableSquare[])e.Data;
 
-            Board.SetGamePath(gamePath);
+            //Board.SetGamePath(gamePath);
 
             Text += ", " + Board.Size.ToString();
         }

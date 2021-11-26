@@ -4,8 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameRun.Elements;
-using GameRun.GamePathLogic.Squares;
+using Entidades.Game;
+using Entidades;
 
 namespace Controles
 {
@@ -19,7 +19,7 @@ namespace Controles
             }
         }
 
-        public static Bitmap GetImageSquare(SerializableSquare square)
+        public static Bitmap GetImageSquare(Square square)
         {
             Square.SquareType type = square.Type;
             CardinalDirection direction = square.SquareDirection;

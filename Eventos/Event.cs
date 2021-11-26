@@ -11,6 +11,7 @@ namespace Eventos
         public virtual string EventType { get; private set; }
         public virtual string Description { get; set; }
         public virtual object Data { get; set; }
+        public virtual bool ToGame { get; set; }
 
         public Event(string eventType)
         {

@@ -9,10 +9,27 @@ using Entidades.Connection;
 
 namespace Servidor
 {
-    class Server
+    public class Server
     {
+        public static List<User> UsersConnected = new List<User>();
+
         private ServerConnection connection;
         private List<ClientConnection> clientConnections;
+        private List<ServerController> controllers;
+
+        internal List<User> Users
+        {
+            get
+            {
+                List<User> users = new List<User>();
+                foreach (ServerController controller in controllers)
+                {
+                    users.Add(controller.User);
+                }
+
+                return users;
+            }
+        }
 
         public bool Listening { get; set; }
 
@@ -20,6 +37,7 @@ namespace Servidor
         {
             connection = new ServerConnection(ip, port);
             clientConnections = new List<ClientConnection>();
+            controllers = new List<ServerController>();
         }
 
         public void Start()
@@ -60,10 +78,10 @@ namespace Servidor
             if(connection.PendingClientSocketExists())
             {
                 ClientConnection connection_clientReference = new ClientConnection(connection.DequeueClientSocket());
-
                 clientConnections.Add(connection_clientReference);
 
                 ServerController controller = new ServerController(this);
+                controllers.Add(controller);
 
                 try
                 {
@@ -91,6 +109,11 @@ namespace Servidor
             {
                 connection.Send(response);
             }
+        }
+
+        public void Close()
+        {
+            connection.Close();
         }
     }
 }

@@ -46,21 +46,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserEvents\SetUpGameEvent.cs" />
+    <Compile Include="UserEvents\UserIdentifyEvent.cs" />
     <Compile Include="Controller\FormsController.cs" />
     <Compile Include="Controller\FormsController.IObserver.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\AuthForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\AuthForm.Designer.cs">
+      <DependentUpon>AuthForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main\PlayerGame.cs">
+    <Compile Include="Forms\ClientServerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\PlayerGame.Designer.cs" />
+    <Compile Include="Forms\ClientServerForm.Designer.cs">
+      <DependentUpon>ClientServerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ConnectionForm.Designer.cs">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlayerGameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayerGameForm.Designer.cs">
+      <DependentUpon>PlayerGameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RoomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoomForm.Designer.cs">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Main\PlayerGame.resx" />
+    <Compile Include="User\Session.cs" />
+    <EmbeddedResource Include="Forms\AuthForm.resx">
+      <DependentUpon>AuthForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ClientServerForm.resx">
+      <DependentUpon>ClientServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ConnectionForm.resx">
+      <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayerGameForm.resx">
+      <DependentUpon>PlayerGameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RoomForm.resx">
+      <DependentUpon>RoomForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,6 +136,14 @@
     <ProjectReference Include="..\Eventos\Eventos.csproj">
       <Project>{368dcfa6-bcfc-4b30-83ad-21b1fa4795fb}</Project>
       <Name>Eventos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servidor\Servidor.csproj">
+      <Project>{cf1ae424-ae0d-4c27-8f3f-f5c42f047371}</Project>
+      <Name>Servidor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Transporte\Transporte.csproj">
+      <Project>{7baa3af4-f22a-44de-8ae1-f815f52765c5}</Project>
+      <Name>Transporte</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

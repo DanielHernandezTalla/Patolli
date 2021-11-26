@@ -25,6 +25,21 @@ namespace Transporte.Serialization
             return obj;
         }
 
+        public static T JobjToObject<T>(object jobj)
+        {
+            string mensaje;
+            int endIndex;
+
+            mensaje = jobj.ToString();
+            endIndex = mensaje.IndexOf("\0");
+            if (endIndex > 0)
+                mensaje = mensaje.Substring(0, endIndex);
+
+            T obj = JsonConvert.DeserializeObject<T>(mensaje);
+
+            return obj;
+        }
+
         public static byte[] ObjectToByte(Entidades.Events.Event obj)
         {
             string output = JsonConvert.SerializeObject(obj);
@@ -38,7 +53,7 @@ namespace Transporte.Serialization
 
         // --------------------------------------
 
-        public static SocketMessage ByteToObject(byte[] buffer)
+        /*public static SocketMessage ByteToObject(byte[] buffer)
         {
             string mensaje;
             int endIndex;
@@ -52,7 +67,7 @@ namespace Transporte.Serialization
             SocketMessage obj = JsonConvert.DeserializeObject<SocketMessage>(mensaje);
 
             return obj;
-        }
+        }*/
 
         public static byte[] ObjectToByte(User _user, string _url, int _status, Object _body)
         {

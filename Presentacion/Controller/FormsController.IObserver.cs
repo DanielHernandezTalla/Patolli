@@ -9,27 +9,33 @@ namespace Presentacion.Controller
 {
     partial class FormsController : Eventos.IObserver
     {
-        private readonly Eventos.Game.IGameable affected;
-
-        public FormsController(Eventos.Game.IGameable affected)
-        {
-            this.affected = affected;
-        }
-
         public void Update(Event subjectEvent)
         {
             string eventType = subjectEvent.EventType;
 
-            if (eventType.Equals("GameCreated"))
-                affected.GameCreated(subjectEvent);
+            if (eventType.Equals("UserIdentified"))
+            {
+                connectionForm.UserIdentified(subjectEvent);
+                roomForm.UserIdentified(subjectEvent);
+            }
+                
+            else if (eventType.Equals("GameCreated"))
+            {
+                gameForm.GameCreated(subjectEvent);
+                roomForm.GameCreated(subjectEvent);
+            }
+
+            else if (eventType.Equals("GameStarted"))
+                return;
 
             else if (eventType.Equals("TurnChanged"))
-                affected.TurnChanged(subjectEvent);
+                return;
 
             else if (eventType.Equals("PieceMoved"))
-                affected.PieceMoved(subjectEvent);
+                return;
 
-            return;
+            else
+                throw new Exception("No se indentificó el evento que llegó al FormsController.");
         }
     }
 }

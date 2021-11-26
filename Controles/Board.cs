@@ -42,7 +42,7 @@ namespace Controles
         }
 
 
-        public void SetGamePath(SerializableSquare[] gamePath)
+        public void SetGamePath(Entidades.Game.Square[] gamePath)
         {
             // Se crea una capa para dibujar el recorrido del juego.
             engine.CreateLayer("board");
@@ -54,8 +54,8 @@ namespace Controles
                 Bitmap image = BoardImages.GetImageSquare(gamePath[i]);
 
                 Sprite sprite = new Sprite(
-                    gamePath[i].Location.X,
-                    gamePath[i].Location.Y,
+                    gamePath[i].X,
+                    gamePath[i].Y,
                     gamePath[i].RelativeWidth,
                     gamePath[i].RelativeHeight,
                     image, 0, 0, true, true);

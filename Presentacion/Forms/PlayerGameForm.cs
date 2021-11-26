@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Controles;
 using Eventos;
+using Presentacion.Controller;
 
-namespace Presentacion.Main
+namespace Presentacion.Forms
 {
-    public partial class PlayerGame : Form, Eventos.Game.IGameable
+    public partial class PlayerGameForm : Form, Eventos.Game.IGameable
     {
-        private Board Board;
+        private FormsController controller;
 
-        public PlayerGame()
+        private readonly Board Board;
+
+        public PlayerGameForm()
         {
             // Creación del tablero
             Board = new Board();
@@ -30,7 +33,7 @@ namespace Presentacion.Main
             this.MinimumSize = new Size(1305, 740);
             this.Size = new Size(1305, 740);
 
-            panBackground.Size = new Size(panBackground.Size.Width , 700);
+            panBackground.Size = new Size(panBackground.Size.Width, 700);
 
             panBoard.MinimumSize = new Size(panBoard.Size.Width, 700);
             panBoard.Size = new Size(panBoard.Size.Width, 700);
@@ -38,6 +41,8 @@ namespace Presentacion.Main
             // Agregar el Board y centrarlo.
             panBoard.Controls.Add(Board);
             CenterControl(panBoard, Board);
+
+            controller = User.Session.FormsController;
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -52,12 +57,9 @@ namespace Presentacion.Main
 
         public void GameCreated(Event e)
         {
-            /*GameRun.GamePathLogic.Squares.SerializableSquare[] gamePath = (GameRun.GamePathLogic.Squares.SerializableSquare[])e.Data;
-
+            Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data); ;
             Board.SetGamePath(gamePath);
 
-            Text += ", " + Board.Size.ToString();*/
-            throw new NotImplementedException();
         }
 
         public void TurnChanged(Event e)
@@ -77,20 +79,13 @@ namespace Presentacion.Main
 
         #region Eventos del form
 
-        private void PlayerGame_Load(object sender, EventArgs e)
+        private void PlayerGameForm_SizeChanged(object sender, EventArgs e)
         {
-            
-
-            
-        }
-
-        private void PlayerGame_SizeChanged(object sender, EventArgs e)
-        {
-            if(Board != null)
+            if (Board != null)
                 CenterControl(panBoard, Board);
         }
 
-        private void PlayerGame_FormClosing(object sender, FormClosingEventArgs e)
+        private void PlayerGameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
         }

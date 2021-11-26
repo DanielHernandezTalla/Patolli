@@ -45,6 +45,7 @@
     <Compile Include="Connection\SocketMessage.cs" />
     <Compile Include="Connection\User.cs" />
     <Compile Include="Events\Event.cs" />
+    <Compile Include="Game\GameSettings.cs" />
     <Compile Include="Game\Piece.cs" />
     <Compile Include="Game\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

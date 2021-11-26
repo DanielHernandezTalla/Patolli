@@ -10,17 +10,17 @@ namespace Cliente
 {
     public class Client
     {
-        private ClientConnection connection;
+        private readonly ClientConnection connection;
+        private readonly ClientController controller;
 
         public Client(string ip, int port)
         {
             connection = new ClientConnection(ip, port);
+            controller = new ClientController(this);
         }
 
         public void Start()
         {
-            ClientController controller = new ClientController(this);
-
             try
             {
                 connection.Create();
@@ -49,5 +49,19 @@ namespace Cliente
             connection.Send(request);
         }
         
+        public void Subscribe(Eventos.IObserver observer)
+        {
+            controller.Subscribe(observer);
+        }
+
+        public ClientController GetController()
+        {
+            return controller;
+        }
+
+        public void Close()
+        {
+            connection.Close();
+        }
     }
 }

@@ -93,7 +93,6 @@ namespace GameRun
             "Jugador 3",
             "Jugador 4"
         };
-        public List<Eventos.IObserver> GameObservers { get; set; } = new List<Eventos.IObserver>();
 
         // Propiedades de estado de partida
         public bool IsCreated { get; private set; }
@@ -109,6 +108,7 @@ namespace GameRun
 
         // Estatus de la partida
         public GameStatus GameStatus { get; private set; }
+        public List<Eventos.IObserver> GameObservers { get; set; } = new List<Eventos.IObserver>();
 
         #endregion
 
@@ -164,7 +164,7 @@ namespace GameRun
                 IsCreated = true;
 
                 // Se notifica a los interesados del evento.
-                GameStatus.NotifyObservers(new GameCreatedEvent(GamePath.SerializableGamePath));
+                GameStatus.NotifyObservers(new GameCreatedEvent(GamePath.GamePathState));
             }
         }
 
@@ -357,9 +357,9 @@ namespace GameRun
 
         //------------TEST-------------
 
-        public SerializableSquare[] TESTGetGamePath()
+        public Square[] TESTGetGamePath()
         {
-            return GamePath.SerializableGamePath;
+            return GamePath.GamePathState;
         }
 
         public Player[] TESTGetPlayerTurns()
