@@ -10,7 +10,7 @@ namespace Transporte
 {
     public class ServerConnection : Connection
     {
-        private Queue<Socket> clientSockets;
+        private readonly Queue<Socket> clientSockets;
 
         public ServerConnection(string ip, int port) : base(ip, port) 
         {

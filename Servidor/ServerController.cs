@@ -21,7 +21,7 @@ namespace Servidor
         {
             this.server = server;
 
-            gameManager = new GameManagement.GameManager();
+            gameManager = new GameManagement.GameManager(server);
 
             gameManager.Subscribe(this);
         }
@@ -79,6 +79,7 @@ namespace Servidor
             // Ejecutar solicitud
             if(User == null)
                 User = (User)eventRequest.Data;
+                
 
             Server.UsersConnected.Add(User);
 
@@ -88,5 +89,9 @@ namespace Servidor
 
             NotifyResponse(eventResponse);
         }
+
+        // Cuando se retire un usario aqui iria?
+
+
     }
 }

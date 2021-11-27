@@ -150,7 +150,7 @@ namespace Controles
         {
             get
             {
-                string fullPath = Path + "background.png";
+                string fullPath = Path + "board_background.png";
                 return (Bitmap)Image.FromFile(fullPath);
             }
         }

@@ -13,18 +13,24 @@ namespace Servidor
     {
         public static List<User> UsersConnected = new List<User>();
 
-        private ServerConnection connection;
-        private List<ClientConnection> clientConnections;
-        private List<ServerController> controllers;
+        private readonly ServerConnection connection;
+
+        internal List<Servidor.Client.ClientReference> ClientReferences { get; private set; }
+
+
+        private readonly List<ClientConnection> clientConnections;
+        private readonly List<ServerController> controllers;
+
 
         internal List<User> Users
         {
             get
             {
                 List<User> users = new List<User>();
-                foreach (ServerController controller in controllers)
+
+                foreach (var reference in ClientReferences)
                 {
-                    users.Add(controller.User);
+                    users.Add(reference.ServerController.User);
                 }
 
                 return users;
@@ -38,6 +44,8 @@ namespace Servidor
             connection = new ServerConnection(ip, port);
             clientConnections = new List<ClientConnection>();
             controllers = new List<ServerController>();
+
+            ClientReferences = new List<Servidor.Client.ClientReference>();
         }
 
         public void Start()
@@ -83,6 +91,8 @@ namespace Servidor
                 ServerController controller = new ServerController(this);
                 controllers.Add(controller);
 
+                ClientReferences.Add(new Client.ClientReference(connection_clientReference, controller));
+
                 try
                 {
                     while (true)
@@ -105,9 +115,9 @@ namespace Servidor
 
         public void Send(Entidades.Events.Event response)
         {
-            foreach (ClientConnection connection in clientConnections)
+            foreach (var reference in ClientReferences)
             {
-                connection.Send(response);
+                reference.ClientConnection.Send(response);
             }
         }
 

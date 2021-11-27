@@ -9,27 +9,27 @@ namespace Presentacion.Controller
 {
     partial class FormsController : Eventos.IObserver
     {
-        public void Update(Event subjectEvent)
+        public void Update(Event responseEvent)
         {
-            string eventType = subjectEvent.EventType;
+            string eventType = responseEvent.EventType;
 
             if (eventType.Equals("UserIdentified"))
             {
-                connectionForm.UserIdentified(subjectEvent);
-                roomForm.UserIdentified(subjectEvent);
+                connectionForm.UserIdentified(responseEvent);
+                roomForm.UserIdentified(responseEvent);
             }
-                
+
             else if (eventType.Equals("GameCreated"))
             {
-                gameForm.GameCreated(subjectEvent);
-                roomForm.GameCreated(subjectEvent);
+                gameForm.GameCreated(responseEvent);
+                roomForm.GameCreated(responseEvent);
             }
 
             else if (eventType.Equals("GameStarted"))
                 return;
 
             else if (eventType.Equals("TurnChanged"))
-                return;
+                gameForm.TurnChanged(responseEvent);
 
             else if (eventType.Equals("PieceMoved"))
                 return;

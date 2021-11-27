@@ -12,8 +12,10 @@ namespace Entidades.Connection
 
         public string Name { get; set; }
 
-        public string Password { get; set; }
-
-        public bool Access { get; set; }
+        public void Fill(GameRun.Elements.Player player)
+        {
+            Name = player.Name;
+            Number = player.PlayerNumber;
+        }
     }
 }

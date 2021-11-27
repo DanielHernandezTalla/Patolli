@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UserEvents\SetUpGameEvent.cs" />
+    <Compile Include="UserEvents\StartGameEvent.cs" />
     <Compile Include="UserEvents\UserIdentifyEvent.cs" />
     <Compile Include="Controller\FormsController.cs" />
     <Compile Include="Controller\FormsController.IObserver.cs" />
@@ -165,6 +166,7 @@
     <Content Include="resources\viejas\triangle.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="resources\caña_thrower\" />
     <Folder Include="resources\planas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

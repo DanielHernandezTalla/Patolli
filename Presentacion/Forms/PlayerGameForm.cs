@@ -15,7 +15,7 @@ namespace Presentacion.Forms
 {
     public partial class PlayerGameForm : Form, Eventos.Game.IGameable
     {
-        private FormsController controller;
+        private readonly FormsController controller;
 
         private readonly Board Board;
 
@@ -53,21 +53,61 @@ namespace Presentacion.Forms
             c2.Location = new Point(x, y);
         }
 
+        private void UpdateTurn(bool isMyTurn)
+        {
+            // Actualizar el control de informacion de turno..
+
+            // Actualizar el control de cañas
+
+        }
+
+        private void DelegatedUpdateTurn(bool isMyTurn)
+        {
+            if (this.InvokeRequired)
+            {
+                UpdateTurnDelegate delegado = new UpdateTurnDelegate(UpdateTurn);
+                this.Invoke(delegado, isMyTurn);
+            }
+                
+        }
+
+        public delegate void UpdateTurnDelegate(bool isMyTurn);
+
         #region Eventos del juego
+
+        // Eventos a lanzar
+
+        public void StartGame()
+        {
+            controller.NotifyClient(new UserEvents.StartGameEvent());
+        }
+
+        // Eventos recibidos
 
         public void GameCreated(Event e)
         {
             Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data); ;
             Board.SetGamePath(gamePath);
 
+            // Nueva peticion
+            StartGame();
         }
 
         public void TurnChanged(Event e)
         {
-            /*LogicaDeNegocio.Elements.Player player = (LogicaDeNegocio.Elements.Player)e.Data;
+            Entidades.Connection.User userTurn = Transporte.Serialization.Serialize.JobjToObject<Entidades.Connection.User>(e.Data);
 
-            throw new NotImplementedException();*/
-            throw new NotImplementedException();
+            if (User.Session.MyUser.Name.Equals(userTurn.Name))
+            {
+                if (User.Session.MyUser.Number == userTurn.Number)
+                {
+                    DelegatedUpdateTurn(true);
+                }
+            }
+            else
+                DelegatedUpdateTurn(false);
+                
+
         }
 
         public void PieceMoved(Event e)

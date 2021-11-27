@@ -66,17 +66,17 @@ namespace Controles
         private void DrawBackground()
         {
             Bitmap background = BoardImages.Background;
-            /*
-            Graphics g = Graphics.FromImage(Canvas);
+            
+            /*Graphics g = Graphics.FromImage(Canvas);
 
-            g.DrawImage(background, new Point(0,0));
-            */
+            g.DrawImage(background, new Point(0,0));*/
+            
             
             for (int x = 0; x < Canvas.Width; x++)
             {
                 for (int y = 0; y < Canvas.Height; y++)
                 {
-                    Canvas.SetPixel(x, y, Color.Aqua);
+                    Canvas.SetPixel(x, y, background.GetPixel(x,y));
                 }
             }
         }

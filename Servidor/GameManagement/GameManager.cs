@@ -13,11 +13,13 @@ namespace Servidor.GameManagement
     class GameManager
     {
         private Game Game;
-        private List<IObserver> observers;
+        private readonly List<IObserver> observers;
+        private readonly Server server;
 
-        public GameManager()
+        public GameManager(Server server)
         {
             observers = new List<IObserver>();
+            this.server = server;
         }
 
         public void Subscribe(IObserver observer)
@@ -32,14 +34,14 @@ namespace Servidor.GameManagement
             if (type.Equals("SetUpGame"))
                 SetUp(e);
 
-            else if (type.Equals("otro"))
-                Start(e);
-
             else if (type.Equals("StartGame"))
                 Start(e);
 
             else if (type.Equals("ExecuteTurn"))
                 ExecuteTurn(e);
+
+            else if (type.Equals("otro"))
+                Start(e);
 
             else
                 throw new Exception("No se reconocio el evento que llego al GameController.");
@@ -55,36 +57,34 @@ namespace Servidor.GameManagement
 
                 //... Configuracion ...
 
-                int PlayersQuantity = settings.Users.Count;
+                List<User> sentUsers = settings.Users;
 
-                Game = new Game(2, settings.PiecesQuantity);
+                // Prueba
+                if (sentUsers.Count == 1)
+                    Game = new Game(2, settings.PiecesQuantity);
+                else
+                    Game = new Game(sentUsers.Count, settings.PiecesQuantity);
 
-                Game.BladeSize = settings.BladeSize;
-
-                List<User> UserListInClient = settings.Users;
-                List<User> UserListInServer = Server.UsersConnected;
-
-                bool IsCorrect = true;
-
-                string[] players = new string[PlayersQuantity];
-                if (PlayersQuantity == UserListInServer.Count)
+                if(EqualLists(sentUsers, out string[] players))
                 {
-                    for (int i = 0; i < UserListInClient.Count; i++)
-                    {
-                        if (!UserListInClient[i].Name.Equals(UserListInServer[i].Name))
-                            IsCorrect = false;
+                    // Asignar identificador de jugador
 
-                        players[i] = UserListInClient[i].Name;
+                    for (int i = 0; i < server.ClientReferences.Count; i++)
+                    {
+                        server.ClientReferences[i].ServerController.User.Number = i;
                     }
                 }
-                else IsCorrect = false;
-
-                if (!IsCorrect) throw new Exception("La lista de usuarios no es igual a la del servidor. Implementar solucion.");
 
                 // Prueba ...
-                players = new string[]{ players[0], "Prueba" };
-
+                
+                if(players.Length == 1)
+                {
+                    players = new string[] { players[0], "Prueba" };
+                }
+                
                 Game.PlayerNames = players;
+
+                Game.BladeSize = settings.BladeSize;
 
                 // Observadores
 
@@ -97,6 +97,29 @@ namespace Servidor.GameManagement
 
                 Game.Create();
             }
+        }
+        private bool EqualLists(List<User> sentUsers, out string[] names)
+        {
+            bool IsCorrect = true;
+            int PlayersQuantity = sentUsers.Count;
+
+            names = new string[PlayersQuantity];
+
+            if (PlayersQuantity == server.ClientReferences.Count)
+            {
+                for (int i = 0; i < sentUsers.Count; i++)
+                {
+                    if (!sentUsers[i].Name.Equals(server.ClientReferences[i].Name))
+                        IsCorrect = false;
+
+                    names[i] = sentUsers[i].Name;
+                }
+            }
+            else IsCorrect = false;
+
+            if (!IsCorrect) throw new Exception("La lista de usuarios no es igual a la del servidor. Implementar solucion.");
+
+            return IsCorrect;
         }
 
         public void Start(Event e)

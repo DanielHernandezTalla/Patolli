@@ -22,9 +22,15 @@ namespace Presentacion.Forms
 
             btnJugar.Location = new Point(btnJugar.Location.X, 70);
 
-            loadPanel();
+            LoadPanel();
 
             controller = Session.FormsController;
+
+            if(Session.Role == Session.SessionRole.Client)
+            {
+                btnJugar.Visible = false;
+                panSettings.Visible = false;
+            }
         }
         
 
@@ -32,18 +38,17 @@ namespace Presentacion.Forms
         public delegate void CloseFormDelegate();
         public delegate void DeleteUsersDelegate();
 
-        public void newUpdate(Entidades.Connection.User user)
+        public void DelegatedAddUser(Entidades.Connection.User user)
         {
             if (this.InvokeRequired)
             {
-                UpdateDelegate delegado = new UpdateDelegate(addUser);
+                UpdateDelegate delegado = new UpdateDelegate(AddUser);
                 this.Invoke(delegado, user);
             }
             else
-                addUser(user);
+                AddUser(user);
         }
-
-        public void closeFrmRoom()
+        public void DelegatedNextForm()
         {
             if (this.InvokeRequired)
             {
@@ -52,12 +57,11 @@ namespace Presentacion.Forms
             }
             else NextForm();
         }
-
-        public void newDelete()
+        public void DelegatedDeleteUsers()
         {
             if (this.InvokeRequired)
             {
-                DeleteUsersDelegate delete = new DeleteUsersDelegate(deleteUsers);
+                DeleteUsersDelegate delete = new DeleteUsersDelegate(DeleteUsers);
                 this.Invoke(delete);
             }
         }
@@ -67,7 +71,7 @@ namespace Presentacion.Forms
         private Panel pnl;
         private int Y = 10;
 
-        private void loadPanel()
+        private void LoadPanel()
         {
             pnl = new Panel();
             pnl.SuspendLayout();
@@ -93,7 +97,7 @@ namespace Presentacion.Forms
             this.Controls.Add(pnl);
         }
 
-        private void addUser(Entidades.Connection.User user)
+        private void AddUser(Entidades.Connection.User user)
         {
             Y = Y + 40;
 
@@ -119,7 +123,7 @@ namespace Presentacion.Forms
             pnl.Controls.Add(Newlbl);
         }
 
-        private void deleteUsers()
+        private void DeleteUsers()
         {
             pnl.Controls.Clear();
 
@@ -181,10 +185,15 @@ namespace Presentacion.Forms
         {
             // Añadir configuracion de juego.
 
+            int pQuantity = int.Parse(numPiecesQuantity.Value.ToString());
+            int bladeSize = int.Parse(numBladeSize.Value.ToString());
+            int credit = int.Parse(numCreditAmount.Value.ToString());
+            int bet = int.Parse(numBetAmount.Value.ToString());
+
             Entidades.Game.GameSettings settings = new Entidades.Game.GameSettings
             {
-                PiecesQuantity = 2,
-                BladeSize = 7,
+                PiecesQuantity = pQuantity,
+                BladeSize = bladeSize,
                 Users = Session.Users
             };
 
@@ -207,14 +216,14 @@ namespace Presentacion.Forms
 
             Session.Users = users;
 
-            newDelete();
+            DelegatedDeleteUsers();
             foreach (var item in users)
-                newUpdate(item);
+                DelegatedAddUser(item);
         }
 
         public void GameCreated(Eventos.Event e)
         {
-            closeFrmRoom();
+            DelegatedNextForm();
         }
 
         // Eventos del Form

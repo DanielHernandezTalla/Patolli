@@ -21,9 +21,9 @@ namespace Entidades.Events
             Description = e.Description;
             ToGame = e.ToGame;
 
-            if(e.Data is GameRun.GamePathLogic.Squares.Square[])
+            //  La Data se llenara dependiendo de su tipo.
+            if (e.Data is GameRun.GamePathLogic.Squares.Square[] squares)
             {
-                GameRun.GamePathLogic.Squares.Square[] squares = (GameRun.GamePathLogic.Squares.Square[])e.Data;
                 Game.Square[] entitySqueares = new Game.Square[squares.Length];
 
                 for (int i = 0; i < squares.Length; i++)
@@ -31,7 +31,14 @@ namespace Entidades.Events
 
                 Data = entitySqueares;
             }
-            else 
+            else if (e.Data is GameRun.Elements.Player player)
+            {
+                Connection.User user = new Connection.User();
+                user.Fill(player);
+
+                Data = user;
+            }
+            else
                 Data = e.Data;
         }
 
