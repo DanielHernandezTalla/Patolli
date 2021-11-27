@@ -11,6 +11,7 @@ using Eventos;
 using Presentacion.Controller;
 using Controles.BoardControl;
 using Controles.CañaThrowerControl;
+using Controles.TurnsControl;
 
 namespace Presentacion.Forms
 {
@@ -20,6 +21,7 @@ namespace Presentacion.Forms
 
         private readonly Board Board;
         private readonly CañaThrower CañaThrower;
+        private readonly TurnsInfo TurnsInfo;
 
         public PlayerGameForm()
         {
@@ -36,6 +38,9 @@ namespace Presentacion.Forms
             CañaThrower.MaximumSize = new Size();
             CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, 320);
             CañaThrower.BackColor = Color.Beige;
+
+            // Creación del TurnsInfo
+            TurnsInfo = new TurnsInfo();
 
             InitializeComponent();
 
@@ -55,7 +60,7 @@ namespace Presentacion.Forms
             // Agregar controles.
             panBoard.Controls.Add(Board);
             panControls.Controls.Add(CañaThrower);
-            
+            panTurnsInfo.Controls.Add(TurnsInfo);
 
             controller = User.Session.FormsController;
 

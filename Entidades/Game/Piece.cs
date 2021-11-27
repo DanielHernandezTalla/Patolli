@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    class Piece
+    public class Piece
     {
     }
 }
