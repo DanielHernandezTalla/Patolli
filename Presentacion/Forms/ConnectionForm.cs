@@ -22,6 +22,9 @@ namespace Presentacion.Forms
             InitializeComponent();
 
             controller = Session.FormsController;
+
+            txtIp.Text = "192.168.1.73";
+            txtPuerto.Text = "4000";
         }
 
         private void Connect()

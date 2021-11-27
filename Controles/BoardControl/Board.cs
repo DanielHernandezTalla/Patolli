@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GameRun.Elements;
-using GameRun.GameEvents;
-using GameRun.GamePathLogic;
-using GameRun.GamePathLogic.Squares;
 using System.Threading;
 
-namespace Controles
+namespace Controles.BoardControl
 {
     public partial class Board : UserControl
     {

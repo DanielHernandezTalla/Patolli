@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Controles;
 using Eventos;
 using Presentacion.Controller;
+using Controles.BoardControl;
+using Controles.CañaThrowerControl;
 
 namespace Presentacion.Forms
 {
@@ -18,6 +19,7 @@ namespace Presentacion.Forms
         private readonly FormsController controller;
 
         private readonly Board Board;
+        private readonly CañaThrower CañaThrower;
 
         public PlayerGameForm()
         {
@@ -27,22 +29,37 @@ namespace Presentacion.Forms
             Board.MaximumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
             Board.Size = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
 
+            // Creación del CañaThrower
+            CañaThrower = new CañaThrower();
+            CañaThrower.Dock = DockStyle.Bottom;
+            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, 320);
+            CañaThrower.MaximumSize = new Size();
+            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, 320);
+            CañaThrower.BackColor = Color.Beige;
+
             InitializeComponent();
 
             // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
-            this.MinimumSize = new Size(1305, 740);
-            this.Size = new Size(1305, 740);
+            //this.MinimumSize = new Size(1305, 740);
+            //this.Size = new Size(1305, 740);
+            this.MinimumSize = new Size(1320, 740);
 
             panBackground.Size = new Size(panBackground.Size.Width, 700);
 
             panBoard.MinimumSize = new Size(panBoard.Size.Width, 700);
             panBoard.Size = new Size(panBoard.Size.Width, 700);
 
-            // Agregar el Board y centrarlo.
-            panBoard.Controls.Add(Board);
+            // Centrar Board
             CenterControl(panBoard, Board);
 
+            // Agregar controles.
+            panBoard.Controls.Add(Board);
+            panControls.Controls.Add(CañaThrower);
+            
+
             controller = User.Session.FormsController;
+
+            Text = Size.ToString();
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -123,6 +140,8 @@ namespace Presentacion.Forms
         {
             if (Board != null)
                 CenterControl(panBoard, Board);
+
+            Text = Size.ToString();
         }
 
         private void PlayerGameForm_FormClosing(object sender, FormClosingEventArgs e)

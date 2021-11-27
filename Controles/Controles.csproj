@@ -42,18 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Board.cs">
+    <Compile Include="BoardControl\Board.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Board.Designer.cs">
+    <Compile Include="BoardControl\Board.Designer.cs">
       <DependentUpon>Board.cs</DependentUpon>
     </Compile>
-    <Compile Include="BoardImages.cs" />
-    <Compile Include="CañaThrower\CañaThrower.cs" />
-    <Compile Include="CañaThrower\UserControl1.cs">
+    <Compile Include="BoardControl\BoardImages.cs" />
+    <Compile Include="CañaThrowerControl\CañaThrowerImages.cs" />
+    <Compile Include="CañaThrowerControl\CañaThrowerLogic.cs" />
+    <Compile Include="CañaThrowerControl\CañaThrower.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CañaThrower\UserControl1.Designer.cs" />
+    <Compile Include="CañaThrowerControl\CañaThrower.Designer.cs" />
     <Compile Include="Engine2D.cs" />
     <Compile Include="ImageEditor.cs" />
     <Compile Include="Layer.cs" />
@@ -62,10 +63,10 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Board.resx">
+    <EmbeddedResource Include="BoardControl\Board.resx">
       <DependentUpon>Board.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CañaThrower\UserControl1.resx" />
+    <EmbeddedResource Include="CañaThrowerControl\CañaThrower.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
@@ -77,5 +78,6 @@
       <Name>GameRun</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Controles.CoñaThrower
+namespace Controles.CañaThrowerControl
 {
-    public partial class UserControl1 : UserControl
+    public partial class CañaThrower : UserControl
     {
-        CañaThrower myCaña = new CañaThrower();
-        public int Result{ get; private set;}
+        public const int THROWER_WIDTH = 240;
+        public const int THROWER_HEIGHT = 410;
+
+        CañaThrowerLogic myCaña = new CañaThrowerLogic();
+        public int Result { get; private set;}
         public bool IsEnable { get; set; } = true;
 
-        public UserControl1()
+        public CañaThrower()
         {
             InitializeComponent();
              

@@ -1,4 +1,4 @@
-﻿namespace Controles
+﻿namespace Controles.BoardControl
 {
     partial class Board
     {

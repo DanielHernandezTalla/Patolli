@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Entidades.Game;
 using Entidades;
 
-namespace Controles
+namespace Controles.BoardControl
 {
     struct BoardImages
     {
@@ -15,7 +15,7 @@ namespace Controles
         {
             get
             {
-                return "..\\..\\resources\\";
+                return "..\\..\\resources\\board\\";
             }
         }
 

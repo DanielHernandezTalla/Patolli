@@ -149,24 +149,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\background.png" />
-    <Content Include="resources\center_square.png" />
+    <Content Include="resources\board\board_background.png" />
+    <Content Include="resources\caña_thrower\BotonNormal.png" />
+    <Content Include="resources\caña_thrower\Caña100x200.png" />
+    <Content Include="resources\caña_thrower\Cañab100x200.png" />
+    <Content Include="resources\caña_thrower\ControladorCañaFondo300x254.png" />
+    <Content Include="resources\board\center_square.png" />
     <Content Include="resources\con textura\default_square.png" />
     <Content Include="resources\con textura\goal_square.png" />
     <Content Include="resources\con textura\goal_square_rotated.png" />
     <Content Include="resources\con textura\triangle V2.png" />
     <Content Include="resources\con textura\triangle.png" />
-    <Content Include="resources\corner_square.png" />
-    <Content Include="resources\default_square.png" />
+    <Content Include="resources\board\corner_square.png" />
+    <Content Include="resources\board\default_square.png" />
     <Content Include="resources\default_square_rotated.png" />
-    <Content Include="resources\goal_square.png" />
-    <Content Include="resources\triangle.png" />
+    <Content Include="resources\board\goal_square.png" />
+    <Content Include="resources\board\triangle.png" />
     <Content Include="resources\viejas\center_square.png" />
     <Content Include="resources\viejas\default_square.png" />
     <Content Include="resources\viejas\default_square_rotated.png" />
     <Content Include="resources\viejas\triangle.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="resources\caña_thrower\" />
     <Folder Include="resources\planas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿
-namespace Controles.CoñaThrower
+namespace Controles.CañaThrowerControl
 {
-    partial class UserControl1
+    partial class CañaThrower
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

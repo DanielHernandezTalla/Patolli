@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controles.CoñaThrower
+namespace Controles.CañaThrowerControl
 {
-   public class CañaThrower
+   public class CañaThrowerLogic
     {
         private int quantity = 5;
         private int result;

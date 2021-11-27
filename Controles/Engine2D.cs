@@ -65,7 +65,7 @@ namespace Controles
         // Metodo temporal para pruebas y experimentacion.
         private void DrawBackground()
         {
-            Bitmap background = BoardImages.Background;
+            Bitmap background = BoardControl.BoardImages.Background;
             
             /*Graphics g = Graphics.FromImage(Canvas);
 
