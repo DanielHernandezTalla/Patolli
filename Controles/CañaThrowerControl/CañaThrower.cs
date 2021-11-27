@@ -12,8 +12,8 @@ namespace Controles.CañaThrowerControl
 {
     public partial class CañaThrower : UserControl
     {
-        public const int THROWER_WIDTH = 240;
-        public const int THROWER_HEIGHT = 410;
+        public const int THROWER_WIDTH = 180;
+        public const int THROWER_HEIGHT = 140;
 
         CañaThrowerLogic myCaña = new CañaThrowerLogic();
         public int Result { get; private set;}
@@ -22,8 +22,43 @@ namespace Controles.CañaThrowerControl
         public CañaThrower()
         {
             InitializeComponent();
-             
+
+            BackgroundImage = CañaThrowerImages.Background;
+            BackgroundImageLayout = ImageLayout.Stretch;
+
+            lblButton.Image = CañaThrowerImages.Button;
+            lblButton.Location = new Point(lblButton.Location.X + 13, lblButton.Location.Y);
+
+            pictureBox1.Location = new Point(17, pictureBox1.Location.Y);
+            pictureBox2.Location = new Point(47, pictureBox2.Location.Y);
+            pictureBox3.Location = new Point(77, pictureBox3.Location.Y);
+            pictureBox4.Location = new Point(107, pictureBox4.Location.Y);
+            pictureBox5.Location = new Point(137, pictureBox5.Location.Y);
+
+            ClearCañas();
         }
+
+        public void ClearCañas()
+        {
+            Image Negativo = CañaThrowerImages.CañaB;
+            pictureBox1.Image = Negativo;
+            pictureBox2.Image = Negativo;
+            pictureBox3.Image = Negativo;
+            pictureBox4.Image = Negativo;
+            pictureBox5.Image = Negativo;
+
+            IsEnable = false;
+
+            lblButton.BorderStyle = BorderStyle.None;
+        }
+
+        public void SetEnable()
+        {
+            IsEnable = true;
+
+            lblButton.BorderStyle = BorderStyle.Fixed3D;
+        }
+
         private void label1_Click_1(object sender, EventArgs e)
         {
 
@@ -33,18 +68,15 @@ namespace Controles.CañaThrowerControl
                 AutoClosingMessageBox.Show("Tirando cañas...", "", 1400);
                 myCaña.RollCañas();
                 Result = myCaña.GetResult();
-                //Image Positivo = CoñaThrower.Properties.Resources.Caña100x200;
-                //Image Negativo = Properties.Resources.Cañab100x200;
+                Image Positivo = CañaThrowerImages.CañaA;
+                Image Negativo = CañaThrowerImages.CañaB;
                 bool[] resultado = myCaña.GetCañas();
-                /*pictureBox1.Image = (resultado[0]) ? Positivo : Negativo;
+                pictureBox1.Image = (resultado[0]) ? Positivo : Negativo;
                 pictureBox2.Image = (resultado[1]) ? Positivo : Negativo;
                 pictureBox3.Image = (resultado[2]) ? Positivo : Negativo;
                 pictureBox4.Image = (resultado[3]) ? Positivo : Negativo;
-                pictureBox5.Image = (resultado[4]) ? Positivo : Negativo;*/
-
-                IsEnable = false;
+                pictureBox5.Image = (resultado[4]) ? Positivo : Negativo;
             }
-
 
         }
 

@@ -28,20 +28,17 @@ namespace Presentacion.Forms
             Board.MinimumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
             Board.MaximumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
             Board.Size = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
+            Board.BorderStyle = BorderStyle.Fixed3D;
 
             // Creación del CañaThrower
             CañaThrower = new CañaThrower();
-            CañaThrower.Dock = DockStyle.Bottom;
-            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, 320);
-            CañaThrower.MaximumSize = new Size();
-            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, 320);
-            CañaThrower.BackColor = Color.Beige;
+            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+            
 
             InitializeComponent();
 
             // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
-            //this.MinimumSize = new Size(1305, 740);
-            //this.Size = new Size(1305, 740);
             this.MinimumSize = new Size(1320, 740);
 
             panBackground.Size = new Size(panBackground.Size.Width, 700);
@@ -52,6 +49,10 @@ namespace Presentacion.Forms
             // Centrar Board
             CenterControl(panBoard, Board);
 
+            // Centrar CañaThrower
+            CenterControl(panControls, CañaThrower);
+            CañaThrower.Location = new Point(CañaThrower.Location.X, panControls.Height - CañaThrower.Height - 30);
+
             // Agregar controles.
             panBoard.Controls.Add(Board);
             panControls.Controls.Add(CañaThrower);
@@ -60,6 +61,7 @@ namespace Presentacion.Forms
             controller = User.Session.FormsController;
 
             Text = Size.ToString();
+            CañaThrower.SetEnable();
         }
 
         private void CenterControl(Control c1, Control c2)

@@ -39,7 +39,7 @@ namespace Controles.CañaThrowerControl
         {
             get
             {
-                string fullPath = Path + "ControladorCañaFondo300x254.png";
+                string fullPath = Path + "TablaCaña.png";
                 return (Bitmap)Image.FromFile(fullPath);
             }
         }
