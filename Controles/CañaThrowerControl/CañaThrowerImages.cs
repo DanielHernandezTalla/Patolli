@@ -52,5 +52,14 @@ namespace Controles.CañaThrowerControl
                 return (Bitmap)Image.FromFile(fullPath);
             }
         }
+
+        internal static Bitmap ButtonBrillo
+        {
+            get
+            {
+                string fullPath = Path + "BotonBrillo.png";
+                return (Bitmap)Image.FromFile(fullPath);
+            }
+        }
     }
 }

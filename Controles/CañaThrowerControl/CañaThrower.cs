@@ -17,7 +17,7 @@ namespace Controles.CañaThrowerControl
 
         CañaThrowerLogic myCaña = new CañaThrowerLogic();
         public int Result { get; private set;}
-        public bool IsEnable { get; set; } = true;
+        public bool IsEnable { get; set; }
 
         public CañaThrower()
         {
@@ -46,23 +46,26 @@ namespace Controles.CañaThrowerControl
             pictureBox3.Image = Negativo;
             pictureBox4.Image = Negativo;
             pictureBox5.Image = Negativo;
-
-            IsEnable = false;
-
-            lblButton.BorderStyle = BorderStyle.None;
         }
 
-        public void SetEnable()
+        public void SetEnable(bool isEnable)
         {
-            IsEnable = true;
+            IsEnable = isEnable;
 
-            lblButton.BorderStyle = BorderStyle.Fixed3D;
+            if(isEnable)
+            { 
+                lblButton.BorderStyle = BorderStyle.Fixed3D;
+                lblButton.Image = CañaThrowerImages.ButtonBrillo;
+            }
+            else
+            {
+                lblButton.BorderStyle = BorderStyle.None;
+                lblButton.Image = CañaThrowerImages.Button;
+            }
         }
 
         private void label1_Click_1(object sender, EventArgs e)
         {
-
-           
             if (IsEnable)
             {
                 AutoClosingMessageBox.Show("Tirando cañas...", "", 1400);
@@ -76,6 +79,8 @@ namespace Controles.CañaThrowerControl
                 pictureBox3.Image = (resultado[2]) ? Positivo : Negativo;
                 pictureBox4.Image = (resultado[3]) ? Positivo : Negativo;
                 pictureBox5.Image = (resultado[4]) ? Positivo : Negativo;
+
+                SetEnable(false);
             }
 
         }

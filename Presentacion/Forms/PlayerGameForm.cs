@@ -59,9 +59,6 @@ namespace Presentacion.Forms
             
 
             controller = User.Session.FormsController;
-
-            Text = Size.ToString();
-            CañaThrower.SetEnable();
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -72,25 +69,27 @@ namespace Presentacion.Forms
             c2.Location = new Point(x, y);
         }
 
-        private void UpdateTurn(bool isMyTurn)
+        private void UpdateTurn(Entidades.Connection.User user, bool isMyTurn)
         {
             // Actualizar el control de informacion de turno..
+            Text = $"Turno de: {user.Name}";
 
             // Actualizar el control de cañas
-
+            CañaThrower.ClearCañas();
+            CañaThrower.SetEnable(isMyTurn);
         }
 
-        private void DelegatedUpdateTurn(bool isMyTurn)
+        private void DelegatedUpdateTurn(Entidades.Connection.User user, bool isMyTurn)
         {
             if (this.InvokeRequired)
             {
                 UpdateTurnDelegate delegado = new UpdateTurnDelegate(UpdateTurn);
-                this.Invoke(delegado, isMyTurn);
+                this.Invoke(delegado, user, isMyTurn);
             }
                 
         }
 
-        public delegate void UpdateTurnDelegate(bool isMyTurn);
+        public delegate void UpdateTurnDelegate(Entidades.Connection.User user, bool isMyTurn);
 
         #region Eventos del juego
 
@@ -108,8 +107,11 @@ namespace Presentacion.Forms
             Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data); ;
             Board.SetGamePath(gamePath);
 
-            // Nueva peticion
-            StartGame();
+            // Nueva peticion. Solo el servidor la mandará.
+            if(User.Session.Role == User.Session.SessionRole.Server)
+            {
+                StartGame();
+            }
         }
 
         public void TurnChanged(Event e)
@@ -120,13 +122,12 @@ namespace Presentacion.Forms
             {
                 if (User.Session.MyUser.Number == userTurn.Number)
                 {
-                    DelegatedUpdateTurn(true);
+                    DelegatedUpdateTurn(userTurn, true);
+                    return;
                 }
             }
-            else
-                DelegatedUpdateTurn(false);
-                
-
+           
+            DelegatedUpdateTurn(userTurn, false);
         }
 
         public void PieceMoved(Event e)
@@ -142,8 +143,6 @@ namespace Presentacion.Forms
         {
             if (Board != null)
                 CenterControl(panBoard, Board);
-
-            Text = Size.ToString();
         }
 
         private void PlayerGameForm_FormClosing(object sender, FormClosingEventArgs e)
