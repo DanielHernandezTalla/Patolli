@@ -59,6 +59,7 @@
     <Compile Include="ImageEditor.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowMessageControl.cs" />
     <Compile Include="Sprite.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
