@@ -30,7 +30,7 @@ namespace Controles.CañaThrowerControl
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblButton = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,7 +48,7 @@ namespace Controles.CañaThrowerControl
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblButton);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
@@ -63,15 +63,15 @@ namespace Controles.CañaThrowerControl
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(66, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Tirar";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            this.lblButton.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblButton.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblButton.Location = new System.Drawing.Point(66, 118);
+            this.lblButton.Name = "label1";
+            this.lblButton.Size = new System.Drawing.Size(70, 25);
+            this.lblButton.TabIndex = 1;
+            this.lblButton.Text = "Tirar";
+            this.lblButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblButton.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // pictureBox5
             // 
@@ -144,6 +144,6 @@ namespace Controles.CañaThrowerControl
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblButton;
     }
 }

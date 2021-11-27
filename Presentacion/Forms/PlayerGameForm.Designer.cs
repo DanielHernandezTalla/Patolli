@@ -44,10 +44,10 @@
             this.panBackground.Controls.Add(this.panBoard);
             this.panBackground.Controls.Add(this.panControls);
             this.panBackground.Controls.Add(this.panTurnsInfo);
-            this.panBackground.Location = new System.Drawing.Point(12, 0);
+            this.panBackground.Location = new System.Drawing.Point(36, 0);
             this.panBackground.MaximumSize = new System.Drawing.Size(2000, 1600);
             this.panBackground.Name = "panBackground";
-            this.panBackground.Size = new System.Drawing.Size(1280, 700);
+            this.panBackground.Size = new System.Drawing.Size(1230, 700);
             this.panBackground.TabIndex = 0;
             // 
             // panBoard
@@ -55,20 +55,20 @@
             this.panBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panBoard.BackColor = System.Drawing.SystemColors.Control;
-            this.panBoard.Location = new System.Drawing.Point(247, 0);
+            this.panBoard.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panBoard.Location = new System.Drawing.Point(250, 0);
             this.panBoard.MaximumSize = new System.Drawing.Size(1600, 1600);
             this.panBoard.MinimumSize = new System.Drawing.Size(680, 700);
             this.panBoard.Name = "panBoard";
-            this.panBoard.Size = new System.Drawing.Size(783, 700);
+            this.panBoard.Size = new System.Drawing.Size(730, 700);
             this.panBoard.TabIndex = 3;
             // 
             // panControls
             // 
             this.panControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panControls.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panControls.Location = new System.Drawing.Point(1030, 0);
+            this.panControls.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panControls.Location = new System.Drawing.Point(980, 0);
             this.panControls.MaximumSize = new System.Drawing.Size(250, 1600);
             this.panControls.Name = "panControls";
             this.panControls.Size = new System.Drawing.Size(250, 700);
@@ -78,7 +78,7 @@
             // 
             this.panTurnsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panTurnsInfo.BackColor = System.Drawing.Color.Gold;
+            this.panTurnsInfo.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panTurnsInfo.Location = new System.Drawing.Point(0, 0);
             this.panTurnsInfo.MaximumSize = new System.Drawing.Size(250, 1600);
             this.panTurnsInfo.Name = "panTurnsInfo";
@@ -89,6 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1304, 701);
             this.Controls.Add(this.panBackground);
             this.MinimumSize = new System.Drawing.Size(1320, 726);

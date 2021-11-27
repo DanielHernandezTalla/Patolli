@@ -30,14 +30,13 @@ namespace Presentacion.Forms
             Board.MinimumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
             Board.MaximumSize = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
             Board.Size = new Size(Board.BOARD_SIZE, Board.BOARD_SIZE);
+            Board.BorderStyle = BorderStyle.Fixed3D;
 
             // Creación del CañaThrower
             CañaThrower = new CañaThrower();
-            CañaThrower.Dock = DockStyle.Bottom;
-            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, 320);
-            CañaThrower.MaximumSize = new Size();
-            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, 320);
-            CañaThrower.BackColor = Color.Beige;
+            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+            
 
             // Creación del TurnsInfo
             TurnsInfo = new TurnsInfo();
@@ -45,8 +44,6 @@ namespace Presentacion.Forms
             InitializeComponent();
 
             // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
-            //this.MinimumSize = new Size(1305, 740);
-            //this.Size = new Size(1305, 740);
             this.MinimumSize = new Size(1320, 740);
 
             panBackground.Size = new Size(panBackground.Size.Width, 700);
@@ -57,14 +54,16 @@ namespace Presentacion.Forms
             // Centrar Board
             CenterControl(panBoard, Board);
 
+            // Centrar CañaThrower
+            CenterControl(panControls, CañaThrower);
+            CañaThrower.Location = new Point(CañaThrower.Location.X, panControls.Height - CañaThrower.Height - 30);
+
             // Agregar controles.
             panBoard.Controls.Add(Board);
             panControls.Controls.Add(CañaThrower);
             panTurnsInfo.Controls.Add(TurnsInfo);
 
             controller = User.Session.FormsController;
-
-            Text = Size.ToString();
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -75,25 +74,27 @@ namespace Presentacion.Forms
             c2.Location = new Point(x, y);
         }
 
-        private void UpdateTurn(bool isMyTurn)
+        private void UpdateTurn(Entidades.Connection.User user, bool isMyTurn)
         {
             // Actualizar el control de informacion de turno..
+            Text = $"Turno de: {user.Name}";
 
             // Actualizar el control de cañas
-
+            CañaThrower.ClearCañas();
+            CañaThrower.SetEnable(isMyTurn);
         }
 
-        private void DelegatedUpdateTurn(bool isMyTurn)
+        private void DelegatedUpdateTurn(Entidades.Connection.User user, bool isMyTurn)
         {
             if (this.InvokeRequired)
             {
                 UpdateTurnDelegate delegado = new UpdateTurnDelegate(UpdateTurn);
-                this.Invoke(delegado, isMyTurn);
+                this.Invoke(delegado, user, isMyTurn);
             }
                 
         }
 
-        public delegate void UpdateTurnDelegate(bool isMyTurn);
+        public delegate void UpdateTurnDelegate(Entidades.Connection.User user, bool isMyTurn);
 
         #region Eventos del juego
 
@@ -111,8 +112,11 @@ namespace Presentacion.Forms
             Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data); ;
             Board.SetGamePath(gamePath);
 
-            // Nueva peticion
-            StartGame();
+            // Nueva peticion. Solo el servidor la mandará.
+            if(User.Session.Role == User.Session.SessionRole.Server)
+            {
+                StartGame();
+            }
         }
 
         public void TurnChanged(Event e)
@@ -123,13 +127,12 @@ namespace Presentacion.Forms
             {
                 if (User.Session.MyUser.Number == userTurn.Number)
                 {
-                    DelegatedUpdateTurn(true);
+                    DelegatedUpdateTurn(userTurn, true);
+                    return;
                 }
             }
-            else
-                DelegatedUpdateTurn(false);
-                
-
+           
+            DelegatedUpdateTurn(userTurn, false);
         }
 
         public void PieceMoved(Event e)
@@ -145,8 +148,6 @@ namespace Presentacion.Forms
         {
             if (Board != null)
                 CenterControl(panBoard, Board);
-
-            Text = Size.ToString();
         }
 
         private void PlayerGameForm_FormClosing(object sender, FormClosingEventArgs e)
