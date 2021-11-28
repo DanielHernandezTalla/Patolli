@@ -61,6 +61,7 @@
     <Compile Include="ConfigInfoControl\ConfigInfo.Designer.cs">
       <DependentUpon>ConfigInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigInfoControl\ConfigInfoImages.cs" />
     <Compile Include="Engine2D.cs" />
     <Compile Include="ImageEditor.cs" />
     <Compile Include="Layer.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="TurnsControl\TurnsInfo.Designer.cs">
       <DependentUpon>TurnsInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="TurnsControl\TurnsInfoImages.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>

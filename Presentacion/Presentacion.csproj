@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormsImages.cs" />
     <Compile Include="UserEvents\ExecuteTurnEvent.cs" />
     <Compile Include="UserEvents\SetUpGameEvent.cs" />
     <Compile Include="UserEvents\StartGameEvent.cs" />
@@ -170,9 +171,13 @@
     <Content Include="resources\con textura\triangle.png" />
     <Content Include="resources\board\corner_square.png" />
     <Content Include="resources\board\default_square.png" />
+    <Content Include="resources\config_info\ControladorDatosJugadorFondo200x300.png" />
     <Content Include="resources\default_square_rotated.png" />
     <Content Include="resources\board\goal_square.png" />
     <Content Include="resources\board\triangle.png" />
+    <Content Include="resources\player_game\FondoJuego.jpg" />
+    <Content Include="resources\Turns\TablaJugador.png" />
+    <Content Include="resources\Turns\TablaJugadorSelected.png" />
     <Content Include="resources\viejas\center_square.png" />
     <Content Include="resources\viejas\default_square.png" />
     <Content Include="resources\viejas\default_square_rotated.png" />

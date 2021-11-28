@@ -20,7 +20,7 @@ namespace Presentacion.Forms
         {
             InitializeComponent();
 
-            btnJugar.Location = new Point(btnJugar.Location.X, 70);
+            //btnJugar.Location = new Point(btnJugar.Location.X, 70);
 
             LoadPanel();
 
@@ -77,7 +77,7 @@ namespace Presentacion.Forms
             pnl.SuspendLayout();
             pnl.Location = new Point(32, 32);
             pnl.Name = "pnUser";
-            pnl.Size = new Size(220, 750);
+            pnl.Size = new Size(220, 600);
             pnl.BorderStyle = BorderStyle.None;
             pnl.BackColor = Color.White;
 
@@ -170,8 +170,6 @@ namespace Presentacion.Forms
         }
 
         #endregion
-
-        
 
         private void NextForm()
         {

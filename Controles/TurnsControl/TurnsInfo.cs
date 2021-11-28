@@ -68,13 +68,16 @@ namespace Controles.TurnsControl
             for (int i = 0; i < statePlayer.Length; i++)
             {
                 panels[i].Visible = true;
+
+                
+
                 labelsName[i].Text = statePlayer[i].User.Name;
                 labelsMoney[i].Text = statePlayer[i].User.Number.ToString();
 
                 if (statePlayer[i].IsMyTurn)
-                    panels[i].BorderStyle = BorderStyle.FixedSingle;
+                    panels[i].BackgroundImage = TurnsInfoImages.PlayerSelected;
                 else
-                    panels[i].BorderStyle = BorderStyle.None;
+                    panels[i].BackgroundImage = TurnsInfoImages.Player;
 
                 string txtPieces = "";
                 for (int j = 0; j < statePlayer[i].Pieces.Length; j++)

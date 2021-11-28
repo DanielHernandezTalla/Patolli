@@ -31,13 +31,13 @@ namespace Presentacion.Forms
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConnectionForm));
             this.pnClientServer = new System.Windows.Forms.Panel();
-            this.txtErrorPuerto = new System.Windows.Forms.Label();
-            this.txtErrorIp = new System.Windows.Forms.Label();
             this.txtPuerto = new System.Windows.Forms.TextBox();
             this.txtIp = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnUnirsePartida = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtErrorIp = new System.Windows.Forms.Label();
+            this.txtErrorPuerto = new System.Windows.Forms.Label();
             this.pnClientServer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,33 +55,17 @@ namespace Presentacion.Forms
             this.pnClientServer.Controls.Add(this.label2);
             this.pnClientServer.Controls.Add(this.btnUnirsePartida);
             this.pnClientServer.Controls.Add(this.label1);
-            this.pnClientServer.Location = new System.Drawing.Point(117, 80);
+            this.pnClientServer.Location = new System.Drawing.Point(100, 69);
             this.pnClientServer.Name = "pnClientServer";
-            this.pnClientServer.Size = new System.Drawing.Size(400, 250);
+            this.pnClientServer.Size = new System.Drawing.Size(434, 272);
             this.pnClientServer.TabIndex = 1;
-            // 
-            // txtErrorPuerto
-            // 
-            this.txtErrorPuerto.ForeColor = System.Drawing.Color.Red;
-            this.txtErrorPuerto.Location = new System.Drawing.Point(40, 176);
-            this.txtErrorPuerto.Name = "txtErrorPuerto";
-            this.txtErrorPuerto.Size = new System.Drawing.Size(313, 15);
-            this.txtErrorPuerto.TabIndex = 10;
-            // 
-            // txtErrorIp
-            // 
-            this.txtErrorIp.ForeColor = System.Drawing.Color.Red;
-            this.txtErrorIp.Location = new System.Drawing.Point(40, 86);
-            this.txtErrorIp.Name = "txtErrorIp";
-            this.txtErrorIp.Size = new System.Drawing.Size(313, 15);
-            this.txtErrorIp.TabIndex = 9;
             // 
             // txtPuerto
             // 
             this.txtPuerto.BackColor = System.Drawing.Color.White;
-            this.txtPuerto.Font = new System.Drawing.Font("Dubai", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtPuerto.Font = new System.Drawing.Font("Dubai", 12.75F);
             this.txtPuerto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtPuerto.Location = new System.Drawing.Point(40, 137);
+            this.txtPuerto.Location = new System.Drawing.Point(55, 142);
             this.txtPuerto.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.txtPuerto.MaxLength = 5;
             this.txtPuerto.Name = "txtPuerto";
@@ -90,9 +74,9 @@ namespace Presentacion.Forms
             // 
             // txtIp
             // 
-            this.txtIp.Font = new System.Drawing.Font("Dubai", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtIp.Font = new System.Drawing.Font("Dubai", 12.75F);
             this.txtIp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.txtIp.Location = new System.Drawing.Point(40, 47);
+            this.txtIp.Location = new System.Drawing.Point(55, 64);
             this.txtIp.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.txtIp.MaxLength = 15;
             this.txtIp.Name = "txtIp";
@@ -103,8 +87,8 @@ namespace Presentacion.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
-            this.label2.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(40, 98);
+            this.label2.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(64, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 36);
             this.label2.TabIndex = 1;
@@ -115,9 +99,9 @@ namespace Presentacion.Forms
             this.btnUnirsePartida.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(75)))), ((int)(((byte)(8)))));
             this.btnUnirsePartida.FlatAppearance.BorderSize = 0;
             this.btnUnirsePartida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUnirsePartida.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUnirsePartida.Font = new System.Drawing.Font("Dubai", 14.25F);
             this.btnUnirsePartida.ForeColor = System.Drawing.Color.White;
-            this.btnUnirsePartida.Location = new System.Drawing.Point(40, 194);
+            this.btnUnirsePartida.Location = new System.Drawing.Point(55, 196);
             this.btnUnirsePartida.Name = "btnUnirsePartida";
             this.btnUnirsePartida.Size = new System.Drawing.Size(313, 36);
             this.btnUnirsePartida.TabIndex = 2;
@@ -128,17 +112,33 @@ namespace Presentacion.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(40, 13);
+            this.label1.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(64, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "IP Publica";
             // 
-            // frmIpPort
+            // txtErrorIp
+            // 
+            this.txtErrorIp.ForeColor = System.Drawing.Color.Red;
+            this.txtErrorIp.Location = new System.Drawing.Point(52, 12);
+            this.txtErrorIp.Name = "txtErrorIp";
+            this.txtErrorIp.Size = new System.Drawing.Size(268, 13);
+            this.txtErrorIp.TabIndex = 9;
+            // 
+            // txtErrorPuerto
+            // 
+            this.txtErrorPuerto.ForeColor = System.Drawing.Color.Red;
+            this.txtErrorPuerto.Location = new System.Drawing.Point(67, 249);
+            this.txtErrorPuerto.Name = "txtErrorPuerto";
+            this.txtErrorPuerto.Size = new System.Drawing.Size(268, 13);
+            this.txtErrorPuerto.TabIndex = 10;
+            // 
+            // ConnectionForm
             // 
             this.AcceptButton = this.btnUnirsePartida;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
@@ -146,7 +146,7 @@ namespace Presentacion.Forms
             this.Controls.Add(this.pnClientServer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmIpPort";
+            this.Name = "ConnectionForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IpPort";
             this.pnClientServer.ResumeLayout(false);

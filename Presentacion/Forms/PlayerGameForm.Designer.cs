@@ -55,7 +55,7 @@
             this.panBoard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panBoard.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panBoard.BackColor = System.Drawing.Color.Wheat;
             this.panBoard.Location = new System.Drawing.Point(250, 0);
             this.panBoard.MaximumSize = new System.Drawing.Size(1600, 1600);
             this.panBoard.MinimumSize = new System.Drawing.Size(680, 700);
@@ -67,7 +67,7 @@
             // 
             this.panControls.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panControls.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panControls.BackColor = System.Drawing.Color.Turquoise;
             this.panControls.Location = new System.Drawing.Point(980, 0);
             this.panControls.MaximumSize = new System.Drawing.Size(250, 1600);
             this.panControls.Name = "panControls";
@@ -78,7 +78,7 @@
             // 
             this.panTurnsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panTurnsInfo.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panTurnsInfo.BackColor = System.Drawing.Color.Turquoise;
             this.panTurnsInfo.Location = new System.Drawing.Point(0, 0);
             this.panTurnsInfo.MaximumSize = new System.Drawing.Size(250, 1600);
             this.panTurnsInfo.Name = "panTurnsInfo";
