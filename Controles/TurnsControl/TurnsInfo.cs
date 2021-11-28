@@ -21,7 +21,7 @@ namespace Controles.TurnsControl
         public TurnsInfo()
         {
             InitializeComponent();
-            
+
             Clear();
         }
 
@@ -62,6 +62,9 @@ namespace Controles.TurnsControl
 
         public void ShowData(StatePlayer[] statePlayer)
         {
+            int sizeControl = (statePlayer.Length * 125) + 32;
+            this.Size = new Size(230, sizeControl);
+
             for (int i = 0; i < statePlayer.Length; i++)
             {
                 panels[i].Visible = true;
