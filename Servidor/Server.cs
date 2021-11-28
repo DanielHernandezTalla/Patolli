@@ -122,11 +122,35 @@ namespace Servidor
         }
 
         /// <summary>
+        /// Metodo para enviar una lista de eventos a una lista de clientes. Un evento se relaciona solo con un cliente. 
+        /// Esta relacion se da por el indice de la lista.
+        /// </summary>
+        /// <param name="responses"></param>
+        /// <param name="clientReferences"></param>
+        public void Send(List<Entidades.Events.Event> responses, List<Client.ClientReference> clientReferences)
+        {
+            for (int i = 0; i < responses.Count; i++)
+            {
+                clientReferences[i].ClientConnection.Send(responses[i]);
+            }
+        }
+
+        /// <summary>
         /// Metodo que inicia el evento que indica que los usuarios fueron asignados con su numero identificador.
         /// </summary>
         public void NumbersAssigned()
         {
+            // Se manda la lista actualizada con los numeros a todos los usuarios.
             controller.Update(new ServerEvents.NumbersAssignedEvent(Users));
+
+            // Se manda especificamente el numero correspondiente a cada usuario en especifico.
+            List<Eventos.Event> responses = new List<Eventos.Event>();
+            for (int i = 0; i < Users.Count; i++)
+            {
+                responses.Add(new ServerEvents.YourNumberAssignedEvent( Users[i].Number));
+            }
+
+            controller.Update(responses, ClientReferences);
         }
 
         public void Close()

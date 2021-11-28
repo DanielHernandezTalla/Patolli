@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Servidor.Client
 {
-    class ClientReference
+    public class ClientReference
     {
         public Entidades.Connection.User User { get; set; }
 

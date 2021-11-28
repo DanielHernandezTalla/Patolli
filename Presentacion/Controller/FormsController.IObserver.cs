@@ -22,6 +22,9 @@ namespace Presentacion.Controller
             else if (eventType.Equals("NumbersAssigned"))
                 gameForm.NumbersAssigned(responseEvent);
 
+            else if (eventType.Equals("YourNumberAssigned"))
+                gameForm.YourNumberAssigned(responseEvent);
+
             else if (eventType.Equals("GameCreated"))
             {
                 roomForm.GameCreated(responseEvent);

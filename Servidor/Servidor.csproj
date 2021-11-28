@@ -49,6 +49,7 @@
     <Compile Include="ServerController.IObserver.cs" />
     <Compile Include="ServerEvents\NumbersAssignedEvent.cs" />
     <Compile Include="ServerEvents\UserIdentifiedEvent.cs" />
+    <Compile Include="ServerEvents\YourNumberAssignedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">

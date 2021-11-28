@@ -154,14 +154,16 @@ namespace Presentacion.Forms
         {
             List<Entidades.Connection.User> users = Transporte.Serialization.Serialize.JobjToObject<List<Entidades.Connection.User>>(e.Data);
 
-            // Buscar forma de identificar unicamente a cada usuario... Usar un id o no permitir mismo name...
-            foreach (var item in users)
-            {
-                if (item.Name.Equals(Session.MyUser.Name))
-                    Session.MyUser.Number = item.Number;
-            }
-
+            // Se actualiza la lista de usuarios con sus respectivos numeros identificadores.
             Session.Users = users;
+        }
+
+        public void YourNumberAssigned(Event e)
+        {
+            int myNumber = Transporte.Serialization.Serialize.JobjToObject<int>(e.Data);
+
+            // Se actualiza mi numero identificador.
+            Session.MyUser.Number = myNumber;
         }
 
         public void GameCreated(Event e)
