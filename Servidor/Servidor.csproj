@@ -47,6 +47,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="ServerController.cs" />
     <Compile Include="ServerController.IObserver.cs" />
+    <Compile Include="ServerEvents\NumbersAssignedEvent.cs" />
     <Compile Include="ServerEvents\UserIdentifiedEvent.cs" />
   </ItemGroup>
   <ItemGroup>

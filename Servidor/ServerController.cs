@@ -14,8 +14,6 @@ namespace Servidor
     {
         private readonly Server server;
         private readonly GameManagement.GameManager gameManager;
-        
-        public User User { get; private set; }
 
         public ServerController(Server server)
         {
@@ -26,6 +24,15 @@ namespace Servidor
             gameManager.Subscribe(this);
         }
 
+        public User ProcessIdentifyRequest(Entidades.Events.Event identifyRequest)
+        {
+            Eventos.Event eventRequest = identifyRequest.MakeCopy();
+
+            if (eventRequest.EventType.Equals("UserIdentify"))
+                return UserIdentify(eventRequest);
+            else
+                throw new Exception("Se esperaba que el primer evento en llegar sea la identificacion del usuario.");
+        }
 
         public void ProcessRequest(Entidades.Events.Event request)
         {
@@ -52,8 +59,8 @@ namespace Servidor
         {
             string eventType = eventRequest.EventType;
 
-            if (eventType.Equals("UserIdentify"))
-                UserIdentify(eventRequest);
+            if (eventType.Equals("ThrownCanas"))
+                ThrownCañas(eventRequest);
 
             else
                 throw new Exception("No se reconocio el evento que llego al ServerController.");
@@ -71,27 +78,28 @@ namespace Servidor
 
         // --------Eventos que procesa el servidor----------
 
-        private void UserIdentify(Eventos.Event eventRequest)
+        private User UserIdentify(Eventos.Event eventRequest)
         {
             // El evento esta deserializado, pero falta deserializar el contenido Data.
             eventRequest.Data = Transporte.Serialization.Serialize.JobjToObject<User>(eventRequest.Data);
 
             // Ejecutar solicitud
-            if(User == null)
-                User = (User)eventRequest.Data;
-                
+            User user = (User)eventRequest.Data;
 
-            Server.UsersConnected.Add(User);
+            Server.UsersConnected.Add(user);
 
-            // Respuesta
-            List<User> users = server.Users;
-            Eventos.Event eventResponse = new ServerEvents.UserIdentifiedEvent(users);
-
-            NotifyResponse(eventResponse);
+            return user;
         }
 
         // Cuando se retire un usario aqui iria?
 
+        private void ThrownCañas(Eventos.Event eventRequest)
+        {
+            eventRequest.Data = Transporte.Serialization.Serialize.JobjToObject<bool[]>(eventRequest.Data);
+
+            // El evento del estado de las cañas no se procesa, se manda de vuelta a todos los usuarios.
+            NotifyResponse(eventRequest);
+        }
 
     }
 }

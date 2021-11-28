@@ -1,7 +1,7 @@
 ﻿
-namespace Controles.CañaThrowerControl
+namespace Controles.CañasThrowerControl
 {
-    partial class CañaThrower
+    partial class CañasThrower
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -71,7 +71,7 @@ namespace Controles.CañaThrowerControl
             this.lblButton.TabIndex = 1;
             this.lblButton.Text = "Tirar";
             this.lblButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblButton.Click += new System.EventHandler(this.label1_Click_1);
+            this.lblButton.Click += new System.EventHandler(this.lblButton_Click_1);
             // 
             // pictureBox5
             // 

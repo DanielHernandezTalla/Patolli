@@ -8,16 +8,14 @@ namespace Servidor.Client
 {
     class ClientReference
     {
-        public ServerController ServerController { get; set; }
+        public Entidades.Connection.User User { get; set; }
 
         public Transporte.ClientConnection ClientConnection { get; set; }
 
-        public string Name { get => ServerController.User.Name; }
-
-        public ClientReference(Transporte.ClientConnection clientConnection, ServerController serverController)
+        public ClientReference(Transporte.ClientConnection clientConnection, Entidades.Connection.User user)
         {
             ClientConnection = clientConnection;
-            ServerController = serverController;
+            User = user;
         }
     }
 }

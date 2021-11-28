@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Events
 {
-    public class Event
+    public struct Event
     {
         public string EventType { get; set; }
         public string Description { get; set; }
@@ -31,6 +31,7 @@ namespace Entidades.Events
 
                 Data = entitySqueares;
             }
+
             else if (e.Data is GameRun.Elements.Player player)
             {
                 Connection.User user = new Connection.User();
@@ -38,6 +39,15 @@ namespace Entidades.Events
 
                 Data = user;
             }
+
+            else if (e.Data is GameRun.Elements.GamePiece piece)
+            {
+                Game.Piece entityPiece = new Game.Piece();
+                entityPiece.Fill(piece);
+
+                Data = entityPiece;
+            }
+
             else
                 Data = e.Data;
         }

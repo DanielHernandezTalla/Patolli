@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Controles.CañaThrowerControl
+namespace Controles.CañasThrowerControl
 {
-    struct CañaThrowerImages
+    struct CañasThrowerImages
     {
         private static string Path
         {

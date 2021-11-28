@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserEvents\ExecuteTurnEvent.cs" />
     <Compile Include="UserEvents\SetUpGameEvent.cs" />
     <Compile Include="UserEvents\StartGameEvent.cs" />
+    <Compile Include="UserEvents\ThrownCañasEvent.cs" />
     <Compile Include="UserEvents\UserIdentifyEvent.cs" />
     <Compile Include="Controller\FormsController.cs" />
     <Compile Include="Controller\FormsController.IObserver.cs" />

@@ -49,12 +49,12 @@
       <DependentUpon>Board.cs</DependentUpon>
     </Compile>
     <Compile Include="BoardControl\BoardImages.cs" />
-    <Compile Include="CañaThrowerControl\CañaThrowerImages.cs" />
-    <Compile Include="CañaThrowerControl\CañaThrowerLogic.cs" />
-    <Compile Include="CañaThrowerControl\CañaThrower.cs">
+    <Compile Include="CañasThrowerControl\CañasThrowerImages.cs" />
+    <Compile Include="CañasThrowerControl\CañasThrowerLogic.cs" />
+    <Compile Include="CañasThrowerControl\CañasThrower.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CañaThrowerControl\CañaThrower.Designer.cs" />
+    <Compile Include="CañasThrowerControl\CañasThrower.Designer.cs" />
     <Compile Include="Engine2D.cs" />
     <Compile Include="ImageEditor.cs" />
     <Compile Include="Layer.cs" />
@@ -78,7 +78,7 @@
     <EmbeddedResource Include="BoardControl\Board.resx">
       <DependentUpon>Board.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CañaThrowerControl\CañaThrower.resx" />
+    <EmbeddedResource Include="CañasThrowerControl\CañasThrower.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

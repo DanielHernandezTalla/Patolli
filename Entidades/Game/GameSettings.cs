@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    public class GameSettings
+    public struct GameSettings
     {
         public int PlayersQuantity { get; set; }
         public int PiecesQuantity { get; set; }

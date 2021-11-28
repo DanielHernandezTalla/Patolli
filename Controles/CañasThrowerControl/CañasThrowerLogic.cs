@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controles.CañaThrowerControl
+namespace Controles.CañasThrowerControl
 {
-   public class CañaThrowerLogic
+   public class CañasThrowerLogic
     {
         private int quantity = 5;
         private int result;
         private bool[] cañas;
-        public bool IsEnable { get; set; }
         public bool CañasThrown { get; private set; }
 
         public void RollCañas()

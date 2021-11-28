@@ -8,25 +8,27 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Controles.CañaThrowerControl
+namespace Controles.CañasThrowerControl
 {
-    public partial class CañaThrower : UserControl
+    public partial class CañasThrower : UserControl
     {
         public const int THROWER_WIDTH = 180;
         public const int THROWER_HEIGHT = 140;
 
-        CañaThrowerLogic myCaña = new CañaThrowerLogic();
+        CañasThrowerLogic myCaña = new CañasThrowerLogic();
         public int Result { get; private set;}
-        public bool IsEnable { get; set; }
+        public bool[] Cañas { get; private set; }
+        public bool IsEnable { get; private set; }
+        public bool CañasThrown { get; set; }
 
-        public CañaThrower()
+        public CañasThrower()
         {
             InitializeComponent();
 
-            BackgroundImage = CañaThrowerImages.Background;
+            BackgroundImage = CañasThrowerImages.Background;
             BackgroundImageLayout = ImageLayout.Stretch;
 
-            lblButton.Image = CañaThrowerImages.Button;
+            lblButton.Image = CañasThrowerImages.Button;
             lblButton.Location = new Point(lblButton.Location.X + 13, lblButton.Location.Y);
 
             pictureBox1.Location = new Point(17, pictureBox1.Location.Y);
@@ -38,9 +40,26 @@ namespace Controles.CañaThrowerControl
             ClearCañas();
         }
 
+        public void AddButtonListener(Action<object, EventArgs> listener)
+        {
+            lblButton.Click += new EventHandler(listener);
+        }
+
+        public void SetCañas(bool[] cañas)
+        {
+            Image Positivo = CañasThrowerImages.CañaA;
+            Image Negativo = CañasThrowerImages.CañaB;
+
+            pictureBox1.Image = (cañas[0]) ? Positivo : Negativo;
+            pictureBox2.Image = (cañas[1]) ? Positivo : Negativo;
+            pictureBox3.Image = (cañas[2]) ? Positivo : Negativo;
+            pictureBox4.Image = (cañas[3]) ? Positivo : Negativo;
+            pictureBox5.Image = (cañas[4]) ? Positivo : Negativo;
+        }
+
         public void ClearCañas()
         {
-            Image Negativo = CañaThrowerImages.CañaB;
+            Image Negativo = CañasThrowerImages.CañaB;
             pictureBox1.Image = Negativo;
             pictureBox2.Image = Negativo;
             pictureBox3.Image = Negativo;
@@ -55,32 +74,32 @@ namespace Controles.CañaThrowerControl
             if(isEnable)
             { 
                 lblButton.BorderStyle = BorderStyle.Fixed3D;
-                lblButton.Image = CañaThrowerImages.ButtonBrillo;
+                lblButton.Image = CañasThrowerImages.ButtonBrillo;
             }
             else
             {
                 lblButton.BorderStyle = BorderStyle.None;
-                lblButton.Image = CañaThrowerImages.Button;
+                lblButton.Image = CañasThrowerImages.Button;
             }
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void lblButton_Click_1(object sender, EventArgs e)
         {
             if (IsEnable)
             {
                 AutoClosingMessageBox.Show("Tirando cañas...", "", 1400);
-                myCaña.RollCañas();
-                Result = myCaña.GetResult();
-                Image Positivo = CañaThrowerImages.CañaA;
-                Image Negativo = CañaThrowerImages.CañaB;
-                bool[] resultado = myCaña.GetCañas();
-                pictureBox1.Image = (resultado[0]) ? Positivo : Negativo;
-                pictureBox2.Image = (resultado[1]) ? Positivo : Negativo;
-                pictureBox3.Image = (resultado[2]) ? Positivo : Negativo;
-                pictureBox4.Image = (resultado[3]) ? Positivo : Negativo;
-                pictureBox5.Image = (resultado[4]) ? Positivo : Negativo;
 
+                myCaña.RollCañas();
+
+                Result = myCaña.GetResult();
+                Cañas = myCaña.GetCañas();
+
+                bool[] resultado = myCaña.GetCañas();
+
+                SetCañas(resultado);
                 SetEnable(false);
+
+                CañasThrown = true;
             }
 
         }

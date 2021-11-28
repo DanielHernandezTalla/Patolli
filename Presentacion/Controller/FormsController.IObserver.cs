@@ -19,17 +19,24 @@ namespace Presentacion.Controller
                 roomForm.UserIdentified(responseEvent);
             }
 
+            else if (eventType.Equals("NumbersAssigned"))
+                gameForm.NumbersAssigned(responseEvent);
+
             else if (eventType.Equals("GameCreated"))
             {
-                gameForm.GameCreated(responseEvent);
                 roomForm.GameCreated(responseEvent);
+                gameForm.GameCreated(responseEvent);
             }
-
-            else if (eventType.Equals("GameStarted"))
-                return;
 
             else if (eventType.Equals("TurnChanged"))
                 gameForm.TurnChanged(responseEvent);
+
+
+            else if (eventType.Equals("ThrownCanas"))
+                gameForm.ThrownCañas(responseEvent);
+
+            else if (eventType.Equals("PieceStarted"))
+                gameForm.PieceStarted(responseEvent);
 
             else if (eventType.Equals("PieceMoved"))
                 return;

@@ -44,7 +44,7 @@ namespace Servidor.GameManagement
                 Start(e);
 
             else
-                throw new Exception("No se reconocio el evento que llego al GameController.");
+                throw new Exception("No se reconocio el evento que llego al GameManager.");
 
         }
 
@@ -71,8 +71,10 @@ namespace Servidor.GameManagement
 
                     for (int i = 0; i < server.ClientReferences.Count; i++)
                     {
-                        server.ClientReferences[i].ServerController.User.Number = i;
+                        server.ClientReferences[i].User.Number = i;
                     }
+
+                    server.NumbersAssigned();
                 }
 
                 // Prueba ...
@@ -109,7 +111,7 @@ namespace Servidor.GameManagement
             {
                 for (int i = 0; i < sentUsers.Count; i++)
                 {
-                    if (!sentUsers[i].Name.Equals(server.ClientReferences[i].Name))
+                    if (!sentUsers[i].Name.Equals(server.ClientReferences[i].User.Name))
                         IsCorrect = false;
 
                     names[i] = sentUsers[i].Name;
@@ -129,7 +131,9 @@ namespace Servidor.GameManagement
 
         public void ExecuteTurn(Event e)
         {
+            int result = Transporte.Serialization.Serialize.JobjToObject <int>(e.Data);
 
+            Game.ExecuteTurn(result);
         }
     }
 }

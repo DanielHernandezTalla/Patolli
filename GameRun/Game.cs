@@ -181,7 +181,7 @@ namespace GameRun
 
                 for (int j = 0; j < Players[i].GamePieces.Length; j++)
                 {
-                    Players[i].GamePieces[j] = new GamePiece(j);
+                    Players[i].GamePieces[j] = new GamePiece(j, i);
                 }
             }
         }
@@ -223,7 +223,10 @@ namespace GameRun
                 {
                     if (TryToStartPiece(Turns.GetCurrentPlayerTurn()))
                     {
+                        GameStatus.NotifyObservers(new PieceStartedEvent(Turns.GetCurrentPieceTurn()));
+
                         Turns.ClearTurn();
+
                         NextTurn();
                         return true;
                     }

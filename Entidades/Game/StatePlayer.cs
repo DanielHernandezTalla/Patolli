@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    public class StatePlayer
+    public struct StatePlayer
     {
         public User User;
         public Piece[] Pieces;

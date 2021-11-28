@@ -13,14 +13,10 @@ namespace Servidor
     {
         public static List<User> UsersConnected = new List<User>();
 
+        private readonly ServerController controller;
         private readonly ServerConnection connection;
 
         internal List<Servidor.Client.ClientReference> ClientReferences { get; private set; }
-
-
-        private readonly List<ClientConnection> clientConnections;
-        private readonly List<ServerController> controllers;
-
 
         internal List<User> Users
         {
@@ -30,7 +26,7 @@ namespace Servidor
 
                 foreach (var reference in ClientReferences)
                 {
-                    users.Add(reference.ServerController.User);
+                    users.Add(reference.User);
                 }
 
                 return users;
@@ -42,8 +38,7 @@ namespace Servidor
         public Server(string ip, int port)
         {
             connection = new ServerConnection(ip, port);
-            clientConnections = new List<ClientConnection>();
-            controllers = new List<ServerController>();
+            controller = new ServerController(this);
 
             ClientReferences = new List<Servidor.Client.ClientReference>();
         }
@@ -86,15 +81,20 @@ namespace Servidor
             if(connection.PendingClientSocketExists())
             {
                 ClientConnection connection_clientReference = new ClientConnection(connection.DequeueClientSocket());
-                clientConnections.Add(connection_clientReference);
-
-                ServerController controller = new ServerController(this);
-                controllers.Add(controller);
-
-                ClientReferences.Add(new Client.ClientReference(connection_clientReference, controller));
 
                 try
                 {
+                    // Esperar la identificación del usuario.
+                    Entidades.Events.Event identifyRequest = connection_clientReference.Receive();
+                    User user = controller.ProcessIdentifyRequest(identifyRequest);
+
+                    // Se añade a la lista: la conexion y el usuario.
+                    ClientReferences.Add(new Client.ClientReference(connection_clientReference, user));
+
+                    // Se lanza el evento de respuesta.
+                    controller.Update(new ServerEvents.UserIdentifiedEvent(Users));
+
+                    // Apartir de aqui el hilo se queda escuchando solicitudes.
                     while (true)
                     {
                         // Receive
@@ -119,6 +119,14 @@ namespace Servidor
             {
                 reference.ClientConnection.Send(response);
             }
+        }
+
+        /// <summary>
+        /// Metodo que inicia el evento que indica que los usuarios fueron asignados con su numero identificador.
+        /// </summary>
+        public void NumbersAssigned()
+        {
+            controller.Update(new ServerEvents.NumbersAssignedEvent(Users));
         }
 
         public void Close()

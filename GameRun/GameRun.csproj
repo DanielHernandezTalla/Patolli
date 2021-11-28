@@ -57,6 +57,7 @@
     <Compile Include="GameEvents\GameStatus.cs" />
     <Compile Include="GameEvents\IGameEvents.cs" />
     <Compile Include="GameEvents\PieceMovedEvent.cs" />
+    <Compile Include="GameEvents\PieceStartedEvent.cs" />
     <Compile Include="GameEvents\TurnChangedEvent.cs" />
     <Compile Include="GamePathLogic\ClassicGamePathBuilder.cs" />
     <Compile Include="GamePathLogic\GamePath.cs" />

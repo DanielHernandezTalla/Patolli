@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Eventos;
 using Presentacion.Controller;
 using Controles.BoardControl;
-using Controles.CañaThrowerControl;
+using Controles.CañasThrowerControl;
 using Controles.TurnsControl;
 using Entidades.Game;
 using Presentacion.User;
@@ -22,7 +22,7 @@ namespace Presentacion.Forms
         private readonly FormsController controller;
 
         private readonly Board Board;
-        private readonly CañaThrower CañaThrower;
+        private readonly CañasThrower CañasThrower;
         private readonly TurnsInfo TurnsInfo;
 
         // Campos para el turno actual
@@ -40,9 +40,10 @@ namespace Presentacion.Forms
             Board.BorderStyle = BorderStyle.Fixed3D;
 
             // Creación del CañaThrower
-            CañaThrower = new CañaThrower();
-            CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
-            CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+            CañasThrower = new CañasThrower();
+            CañasThrower.MinimumSize = new Size(CañasThrower.THROWER_WIDTH, CañasThrower.THROWER_HEIGHT);
+            CañasThrower.Size = new Size(CañasThrower.THROWER_WIDTH, CañasThrower.THROWER_HEIGHT);
+            CañasThrower.AddButtonListener(this.CañasThrowerControl_Click);
 
             // Creando un arreglo de StatePlayer para prueba
             Piece[] pieces = new Piece[3];
@@ -87,12 +88,12 @@ namespace Presentacion.Forms
             CenterControl(panBoard, Board);
 
             // Centrar CañaThrower
-            CenterControl(panControls, CañaThrower);
-            CañaThrower.Location = new Point(CañaThrower.Location.X, panControls.Height - CañaThrower.Height - 30);
+            CenterControl(panControls, CañasThrower);
+            CañasThrower.Location = new Point(CañasThrower.Location.X, panControls.Height - CañasThrower.Height - 30);
 
             // Agregar controles.
             panBoard.Controls.Add(Board);
-            panControls.Controls.Add(CañaThrower);
+            panControls.Controls.Add(CañasThrower);
             panTurnsInfo.Controls.Add(TurnsInfo);
 
             controller = Session.FormsController;
@@ -112,8 +113,8 @@ namespace Presentacion.Forms
             Text = $"Turno de: {user.Name}";
 
             // Actualizar el control de cañas
-            CañaThrower.ClearCañas();
-            CañaThrower.SetEnable(isMyTurn);
+            CañasThrower.ClearCañas();
+            CañasThrower.SetEnable(isMyTurn);
         }
 
         private void DelegatedUpdateTurn(Entidades.Connection.User user, bool isMyTurn)
@@ -139,14 +140,33 @@ namespace Presentacion.Forms
 
         public void ThrownCañas()
         {
+            controller.NotifyClient(new UserEvents.ThrownCañasEvent(CañasThrower.Cañas));
+        }
 
+        public void ExecuteTurn()
+        {
+            controller.NotifyClient(new UserEvents.ExecuteTurnEvent(CañasThrower.Result));
         }
 
         // Eventos recibidos
 
+        public void NumbersAssigned(Event e)
+        {
+            List<Entidades.Connection.User> users = Transporte.Serialization.Serialize.JobjToObject<List<Entidades.Connection.User>>(e.Data);
+
+            // Buscar forma de identificar unicamente a cada usuario... Usar un id o no permitir mismo name...
+            foreach (var item in users)
+            {
+                if (item.Name.Equals(Session.MyUser.Name))
+                    Session.MyUser.Number = item.Number;
+            }
+
+            Session.Users = users;
+        }
+
         public void GameCreated(Event e)
         {
-            Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data); ;
+            Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data);
             Board.SetGamePath(gamePath);
 
             // Nueva peticion. Solo el servidor la mandará.
@@ -178,10 +198,37 @@ namespace Presentacion.Forms
             DelegatedUpdateTurn(userTurn, false);
         }
 
+        public void ThrownCañas(Event e)
+        {
+            if (!isMyTurn)
+            {
+                bool[] thrownCañas = Transporte.Serialization.Serialize.JobjToObject<bool[]>(e.Data);
+
+                CañasThrower.SetCañas(thrownCañas);
+            }
+
+            // Nueva peticion. Solo el servidor la mandará.
+            if (Session.Role == Session.SessionRole.Server)
+            {
+                ExecuteTurn();
+            }
+        }
+
+        public void PieceStarted(Event e)
+        {
+            Piece piece = Transporte.Serialization.Serialize.JobjToObject<Piece>(e.Data);
+
+            Controles.ShowMessageControl.Show(e.Description, "Avisó", 500);
+
+            Text = e.Description;
+        }
+
         public void PieceMoved(Event e)
         {
             throw new NotImplementedException();
         }
+
+
 
         #endregion
 
@@ -196,6 +243,16 @@ namespace Presentacion.Forms
         private void PlayerGameForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        public void CañasThrowerControl_Click(object sender, EventArgs e)
+        {
+            if(CañasThrower.CañasThrown)
+            {
+                ThrownCañas();
+                CañasThrower.CañasThrown = false;
+            }
+            
         }
 
         #endregion
