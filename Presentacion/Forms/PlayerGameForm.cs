@@ -11,6 +11,7 @@ using Eventos;
 using Presentacion.Controller;
 using Controles.BoardControl;
 using Controles.CañaThrowerControl;
+using Presentacion.User;
 
 namespace Presentacion.Forms
 {
@@ -20,6 +21,11 @@ namespace Presentacion.Forms
 
         private readonly Board Board;
         private readonly CañaThrower CañaThrower;
+
+        // Campos para el turno actual
+
+        private Entidades.Connection.User currentTurn;
+        private bool isMyTurn;
 
         public PlayerGameForm()
         {
@@ -34,7 +40,6 @@ namespace Presentacion.Forms
             CañaThrower = new CañaThrower();
             CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
             CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
-            
 
             InitializeComponent();
 
@@ -58,7 +63,7 @@ namespace Presentacion.Forms
             panControls.Controls.Add(CañaThrower);
             
 
-            controller = User.Session.FormsController;
+            controller = Session.FormsController;
         }
 
         private void CenterControl(Control c1, Control c2)
@@ -100,6 +105,11 @@ namespace Presentacion.Forms
             controller.NotifyClient(new UserEvents.StartGameEvent());
         }
 
+        public void ThrownCañas()
+        {
+
+        }
+
         // Eventos recibidos
 
         public void GameCreated(Event e)
@@ -108,7 +118,7 @@ namespace Presentacion.Forms
             Board.SetGamePath(gamePath);
 
             // Nueva peticion. Solo el servidor la mandará.
-            if(User.Session.Role == User.Session.SessionRole.Server)
+            if(Session.Role == Session.SessionRole.Server)
             {
                 StartGame();
             }
@@ -118,15 +128,21 @@ namespace Presentacion.Forms
         {
             Entidades.Connection.User userTurn = Transporte.Serialization.Serialize.JobjToObject<Entidades.Connection.User>(e.Data);
 
-            if (User.Session.MyUser.Name.Equals(userTurn.Name))
+            // Actualizamos el turno actual.
+            currentTurn = userTurn;
+
+            // Se verefica si es mi turno.
+            if (Session.MyUser.Name.Equals(userTurn.Name))
             {
-                if (User.Session.MyUser.Number == userTurn.Number)
+                if (Session.MyUser.Number == userTurn.Number)
                 {
+                    isMyTurn = true;
                     DelegatedUpdateTurn(userTurn, true);
                     return;
                 }
             }
-           
+
+            isMyTurn = false;
             DelegatedUpdateTurn(userTurn, false);
         }
 

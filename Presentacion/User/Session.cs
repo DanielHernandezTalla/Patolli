@@ -13,11 +13,17 @@ namespace Presentacion.User
 {
     public class Session
     {
-        // Propiedades del servidor
+        // Propiedades del Servidor
 
         public static Server Server { get; set; }
 
         public static Thread ThreadServer { get; set; }
+
+        // Propiedades del Cliente
+
+        public static Client Client { get; set; }
+
+        public static Thread ThreadClient { get; set; }
 
         // Propiedades generales
 
@@ -31,10 +37,6 @@ namespace Presentacion.User
 
         public static string Port { get; set; }
 
-        public static Client Client { get; set; }
-
-        public static Thread ThreadClient { get; set; }
-
         // Banderas
 
         public static bool Connected { get; set; }
@@ -44,6 +46,7 @@ namespace Presentacion.User
         // Control de los forms
 
         internal static FormsController FormsController { get; set; }
+        
 
         public enum SessionRole
         {
