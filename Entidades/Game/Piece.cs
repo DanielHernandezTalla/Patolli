@@ -8,5 +8,6 @@ namespace Entidades.Game
 {
     public class Piece
     {
+        public bool IsAlive;
     }
 }

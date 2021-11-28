@@ -12,6 +12,7 @@ using Presentacion.Controller;
 using Controles.BoardControl;
 using Controles.CañaThrowerControl;
 using Controles.TurnsControl;
+using Entidades.Game;
 
 namespace Presentacion.Forms
 {
@@ -36,10 +37,35 @@ namespace Presentacion.Forms
             CañaThrower = new CañaThrower();
             CañaThrower.MinimumSize = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
             CañaThrower.Size = new Size(CañaThrower.THROWER_WIDTH, CañaThrower.THROWER_HEIGHT);
+
+            // Creando un arreglo de StatePlayer para prueba
+            Piece[] pieces = new Piece[3];
+            pieces[0] = new Piece() { IsAlive = true };
+            pieces[1] = new Piece() { IsAlive = false };
+            pieces[2] = new Piece() { IsAlive = true };
             
+            Piece[] pieces2 = new Piece[3];
+            pieces2[0] = new Piece() { IsAlive = false };
+            pieces2[1] = new Piece() { IsAlive = true };
+            pieces2[2] = new Piece() { IsAlive = false };
+            
+            StatePlayer[] statePlayer = new StatePlayer[2];
+            statePlayer[0] = new StatePlayer()
+            {
+                User = new Entidades.Connection.User() { Name = "Daniel", Number = 500 },
+                Pieces = pieces,
+                IsMyTurn = false
+            };
+            statePlayer[1] = new StatePlayer()
+            {
+                User = new Entidades.Connection.User() { Name = "Missael", Number = 250 },
+                Pieces = pieces2,
+                IsMyTurn = true
+            };
 
             // Creación del TurnsInfo
             TurnsInfo = new TurnsInfo();
+            TurnsInfo.ShowData(statePlayer);
 
             InitializeComponent();
 

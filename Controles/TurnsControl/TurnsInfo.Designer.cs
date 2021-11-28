@@ -33,28 +33,28 @@ namespace Controles.TurnsControl
             this.pnlJ1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnlJ2 = new System.Windows.Forms.Panel();
-            this.pnlJ3 = new System.Windows.Forms.Panel();
-            this.pnlJ4 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtNombre1 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtMoney1 = new System.Windows.Forms.Label();
-            this.txtPices1 = new System.Windows.Forms.Label();
             this.txtPices2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMoney2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNombre2 = new System.Windows.Forms.Label();
+            this.pnlJ3 = new System.Windows.Forms.Panel();
             this.txtPices3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.txtMoney3 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNombre3 = new System.Windows.Forms.Label();
+            this.pnlJ4 = new System.Windows.Forms.Panel();
             this.txtPices4 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtMoney4 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtNombre4 = new System.Windows.Forms.Label();
+            this.txtPices1 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtMoney1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtNombre1 = new System.Windows.Forms.Label();
             this.pnlJ1.SuspendLayout();
             this.pnlJ2.SuspendLayout();
             this.pnlJ3.SuspendLayout();
@@ -93,17 +93,121 @@ namespace Controles.TurnsControl
             this.pnlJ2.Size = new System.Drawing.Size(230, 150);
             this.pnlJ2.TabIndex = 1;
             // 
+            // txtPices2
+            // 
+            this.txtPices2.AutoSize = true;
+            this.txtPices2.BackColor = System.Drawing.Color.Transparent;
+            this.txtPices2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtPices2.Location = new System.Drawing.Point(46, 104);
+            this.txtPices2.Name = "txtPices2";
+            this.txtPices2.Size = new System.Drawing.Size(53, 24);
+            this.txtPices2.TabIndex = 26;
+            this.txtPices2.Text = "| x | x";
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
+            this.label3.Location = new System.Drawing.Point(47, 63);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 28);
+            this.label3.TabIndex = 25;
+            // 
+            // txtMoney2
+            // 
+            this.txtMoney2.AutoSize = true;
+            this.txtMoney2.BackColor = System.Drawing.Color.Transparent;
+            this.txtMoney2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtMoney2.Location = new System.Drawing.Point(80, 63);
+            this.txtMoney2.Name = "txtMoney2";
+            this.txtMoney2.Size = new System.Drawing.Size(50, 24);
+            this.txtMoney2.TabIndex = 24;
+            this.txtMoney2.Text = "$500";
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
+            this.label5.Location = new System.Drawing.Point(47, 25);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(27, 30);
+            this.label5.TabIndex = 23;
+            // 
+            // txtNombre2
+            // 
+            this.txtNombre2.AutoSize = true;
+            this.txtNombre2.BackColor = System.Drawing.Color.Transparent;
+            this.txtNombre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtNombre2.Location = new System.Drawing.Point(80, 25);
+            this.txtNombre2.Name = "txtNombre2";
+            this.txtNombre2.Size = new System.Drawing.Size(60, 24);
+            this.txtNombre2.TabIndex = 22;
+            this.txtNombre2.Text = "label6";
+            // 
             // pnlJ3
             // 
             this.pnlJ3.Controls.Add(this.txtPices3);
             this.pnlJ3.Controls.Add(this.label8);
-            this.pnlJ3.Controls.Add(this.label9);
-            this.pnlJ3.Controls.Add(this.label11);
             this.pnlJ3.Controls.Add(this.txtMoney3);
+            this.pnlJ3.Controls.Add(this.label11);
+            this.pnlJ3.Controls.Add(this.txtNombre3);
             this.pnlJ3.Location = new System.Drawing.Point(0, 300);
             this.pnlJ3.Name = "pnlJ3";
             this.pnlJ3.Size = new System.Drawing.Size(230, 150);
             this.pnlJ3.TabIndex = 2;
+            // 
+            // txtPices3
+            // 
+            this.txtPices3.AutoSize = true;
+            this.txtPices3.BackColor = System.Drawing.Color.Transparent;
+            this.txtPices3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtPices3.Location = new System.Drawing.Point(47, 104);
+            this.txtPices3.Name = "txtPices3";
+            this.txtPices3.Size = new System.Drawing.Size(53, 24);
+            this.txtPices3.TabIndex = 26;
+            this.txtPices3.Text = "| x | x";
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label8.Image = ((System.Drawing.Image)(resources.GetObject("label8.Image")));
+            this.label8.Location = new System.Drawing.Point(48, 63);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 28);
+            this.label8.TabIndex = 25;
+            // 
+            // txtMoney3
+            // 
+            this.txtMoney3.AutoSize = true;
+            this.txtMoney3.BackColor = System.Drawing.Color.Transparent;
+            this.txtMoney3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtMoney3.Location = new System.Drawing.Point(81, 63);
+            this.txtMoney3.Name = "txtMoney3";
+            this.txtMoney3.Size = new System.Drawing.Size(50, 24);
+            this.txtMoney3.TabIndex = 24;
+            this.txtMoney3.Text = "$500";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Image = ((System.Drawing.Image)(resources.GetObject("label11.Image")));
+            this.label11.Location = new System.Drawing.Point(48, 25);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(27, 30);
+            this.label11.TabIndex = 23;
+            // 
+            // txtNombre3
+            // 
+            this.txtNombre3.AutoSize = true;
+            this.txtNombre3.BackColor = System.Drawing.Color.Transparent;
+            this.txtNombre3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtNombre3.Location = new System.Drawing.Point(81, 25);
+            this.txtNombre3.Name = "txtNombre3";
+            this.txtNombre3.Size = new System.Drawing.Size(70, 24);
+            this.txtNombre3.TabIndex = 22;
+            this.txtNombre3.Text = "label13";
             // 
             // pnlJ4
             // 
@@ -117,168 +221,12 @@ namespace Controles.TurnsControl
             this.pnlJ4.Size = new System.Drawing.Size(230, 150);
             this.pnlJ4.TabIndex = 3;
             // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Image = ((System.Drawing.Image)(resources.GetObject("label10.Image")));
-            this.label10.Location = new System.Drawing.Point(32, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 28);
-            this.label10.TabIndex = 17;
-            // 
-            // txtNombre1
-            // 
-            this.txtNombre1.AutoSize = true;
-            this.txtNombre1.BackColor = System.Drawing.Color.Transparent;
-            this.txtNombre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNombre1.Location = new System.Drawing.Point(65, 22);
-            this.txtNombre1.Name = "txtNombre1";
-            this.txtNombre1.Size = new System.Drawing.Size(107, 24);
-            this.txtNombre1.TabIndex = 16;
-            this.txtNombre1.Text = "txtNombre1";
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label14.Image = ((System.Drawing.Image)(resources.GetObject("label14.Image")));
-            this.label14.Location = new System.Drawing.Point(32, 60);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(27, 28);
-            this.label14.TabIndex = 20;
-            // 
-            // txtMoney1
-            // 
-            this.txtMoney1.AutoSize = true;
-            this.txtMoney1.BackColor = System.Drawing.Color.Transparent;
-            this.txtMoney1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtMoney1.Location = new System.Drawing.Point(65, 60);
-            this.txtMoney1.Name = "txtMoney1";
-            this.txtMoney1.Size = new System.Drawing.Size(50, 24);
-            this.txtMoney1.TabIndex = 19;
-            this.txtMoney1.Text = "$500";
-            // 
-            // txtPices1
-            // 
-            this.txtPices1.AutoSize = true;
-            this.txtPices1.BackColor = System.Drawing.Color.Transparent;
-            this.txtPices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtPices1.Location = new System.Drawing.Point(31, 101);
-            this.txtPices1.Name = "txtPices1";
-            this.txtPices1.Size = new System.Drawing.Size(53, 24);
-            this.txtPices1.TabIndex = 21;
-            this.txtPices1.Text = "| x | x";
-            // 
-            // txtPices2
-            // 
-            this.txtPices2.AutoSize = true;
-            this.txtPices2.BackColor = System.Drawing.Color.Transparent;
-            this.txtPices2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtPices2.Location = new System.Drawing.Point(68, 103);
-            this.txtPices2.Name = "txtPices2";
-            this.txtPices2.Size = new System.Drawing.Size(53, 24);
-            this.txtPices2.TabIndex = 26;
-            this.txtPices2.Text = "| x | x";
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
-            this.label3.Location = new System.Drawing.Point(69, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 28);
-            this.label3.TabIndex = 25;
-            // 
-            // txtMoney2
-            // 
-            this.txtMoney2.AutoSize = true;
-            this.txtMoney2.BackColor = System.Drawing.Color.Transparent;
-            this.txtMoney2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtMoney2.Location = new System.Drawing.Point(102, 62);
-            this.txtMoney2.Name = "txtMoney2";
-            this.txtMoney2.Size = new System.Drawing.Size(50, 24);
-            this.txtMoney2.TabIndex = 24;
-            this.txtMoney2.Text = "$500";
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Image = ((System.Drawing.Image)(resources.GetObject("label5.Image")));
-            this.label5.Location = new System.Drawing.Point(69, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 28);
-            this.label5.TabIndex = 23;
-            // 
-            // txtNombre2
-            // 
-            this.txtNombre2.AutoSize = true;
-            this.txtNombre2.BackColor = System.Drawing.Color.Transparent;
-            this.txtNombre2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNombre2.Location = new System.Drawing.Point(102, 24);
-            this.txtNombre2.Name = "txtNombre2";
-            this.txtNombre2.Size = new System.Drawing.Size(60, 24);
-            this.txtNombre2.TabIndex = 22;
-            this.txtNombre2.Text = "label6";
-            // 
-            // txtPices3
-            // 
-            this.txtPices3.AutoSize = true;
-            this.txtPices3.BackColor = System.Drawing.Color.Transparent;
-            this.txtPices3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtPices3.Location = new System.Drawing.Point(63, 103);
-            this.txtPices3.Name = "txtPices3";
-            this.txtPices3.Size = new System.Drawing.Size(53, 24);
-            this.txtPices3.TabIndex = 26;
-            this.txtPices3.Text = "| x | x";
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label8.Image = ((System.Drawing.Image)(resources.GetObject("label8.Image")));
-            this.label8.Location = new System.Drawing.Point(64, 62);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 28);
-            this.label8.TabIndex = 25;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.label9.Location = new System.Drawing.Point(97, 62);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 24);
-            this.label9.TabIndex = 24;
-            this.label9.Text = "$500";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Image = ((System.Drawing.Image)(resources.GetObject("label11.Image")));
-            this.label11.Location = new System.Drawing.Point(64, 24);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(27, 28);
-            this.label11.TabIndex = 23;
-            // 
-            // txtMoney3
-            // 
-            this.txtMoney3.AutoSize = true;
-            this.txtMoney3.BackColor = System.Drawing.Color.Transparent;
-            this.txtMoney3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtMoney3.Location = new System.Drawing.Point(97, 24);
-            this.txtMoney3.Name = "txtMoney3";
-            this.txtMoney3.Size = new System.Drawing.Size(70, 24);
-            this.txtMoney3.TabIndex = 22;
-            this.txtMoney3.Text = "label13";
-            // 
             // txtPices4
             // 
             this.txtPices4.AutoSize = true;
             this.txtPices4.BackColor = System.Drawing.Color.Transparent;
             this.txtPices4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtPices4.Location = new System.Drawing.Point(63, 103);
+            this.txtPices4.Location = new System.Drawing.Point(48, 102);
             this.txtPices4.Name = "txtPices4";
             this.txtPices4.Size = new System.Drawing.Size(53, 24);
             this.txtPices4.TabIndex = 26;
@@ -289,7 +237,7 @@ namespace Controles.TurnsControl
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label16.Image = ((System.Drawing.Image)(resources.GetObject("label16.Image")));
-            this.label16.Location = new System.Drawing.Point(64, 62);
+            this.label16.Location = new System.Drawing.Point(49, 61);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(27, 28);
             this.label16.TabIndex = 25;
@@ -299,7 +247,7 @@ namespace Controles.TurnsControl
             this.txtMoney4.AutoSize = true;
             this.txtMoney4.BackColor = System.Drawing.Color.Transparent;
             this.txtMoney4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtMoney4.Location = new System.Drawing.Point(97, 62);
+            this.txtMoney4.Location = new System.Drawing.Point(82, 61);
             this.txtMoney4.Name = "txtMoney4";
             this.txtMoney4.Size = new System.Drawing.Size(50, 24);
             this.txtMoney4.TabIndex = 24;
@@ -309,9 +257,9 @@ namespace Controles.TurnsControl
             // 
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Image = ((System.Drawing.Image)(resources.GetObject("label18.Image")));
-            this.label18.Location = new System.Drawing.Point(64, 24);
+            this.label18.Location = new System.Drawing.Point(49, 23);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(27, 28);
+            this.label18.Size = new System.Drawing.Size(27, 30);
             this.label18.TabIndex = 23;
             // 
             // txtNombre4
@@ -319,11 +267,63 @@ namespace Controles.TurnsControl
             this.txtNombre4.AutoSize = true;
             this.txtNombre4.BackColor = System.Drawing.Color.Transparent;
             this.txtNombre4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.txtNombre4.Location = new System.Drawing.Point(97, 24);
+            this.txtNombre4.Location = new System.Drawing.Point(82, 23);
             this.txtNombre4.Name = "txtNombre4";
             this.txtNombre4.Size = new System.Drawing.Size(70, 24);
             this.txtNombre4.TabIndex = 22;
             this.txtNombre4.Text = "label19";
+            // 
+            // txtPices1
+            // 
+            this.txtPices1.AutoSize = true;
+            this.txtPices1.BackColor = System.Drawing.Color.Transparent;
+            this.txtPices1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtPices1.Location = new System.Drawing.Point(44, 102);
+            this.txtPices1.Name = "txtPices1";
+            this.txtPices1.Size = new System.Drawing.Size(53, 24);
+            this.txtPices1.TabIndex = 26;
+            this.txtPices1.Text = "| x | x";
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.label14.Image = ((System.Drawing.Image)(resources.GetObject("label14.Image")));
+            this.label14.Location = new System.Drawing.Point(45, 61);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(27, 28);
+            this.label14.TabIndex = 25;
+            // 
+            // txtMoney1
+            // 
+            this.txtMoney1.AutoSize = true;
+            this.txtMoney1.BackColor = System.Drawing.Color.Transparent;
+            this.txtMoney1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtMoney1.Location = new System.Drawing.Point(78, 61);
+            this.txtMoney1.Name = "txtMoney1";
+            this.txtMoney1.Size = new System.Drawing.Size(50, 24);
+            this.txtMoney1.TabIndex = 24;
+            this.txtMoney1.Text = "$500";
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Image = ((System.Drawing.Image)(resources.GetObject("label10.Image")));
+            this.label10.Location = new System.Drawing.Point(45, 23);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(27, 30);
+            this.label10.TabIndex = 23;
+            // 
+            // txtNombre1
+            // 
+            this.txtNombre1.AutoSize = true;
+            this.txtNombre1.BackColor = System.Drawing.Color.Transparent;
+            this.txtNombre1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.txtNombre1.Location = new System.Drawing.Point(78, 23);
+            this.txtNombre1.Name = "txtNombre1";
+            this.txtNombre1.Size = new System.Drawing.Size(107, 24);
+            this.txtNombre1.TabIndex = 22;
+            this.txtNombre1.Text = "txtNombre1";
             // 
             // TurnsInfo
             // 
@@ -355,11 +355,6 @@ namespace Controles.TurnsControl
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlJ2;
         private System.Windows.Forms.Panel pnlJ3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label txtNombre1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label txtMoney1;
-        private System.Windows.Forms.Label txtPices1;
         private System.Windows.Forms.Panel pnlJ4;
         private System.Windows.Forms.Label txtPices2;
         private System.Windows.Forms.Label label3;
@@ -368,13 +363,18 @@ namespace Controles.TurnsControl
         private System.Windows.Forms.Label txtNombre2;
         private System.Windows.Forms.Label txtPices3;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label txtMoney3;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label txtNombre3;
         private System.Windows.Forms.Label txtPices4;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label txtMoney4;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label txtNombre4;
+        private System.Windows.Forms.Label txtPices1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label txtMoney1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label txtNombre1;
     }
 }
