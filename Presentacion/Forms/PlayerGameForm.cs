@@ -15,6 +15,7 @@ using Controles.TurnsControl;
 using Entidades.Game;
 using Presentacion.User;
 using Controles.ConfigInfo;
+using System.IO;
 
 namespace Presentacion.Forms
 {
@@ -45,6 +46,7 @@ namespace Presentacion.Forms
             CañasThrower = new CañasThrower();
             CañasThrower.MinimumSize = new Size(CañasThrower.THROWER_WIDTH, CañasThrower.THROWER_HEIGHT);
             CañasThrower.Size = new Size(CañasThrower.THROWER_WIDTH, CañasThrower.THROWER_HEIGHT);
+            CañasThrower.Anchor = AnchorStyles.Left;
             CañasThrower.AddButtonListener(this.CañasThrowerControl_Click);
 
             // Creando un arreglo de StatePlayer para prueba
@@ -81,6 +83,9 @@ namespace Presentacion.Forms
 
             InitializeComponent();
 
+            // Cargar imagenes 
+            LoadImages();
+             
             // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
             this.MinimumSize = new Size(1320, 740);
 
@@ -103,6 +108,16 @@ namespace Presentacion.Forms
             panControls.Controls.Add(ConfigInfo);
 
             controller = Session.FormsController;
+        }
+
+        private void LoadImages()
+        {
+            this.BackgroundImage = FormsImages.DefaultBackground;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            panBackground.BackColor = Color.Transparent;
+            panBoard.BackColor = Color.Transparent;
+            panControls.BackColor = Color.Transparent;
+            panTurnsInfo.BackColor = Color.Transparent;
         }
 
         private void CenterControl(Control c1, Control c2)

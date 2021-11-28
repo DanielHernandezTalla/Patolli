@@ -15,6 +15,8 @@ namespace Controles.ConfigInfo
         public ConfigInfo()
         {
             InitializeComponent();
+            BackgroundImage = ConfigInfoImages.DefaultBackground;
+            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         public void ShowData(int montoInicial, int apuesta, int pieces)
