@@ -221,9 +221,9 @@ namespace GameRun
                 // Inicializar nueva ficha si es el caso.
                 if (steps == START_PIECE_VALUE)
                 {
-                    if (TryToStartPiece(Turns.GetCurrentPlayerTurn()))
+                    if (TryToStartPiece(Turns.GetCurrentPlayerTurn(), out GamePiece piece))
                     {
-                        GameStatus.NotifyObservers(new PieceStartedEvent(Turns.GetCurrentPieceTurn()));
+                        GameStatus.NotifyObservers(new PieceStartedEvent(piece));
 
                         Turns.ClearTurn();
 
@@ -260,7 +260,7 @@ namespace GameRun
         /// </summary>
         /// <param name="player"></param>
         /// <returns>Retorna un bool que indica si es se pudo agregar una Ficha o no.</returns>
-        private bool TryToStartPiece(Player player)
+        private bool TryToStartPiece(Player player, out GamePiece piece)
         {
             if(GamePath.CanStartPiece(player.PlayerNumber))
             {
@@ -287,10 +287,16 @@ namespace GameRun
                         // Cambia el estado de la Ficha.
                         pieces[i].PieceState = GamePiece.GamePieceState.InGame;
 
+                        // El valor de salida sera la ficha que fue inicializada.
+                        piece = pieces[i];
+
                         return true;
                     }
                 }
             }
+
+            // Si no se puede empzar una ficha el valor de salida sera null.
+            piece = null;
 
             return false;
         }

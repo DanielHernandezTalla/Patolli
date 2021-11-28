@@ -122,7 +122,7 @@ namespace Servidor
         }
 
         /// <summary>
-        /// Metodo para enviar una lista de eventos a una lista de clientes. Un evento se relaciona solo con un cliente. 
+        /// Metodo para enviar una lista de eventos a una lista de clientes. Donde cada evento es especifico para un usuario.
         /// Esta relacion se da por el indice de la lista.
         /// </summary>
         /// <param name="responses"></param>
