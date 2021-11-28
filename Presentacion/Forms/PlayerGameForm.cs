@@ -14,6 +14,7 @@ using Controles.CañasThrowerControl;
 using Controles.TurnsControl;
 using Entidades.Game;
 using Presentacion.User;
+using Controles.ConfigInfo;
 
 namespace Presentacion.Forms
 {
@@ -24,6 +25,7 @@ namespace Presentacion.Forms
         private readonly Board Board;
         private readonly CañasThrower CañasThrower;
         private readonly TurnsInfo TurnsInfo;
+        private readonly ConfigInfo ConfigInfo;
 
         // Campos para el turno actual
 
@@ -74,6 +76,9 @@ namespace Presentacion.Forms
             TurnsInfo = new TurnsInfo();
             TurnsInfo.ShowData(statePlayer);
 
+            //Creando ConfigInfo
+            ConfigInfo = new ConfigInfo();
+
             InitializeComponent();
 
             // Establecer tamaños minimos y tamaños por defecto de los paneles contenedores.
@@ -95,6 +100,7 @@ namespace Presentacion.Forms
             panBoard.Controls.Add(Board);
             panControls.Controls.Add(CañasThrower);
             panTurnsInfo.Controls.Add(TurnsInfo);
+            panControls.Controls.Add(ConfigInfo);
 
             controller = Session.FormsController;
         }
