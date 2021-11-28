@@ -40,7 +40,7 @@ namespace Presentacion.Forms
                 {
                     StartServer(ip, portNum);
 
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
 
                     StartClient(ip, portNum);
                 }

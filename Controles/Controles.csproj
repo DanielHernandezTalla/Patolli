@@ -59,7 +59,19 @@
     <Compile Include="ImageEditor.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowMessageControl.cs" />
     <Compile Include="Sprite.cs" />
+    <Compile Include="TurnsControl\TurnsInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TurnsControl\TurnsInfo.Designer.cs">
+      <DependentUpon>TurnsInfo.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +79,13 @@
       <DependentUpon>Board.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CañaThrowerControl\CañaThrower.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TurnsControl\TurnsInfo.resx">
+      <DependentUpon>TurnsInfo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
