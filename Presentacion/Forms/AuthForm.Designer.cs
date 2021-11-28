@@ -41,7 +41,7 @@ namespace Presentacion.Forms
             // 
             // txtNombre
             // 
-            this.txtNombre.Font = new System.Drawing.Font("Dubai", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNombre.Font = new System.Drawing.Font("Dubai", 12.75F);
             this.txtNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtNombre.Location = new System.Drawing.Point(34, 81);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -55,7 +55,7 @@ namespace Presentacion.Forms
             this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(75)))), ((int)(((byte)(8)))));
             this.btnIngresar.FlatAppearance.BorderSize = 0;
             this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnIngresar.Font = new System.Drawing.Font("Dubai", 14.25F);
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
             this.btnIngresar.Location = new System.Drawing.Point(34, 151);
             this.btnIngresar.Name = "btnIngresar";
@@ -69,7 +69,7 @@ namespace Presentacion.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Dubai Medium", 15.75F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(34, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 36);
@@ -108,10 +108,10 @@ namespace Presentacion.Forms
             this.txtNombreError.ForeColor = System.Drawing.Color.Red;
             this.txtNombreError.Location = new System.Drawing.Point(-184, 25);
             this.txtNombreError.Name = "txtNombreError";
-            this.txtNombreError.Size = new System.Drawing.Size(0, 15);
+            this.txtNombreError.Size = new System.Drawing.Size(0, 13);
             this.txtNombreError.TabIndex = 7;
             // 
-            // frmAuth
+            // AuthForm
             // 
             this.AcceptButton = this.btnIngresar;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -121,9 +121,9 @@ namespace Presentacion.Forms
             this.Controls.Add(this.pnClientServer);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "frmAuth";
+            this.Name = "AuthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Auth";
+            this.Text = "Autentificación";
             this.pnClientServer.ResumeLayout(false);
             this.pnClientServer.PerformLayout();
             this.ResumeLayout(false);

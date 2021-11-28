@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PlayerGameForm));
             this.panBackground = new System.Windows.Forms.Panel();
             this.panBoard = new System.Windows.Forms.Panel();
             this.panControls = new System.Windows.Forms.Panel();
@@ -92,6 +93,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1304, 701);
             this.Controls.Add(this.panBackground);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1320, 726);
             this.Name = "PlayerGameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -117,7 +117,7 @@ namespace Presentacion.Forms
             this.MaximizeBox = false;
             this.Name = "ClientServerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ClientServer";
+            this.Text = "Seleccionar Rol";
             this.pnClientServer.ResumeLayout(false);
             this.pnClientServer.PerformLayout();
             this.ResumeLayout(false);
