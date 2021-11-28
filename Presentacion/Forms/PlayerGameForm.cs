@@ -215,8 +215,8 @@ namespace Presentacion.Forms
                 CañasThrower.SetCañas(thrownCañas);
             }
 
-            Controles.ShowMessageControl.Show($"El jugador {currentTurn.Name} tiró las cañas.", "Aviso", 1000);
-            System.Threading.Thread.Sleep(8000);
+            //Controles.ShowMessageControl.Show($"El jugador {currentTurn.Name} tiró las cañas.", "Aviso", 1000);
+            System.Threading.Thread.Sleep(4000);
 
             // Nueva peticion. Solo el servidor la mandará.
             if (Session.Role == Session.SessionRole.Server)
@@ -229,17 +229,15 @@ namespace Presentacion.Forms
         {
             Piece piece = Transporte.Serialization.Serialize.JobjToObject<Piece>(e.Data);
 
-            Controles.ShowMessageControl.Show(e.Description, "Aviso", 500);
+            //Controles.ShowMessageControl.Show(e.Description, "Aviso", 500);
 
-            //Text = e.Description;
+            Board.AddPiece(piece);
         }
 
         public void PieceMoved(Event e)
         {
             throw new NotImplementedException();
         }
-
-
 
         #endregion
 
@@ -263,7 +261,6 @@ namespace Presentacion.Forms
                 ThrownCañas();
                 CañasThrower.CañasThrown = false;
             }
-            
         }
 
         #endregion

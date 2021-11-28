@@ -152,6 +152,10 @@
   <ItemGroup>
     <Content Include="resources\background.png" />
     <Content Include="resources\board\board_background.png" />
+    <Content Include="resources\board\piece_blue.png" />
+    <Content Include="resources\board\piece_green.png" />
+    <Content Include="resources\board\piece_red.png" />
+    <Content Include="resources\board\piece_yellow.png" />
     <Content Include="resources\caña_thrower\BotonBrillo.png" />
     <Content Include="resources\caña_thrower\BotonNormal.png" />
     <Content Include="resources\caña_thrower\Caña100x200.png" />

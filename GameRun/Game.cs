@@ -181,7 +181,7 @@ namespace GameRun
 
                 for (int j = 0; j < Players[i].GamePieces.Length; j++)
                 {
-                    Players[i].GamePieces[j] = new GamePiece(j, i);
+                    Players[i].GamePieces[j] = new GamePiece(j, i, Players[i].Color);
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace GameRun
             if (Turns.PlayerTurnIsReady)
             {
                 // Inicializar nueva ficha si es el caso.
-                if (steps == START_PIECE_VALUE)
+                if (steps == START_PIECE_VALUE || steps == 2 || steps == 3)
                 {
                     if (TryToStartPiece(Turns.GetCurrentPlayerTurn(), out GamePiece piece))
                     {
@@ -244,6 +244,9 @@ namespace GameRun
                     GamePath.TryMovePiece(player, piece, steps);
 
                     UpdatePieceLocation(Turns.GetCurrentPieceTurn(), player, piece);
+
+                    // Evento de que se movio una ficha.
+                    GameStatus.NotifyObservers(new PieceMovedEvent(GamePath.Steps));
                 }
 
                 // Limpiar turno actual y avanzar al siguiente.
@@ -328,12 +331,19 @@ namespace GameRun
         {
             return Turns.GetCurrentPlayerTurn();
         }
-
         
         private void UpdatePieceLocation(GamePiece piece, int playerIndex, int pieceIndex)
         {
             Square[,] piecesInGame = GamePath.GamePiecesState;
             piece.Location = piecesInGame[playerIndex, pieceIndex].Location;
+            piece.RelativeLocation = SetRelativePieceLocation(piece, piecesInGame[playerIndex, pieceIndex]);
+        }
+        private Point SetRelativePieceLocation(GamePiece piece, Square square)
+        {
+            int X = square.Location.X + (square.RelativeWidth / 2 - piece.Width / 2);
+            int Y = square.Location.Y + (square.RelativeHeight / 2 - piece.Height / 2);
+
+            return new Point(X, Y);
         }
 
         // Metodos para conocer si hay fichas lista para dibujar graficamente

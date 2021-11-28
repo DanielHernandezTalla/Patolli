@@ -8,13 +8,13 @@ namespace GameRun.GameEvents
 {
     public class PieceMovedEvent : Eventos.Event
     {
-        private Elements.PieceMovement movement;
+        private List<Elements.PieceMovement> movements;
 
-        public override object Data { get => movement; }
+        public override object Data { get => movements; }
 
-        public PieceMovedEvent(Elements.PieceMovement movement) : base("PieceMoved", "Una ficha se ha movido.")
+        public PieceMovedEvent(List<Elements.PieceMovement> movements) : base("PieceMoved", "Una ficha se ha movido.")
         {
-            this.movement = movement;
+            this.movements = movements;
         }
     }
 }

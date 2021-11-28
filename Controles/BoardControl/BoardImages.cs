@@ -185,5 +185,55 @@ namespace Controles.BoardControl
                 return square;
             }
         }
+
+        internal static Bitmap GetPiece(Entidades.Connection.User.PlayerColor color)
+        {
+            if (color == Entidades.Connection.User.PlayerColor.Red)
+                return RedPiece;
+
+            else if (color == Entidades.Connection.User.PlayerColor.Blue)
+                return BluePiece;
+
+            else if (color == Entidades.Connection.User.PlayerColor.Green)
+                return GreenPiece;
+
+            else if (color == Entidades.Connection.User.PlayerColor.Yellow)
+                return YellowPiece;
+
+            throw new Exception("No se encontro el color de la ficha en BoardImages.");
+        }
+
+        internal static Bitmap RedPiece
+        {
+            get
+            {
+                string fullPath = Path + "piece_red.png";
+                return ((Bitmap)Image.FromFile(fullPath));
+            }
+        }
+        internal static Bitmap BluePiece
+        {
+            get
+            {
+                string fullPath = Path + "piece_blue.png";
+                return (Bitmap)Image.FromFile(fullPath);
+            }
+        }
+        internal static Bitmap GreenPiece
+        {
+            get
+            {
+                string fullPath = Path + "piece_green.png";
+                return (Bitmap)Image.FromFile(fullPath);
+            }
+        }
+        internal static Bitmap YellowPiece
+        {
+            get
+            {
+                string fullPath = Path + "piece_yellow.png";
+                return (Bitmap)Image.FromFile(fullPath);
+            }
+        }
     }
 }

@@ -12,9 +12,12 @@ namespace Entidades.Game
         public int PlayerNumber { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        public int RelativeX { get; set; }
+        public int RelativeY { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public GamePieceState State { get; set; }
+        public Connection.User.PlayerColor Color { get; set; }
 
         public bool IsAlive;
 
@@ -33,9 +36,12 @@ namespace Entidades.Game
             PlayerNumber = piece.PlayerNumber;
             X = piece.Location.X;
             Y = piece.Location.Y;
+            RelativeX = piece.RelativeLocation.X;
+            RelativeY = piece.RelativeLocation.Y;
             Width = piece.Width;
             Height = piece.Height;
             State = (GamePieceState)piece.PieceState;
+            Color = (Connection.User.PlayerColor)piece.Color;
         }
     }
 }

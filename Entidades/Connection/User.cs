@@ -17,5 +17,14 @@ namespace Entidades.Connection
             Name = player.Name;
             Number = player.PlayerNumber;
         }
+
+        // Este enum es una copia de un enum con el mismo nombre que se encuentra en GameRun.Elements.Player
+        public enum PlayerColor
+        {
+            Red,
+            Blue,
+            Yellow,
+            Green
+        }
     }
 }

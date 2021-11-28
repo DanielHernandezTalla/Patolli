@@ -142,7 +142,7 @@ namespace Controles
             {
                 Graphics g = Graphics.FromImage(canvas);
 
-                g.DrawImage(image, new Point(X, Y));
+                g.DrawImage(image, new Rectangle(X, Y ,image.Width, image.Height));
             } 
             else
             {

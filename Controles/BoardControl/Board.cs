@@ -74,23 +74,29 @@ namespace Controles.BoardControl
             engine.ClearLayers();
         }
 
-        public void AddPiece(GamePiece piece) 
+        
+
+        public void AddPiece(Entidades.Game.Piece piece) 
         {
             if (!engine.LayerExist("pieces"))
                 engine.CreateLayer("pieces");
 
             engine.WorkingLayer = "pieces";
 
-            Bitmap image = null;
+            Bitmap image = BoardImages.GetPiece(piece.Color);
 
             Sprite pieceSprite = new Sprite(
-                    piece.Location.X,
-                    piece.Location.Y,
+                    piece.RelativeX,
+                    piece.RelativeY,
                     piece.Width,
                     piece.Height,
                     image, 0, 0, true, true);
 
             engine.AddSprite(pieceSprite);
+
+            //--------------
+
+            UpdateBoard();
         }
 
         public void MovePiece(PieceMovement movement) { }
