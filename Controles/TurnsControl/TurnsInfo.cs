@@ -79,14 +79,14 @@ namespace Controles.TurnsControl
                 else
                     panels[i].BackgroundImage = TurnsInfoImages.Player;
 
-                string txtPieces = "";
-                for (int j = 0; j < statePlayer[i].Pieces.Length; j++)
-                    if (statePlayer[i].Pieces[j].IsAlive)
-                        txtPieces += " |";
-                    else
-                        txtPieces += " x";
+                //string txtPieces = "";
+                //for (int j = 0; j < statePlayer[i].Pieces.Length; j++)
+                //    if (statePlayer[i].Pieces[j].IsAlive)
+                //        txtPieces += " |";
+                //    else
+                //        txtPieces += " x";
 
-                labelsPieces[i].Text = txtPieces;
+                //labelsPieces[i].Text = txtPieces;
             }
         }
     }

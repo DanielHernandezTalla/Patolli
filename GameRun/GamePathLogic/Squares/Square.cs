@@ -92,10 +92,10 @@ namespace GameRun.GamePathLogic.Squares
             ISquareState squareState = this;
             bool canMove = true;
 
-            foreach (IAction action in Actions)
-            {
-                canMove = canMove && action.Execute(squareState);
-            }
+            //foreach (IAction action in Actions)
+            //{
+            //    canMove = canMove && action.Execute(squareState);
+            //}
 
             return canMove;
         }

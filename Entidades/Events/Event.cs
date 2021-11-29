@@ -53,12 +53,16 @@ namespace Entidades.Events
                 Data = entityPiece;
             }
 
-            else if (e.Data is GameRun.Elements.PieceMovement[] movement)
+            else if (e.Data is List<GameRun.Elements.PieceMovement> movement)
             {
-                Game.PieceMovement[] entityMovement = new Game.PieceMovement[movement.Length];
+                List<Game.PieceMovement> entityMovement = new List<Game.PieceMovement>();
 
-                for (int i = 0; i < movement.Length; i++)
-                    entityMovement[i].Fill(movement[i]);
+                for (int i = 0; i < movement.Count; i++)
+                {
+                    Game.PieceMovement entity = new Game.PieceMovement();
+                    entity.Fill(movement[i]);
+                    entityMovement.Add(entity);
+                }
 
                 Data = entityMovement;
             }

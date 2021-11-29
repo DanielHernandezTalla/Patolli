@@ -50,33 +50,33 @@ namespace Presentacion.Forms
             CañasThrower.AddButtonListener(this.CañasThrowerControl_Click);
 
             // Creando un arreglo de StatePlayer para prueba
-            Piece[] pieces = new Piece[3];
-            pieces[0] = new Piece() { IsAlive = true };
-            pieces[1] = new Piece() { IsAlive = false };
-            pieces[2] = new Piece() { IsAlive = true };
+            //Piece[] pieces = new Piece[3];
+            //pieces[0] = new Piece() { IsAlive = true };
+            //pieces[1] = new Piece() { IsAlive = false };
+            //pieces[2] = new Piece() { IsAlive = true };
             
-            Piece[] pieces2 = new Piece[3];
-            pieces2[0] = new Piece() { IsAlive = false };
-            pieces2[1] = new Piece() { IsAlive = true };
-            pieces2[2] = new Piece() { IsAlive = false };
+            //Piece[] pieces2 = new Piece[3];
+            //pieces2[0] = new Piece() { IsAlive = false };
+            //pieces2[1] = new Piece() { IsAlive = true };
+            //pieces2[2] = new Piece() { IsAlive = false };
             
-            StatePlayer[] statePlayer = new StatePlayer[2];
-            statePlayer[0] = new StatePlayer()
-            {
-                User = new Entidades.Connection.User() { Name = "Daniel", Number = 500 },
-                Pieces = pieces,
-                IsMyTurn = false
-            };
-            statePlayer[1] = new StatePlayer()
-            {
-                User = new Entidades.Connection.User() { Name = "Missael", Number = 250 },
-                Pieces = pieces2,
-                IsMyTurn = true
-            };
+            //StatePlayer[] statePlayer = new StatePlayer[2];
+            //statePlayer[0] = new StatePlayer()
+            //{
+            //    User = new Entidades.Connection.User() { Name = "Daniel", Number = 500 },
+            //    Pieces = pieces,
+            //    IsMyTurn = false
+            //};
+            //statePlayer[1] = new StatePlayer()
+            //{
+            //    User = new Entidades.Connection.User() { Name = "Missael", Number = 250 },
+            //    Pieces = pieces2,
+            //    IsMyTurn = true
+            //};
 
             // Creación del TurnsInfo
             TurnsInfo = new TurnsInfo();
-            TurnsInfo.ShowData(statePlayer);
+            
 
             //Creando ConfigInfo
             ConfigInfo = new ConfigInfo();
@@ -132,6 +132,26 @@ namespace Presentacion.Forms
         {
             // Actualizar el control de informacion de turno..
             Text = $"Turno de: {user.Name}";
+
+            List<Entidades.Connection.User> users = Session.Users;
+            
+            StatePlayer[] statePlayer = new StatePlayer[users.Count];
+            
+            for(int i = 0; i < statePlayer.Length; i++)
+            {
+                statePlayer[i] = new StatePlayer()
+                {
+                    User = users[i]
+                };
+
+                if(users[i].Name == user.Name)
+                    statePlayer[i].IsMyTurn = true;
+                else
+                    statePlayer[i].IsMyTurn = false;
+            }
+
+            
+            TurnsInfo.ShowData(statePlayer);
 
             // Actualizar el control de cañas
             CañasThrower.ClearCañas();

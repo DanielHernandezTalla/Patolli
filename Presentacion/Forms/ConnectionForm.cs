@@ -23,7 +23,7 @@ namespace Presentacion.Forms
 
             controller = Session.FormsController;
 
-            txtIp.Text = "192.168.1.73";
+            txtIp.Text = "192.168.0.32";
             txtPuerto.Text = "4000";
         }
 
@@ -40,7 +40,7 @@ namespace Presentacion.Forms
                 {
                     StartServer(ip, portNum);
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(200);
 
                     StartClient(ip, portNum);
                 }
@@ -52,7 +52,7 @@ namespace Presentacion.Forms
                 Session.Ip = ip;
                 Session.Port = port;
 
-                Thread.Sleep(1000);
+                Thread.Sleep(200);
 
                 Identify();
             }

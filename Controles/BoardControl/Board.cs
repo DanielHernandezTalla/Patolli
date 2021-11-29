@@ -73,7 +73,7 @@ namespace Controles.BoardControl
             UpdateBoard();
 
             // Se pone no activa la capa "board" para que ya no se vuelva a dibujar.
-            engine.LayerIsActive("board", false);
+            engine.LayerIsActive("board", true);
 
             //-------------------
         }
