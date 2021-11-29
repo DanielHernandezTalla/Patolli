@@ -176,6 +176,7 @@
     <Content Include="resources\board\goal_square.png" />
     <Content Include="resources\board\triangle.png" />
     <Content Include="resources\player_game\FondoJuego.jpg" />
+    <Content Include="resources\player_game\LogoPatolliP.ico" />
     <Content Include="resources\Turns\TablaJugador.png" />
     <Content Include="resources\Turns\TablaJugadorSelected.png" />
     <Content Include="resources\viejas\center_square.png" />

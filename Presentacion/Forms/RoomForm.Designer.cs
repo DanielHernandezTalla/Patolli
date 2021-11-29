@@ -373,7 +373,7 @@ namespace Presentacion.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "RoomForm";
-            this.Text = "RoomForm (Cliente)";
+            this.Text = "Sala (Cliente)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRoom_FormClosing);
             this.Load += new System.EventHandler(this.frmRoom_Load);
             this.panSettings.ResumeLayout(false);
