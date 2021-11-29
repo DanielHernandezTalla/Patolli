@@ -12,9 +12,11 @@ namespace GameRun.GameEvents
 
         public override object Data { get => movements; }
 
-        public PieceMovedEvent(List<Elements.PieceMovement> movements) : base("PieceMoved", "Una ficha se ha movido.")
+        public PieceMovedEvent(List<Elements.PieceMovement> movements, int player, int piece) : base("PieceMoved", "Una ficha se ha movido.")
         {
             this.movements = movements;
+            this.PlayerNumber = player;
+            this.PieceNumber = player;
         }
     }
 }

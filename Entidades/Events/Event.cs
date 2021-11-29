@@ -11,15 +11,20 @@ namespace Entidades.Events
         public string EventType { get; set; }
         public string Description { get; set; }
         public object Data { get; set; }
+
         public bool ToGame { get; set; }
 
-        public object Sender { get; set; }
+        public int Player { get; set; }
+        public int Piece { get; set; }
 
         public void Fill(Eventos.Event e)
         {
             EventType = e.EventType;
             Description = e.Description;
             ToGame = e.ToGame;
+
+            Player = e.PlayerNumber;
+            Piece = e.PieceNumber;
 
             //  La Data se llenara dependiendo de su tipo.
             if (e.Data is GameRun.GamePathLogic.Squares.Square[] squares)
@@ -60,6 +65,7 @@ namespace Entidades.Events
 
             else
                 Data = e.Data;
+                
         }
 
         public Eventos.Event MakeCopy()

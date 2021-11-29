@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Game
 {
-    class PieceMovement
+    public class PieceMovement
     {
         public int X { get; set; }
         public int Y { get; set; }

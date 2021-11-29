@@ -63,7 +63,7 @@ namespace Controles.BoardControl
             // Se actualiza el board para que dibuje el recorrido creado.
             UpdateBoard();
 
-            // Se pone no activa la capa "board" para que solo sea dibujada una vez.
+            // Se pone no activa la capa "board" para que ya no se vuelva a dibujar.
             engine.LayerIsActive("board", false);
 
             //-------------------
@@ -99,9 +99,10 @@ namespace Controles.BoardControl
             UpdateBoard();
         }
 
-        public void MovePiece(PieceMovement movement) { }
+        public void MovePiece(List<Entidades.Game.PieceMovement> movementS) 
+        {
 
-        public void MovePiece(PieceMovement[] movements) { }
+        }
 
         public void FinishPiece(GamePiece piece) { }
 
@@ -148,8 +149,7 @@ namespace Controles.BoardControl
 
         private void Board_SizeChanged(object sender, EventArgs e)
         {
-            Size a = Size;
-
+           Size a = Size;
         }
     }
 }

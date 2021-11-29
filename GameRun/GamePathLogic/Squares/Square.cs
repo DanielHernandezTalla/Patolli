@@ -108,6 +108,19 @@ namespace GameRun.GamePathLogic.Squares
             }
         }
 
+        public Point Center(GamePiece piece)
+        {
+            return Center(piece.Width, piece.Height);
+        }
+
+        public Point Center(int width, int heinght)
+        {
+            int X = Location.X + (RelativeWidth / 2 - width / 2);
+            int Y = Location.Y + (RelativeHeight / 2 - heinght / 2);
+
+            return new Point(X, Y);
+        }
+
         #endregion
     }
 }

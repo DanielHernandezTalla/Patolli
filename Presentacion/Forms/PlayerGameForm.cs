@@ -251,7 +251,10 @@ namespace Presentacion.Forms
 
         public void PieceMoved(Event e)
         {
-            throw new NotImplementedException();
+            List<PieceMovement> movements = Transporte.Serialization.Serialize.JobjToObject<List<PieceMovement>>(e.Data);
+            int pieceNumber = e.PieceNumber;
+
+            Board.MovePiece(movements);
         }
 
         #endregion

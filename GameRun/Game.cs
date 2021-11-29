@@ -246,7 +246,7 @@ namespace GameRun
                     UpdatePieceLocation(Turns.GetCurrentPieceTurn(), player, piece);
 
                     // Evento de que se movio una ficha.
-                    GameStatus.NotifyObservers(new PieceMovedEvent(GamePath.Steps));
+                    GameStatus.NotifyObservers(new PieceMovedEvent(GamePath.Steps, player, piece));
                 }
 
                 // Limpiar turno actual y avanzar al siguiente.
@@ -340,10 +340,7 @@ namespace GameRun
         }
         private Point SetRelativePieceLocation(GamePiece piece, Square square)
         {
-            int X = square.Location.X + (square.RelativeWidth / 2 - piece.Width / 2);
-            int Y = square.Location.Y + (square.RelativeHeight / 2 - piece.Height / 2);
-
-            return new Point(X, Y);
+            return square.Center(piece);
         }
 
         // Metodos para conocer si hay fichas lista para dibujar graficamente

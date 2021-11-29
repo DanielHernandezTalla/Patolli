@@ -9,8 +9,8 @@ namespace GameRun.GamePathLogic.Squares
 {
     class ClassicLocationGenerator : LocationGenerator
     {
-        public Point Center { get; set; } = new Point(345, 345); //60, 35
-        public int Separation { get; set; } = 2; // 0
+        public Point Center { get; set; } = new Point(344, 344); //60, 35
+        public int Separation { get; set; } = 1; // 0
         public bool IsClockwise { get; set; } = false;
 
         public override void GenerateLocations(GamePath gamePath)

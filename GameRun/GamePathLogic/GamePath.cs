@@ -189,7 +189,7 @@ namespace GameRun.GamePathLogic
             {
                 current = current.Next;
 
-                Elements.PieceMovement step = new Elements.PieceMovement(current.Location, DEFAULT_STEP_TIME);
+                Elements.PieceMovement step = new Elements.PieceMovement(current.Center(Elements.GamePiece.WIDTH, Elements.GamePiece.HEIGHT), DEFAULT_STEP_TIME);
                 Steps.Add(step);
             }
 

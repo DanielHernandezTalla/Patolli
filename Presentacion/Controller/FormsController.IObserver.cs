@@ -42,7 +42,7 @@ namespace Presentacion.Controller
                 gameForm.PieceStarted(responseEvent);
 
             else if (eventType.Equals("PieceMoved"))
-                return;
+                gameForm.PieceMoved(responseEvent);
 
             else
                 throw new Exception("No se indentificó el evento que llegó al FormsController.");
