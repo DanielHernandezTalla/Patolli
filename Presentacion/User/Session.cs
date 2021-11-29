@@ -47,6 +47,10 @@ namespace Presentacion.User
 
         internal static FormsController FormsController { get; set; }
         
+        // Datos de la partida
+
+        public static int PlayerQuantity { get; set; }
+        public static int PieceQuantity { get; set; }
 
         public enum SessionRole
         {

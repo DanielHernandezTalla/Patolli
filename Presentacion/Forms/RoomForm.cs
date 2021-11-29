@@ -187,6 +187,11 @@ namespace Presentacion.Forms
             int bladeSize = int.Parse(numBladeSize.Value.ToString());
             int credit = int.Parse(numCreditAmount.Value.ToString());
             int bet = int.Parse(numBetAmount.Value.ToString());
+            
+            // Esta informacion es necesario que se envie como evento para todos. Por el momento solo la conoce el host... IMPLEMENTAR
+            Session.PieceQuantity = pQuantity;
+            Session.PlayerQuantity = Session.Users.Count;
+            Console.WriteLine($"En roomForm -> Tamaño de creacion: {Session.PlayerQuantity} y {Session.PieceQuantity}");
 
             Entidades.Game.GameSettings settings = new Entidades.Game.GameSettings
             {

@@ -10,7 +10,7 @@ namespace Transporte.Serialization
 {
     public static class Serialize
     {
-        public static Entidades.Events.Event ByteToObject(byte[] buffer, bool pruebaQUITAR)
+        /*public static Entidades.Events.Event ByteToObject(byte[] buffer, bool pruebaQUITAR)
         {
             string mensaje;
             int endIndex;
@@ -20,7 +20,37 @@ namespace Transporte.Serialization
             if (endIndex > 0)
                 mensaje = mensaje.Substring(0, endIndex);
 
+            Console.WriteLine(mensaje);
+            List<string> messages = SplitMessages(mensaje);
+            for (int i = 0; i < messages.Count; i++)
+            {
+                Console.WriteLine(messages[i]);
+            }
+
             Entidades.Events.Event obj = JsonConvert.DeserializeObject<Entidades.Events.Event>(mensaje);
+
+            return obj;
+        }*/
+
+        public static Queue<string> ByteToString(byte[] buffer)
+        {
+            string mensaje;
+            int endIndex;
+
+            mensaje = Encoding.ASCII.GetString(buffer);
+            endIndex = mensaje.IndexOf("\0");
+            if (endIndex > 0)
+                mensaje = mensaje.Substring(0, endIndex);
+
+            Console.WriteLine(mensaje);
+            Queue<string> messages = SplitMessages(mensaje);
+
+            return messages;
+        }
+
+        public static Entidades.Events.Event StringToObject(string message)
+        {
+            Entidades.Events.Event obj = JsonConvert.DeserializeObject<Entidades.Events.Event>(message);
 
             return obj;
         }
@@ -49,7 +79,42 @@ namespace Transporte.Serialization
             return response;
         }
 
-        
+        // Metodos para verificar que no se junten mensajes...
+
+        public static Queue<string> SplitMessages(string message)
+        {
+            int c = 0;
+            string current = "";
+
+            Queue<string> messages = new Queue<string>();
+
+            for (int i = 0; i < message.Length; i++)
+            {
+
+                current += message[i];
+
+                if (message[i].Equals('{'))
+                {
+                    c++;
+                }
+
+                if(message[i].Equals('}'))
+                {
+                    c--;
+
+                    if(c == 0)
+                    {
+                        messages.Enqueue(current);
+                        current = "";   
+                    }
+                }
+            }
+
+            return messages;
+        }
+
+
+
 
         // --------------------------------------
 

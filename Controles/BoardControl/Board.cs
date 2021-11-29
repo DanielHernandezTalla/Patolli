@@ -24,6 +24,8 @@ namespace Controles.BoardControl
 
         public static int BOARD_SIZE { get; private set; } = 690;
 
+        // Control de sprites
+        private Sprite[,] Pieces;
 
         public Board()
         {
@@ -36,6 +38,13 @@ namespace Controles.BoardControl
             result = new Bitmap(BOARD_SIZE, BOARD_SIZE);
 
             engine = new Engine2D(BOARD_SIZE, BOARD_SIZE);
+        }
+
+        public void PlayerAndPiece(int playersQuantity, int piecesQuantity)
+        {
+            //Pieces = new Sprite[playersQuantity, piecesQuantity];
+            Pieces = new Sprite[4, 4];
+            Console.WriteLine($"Tamaño de creacion: {playersQuantity} y {piecesQuantity}");
         }
 
 
@@ -94,14 +103,25 @@ namespace Controles.BoardControl
 
             engine.AddSprite(pieceSprite);
 
+            Console.WriteLine($"Tamaño de busqueda: {piece.PlayerNumber} y {piece.PieceNumber}");
+            Pieces[piece.PlayerNumber, piece.PieceNumber] = pieceSprite;
+
             //--------------
 
             UpdateBoard();
         }
 
-        public void MovePiece(List<Entidades.Game.PieceMovement> movementS) 
+        public void MovePiece(List<Entidades.Game.PieceMovement> movements, int player, int piece) 
         {
+            for (int i = 0; i < movements.Count; i++)
+            {
+                Pieces[player, piece].X = movements[i].X;
+                Pieces[player, piece].Y = movements[i].Y;
 
+                UpdateBoard();
+
+                Thread.Sleep(500);
+            }
         }
 
         public void FinishPiece(GamePiece piece) { }

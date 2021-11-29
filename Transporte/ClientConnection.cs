@@ -12,6 +12,8 @@ namespace Transporte
 {
     public class ClientConnection : Connection
     {
+        private Queue<string> messageQueue = new Queue<string>();
+
         private bool IsReference;
 
         /// <summary>
@@ -51,7 +53,17 @@ namespace Transporte
             // Se queda esperando a que reciva algo...
             socket.Receive(buffer);
 
-            Event eventMessage = Serialize.ByteToObject(buffer, true);
+            Queue<string> pendingMessages = Serialize.ByteToString(buffer);
+
+            if(pendingMessages != null && pendingMessages.Count > 0)
+            {
+                for (int i = 0; i < pendingMessages.Count; i++)
+                {
+                    messageQueue.Enqueue(pendingMessages.Dequeue());
+                }
+            }
+
+            Event eventMessage = Serialize.StringToObject(messageQueue.Dequeue());
 
             return eventMessage;
         }

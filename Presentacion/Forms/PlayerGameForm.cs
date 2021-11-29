@@ -192,8 +192,10 @@ namespace Presentacion.Forms
             Entidades.Game.Square[] gamePath = Transporte.Serialization.Serialize.JobjToObject<Entidades.Game.Square[]>(e.Data);
             Board.SetGamePath(gamePath);
 
+            Board.PlayerAndPiece(Session.PlayerQuantity, Session.PieceQuantity);
+            Console.WriteLine($"En GaneCreated(e) -> Tamaño de creacion: {Session.PlayerQuantity} y {Session.PieceQuantity}");
             // Nueva peticion. Solo el servidor la mandará.
-            if(Session.Role == Session.SessionRole.Server)
+            if (Session.Role == Session.SessionRole.Server)
             {
                 StartGame();
             }
@@ -254,7 +256,7 @@ namespace Presentacion.Forms
             List<PieceMovement> movements = Transporte.Serialization.Serialize.JobjToObject<List<PieceMovement>>(e.Data);
             int pieceNumber = e.PieceNumber;
 
-            Board.MovePiece(movements);
+            Board.MovePiece(movements, currentTurn.Number, pieceNumber);
         }
 
         #endregion
